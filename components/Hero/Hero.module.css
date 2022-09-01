@@ -13,18 +13,18 @@
 }
 
 .moto h2 {
-  font-size: 0.8rem;
   color: var(--color-border-grey);
+  font-size: 0.8rem;
 }
 
 .motoIcon {
   animation-delay: 1s;
   animation-duration: 3s;
-  animation-name: slidein;
   animation-fill-mode: forwards;
+  animation-name: slidein;
+  bottom: 0;
   margin-left: 0%;
   position: absolute;
-  bottom: 0;
 }
 
 @keyframes slidein {
@@ -38,42 +38,42 @@
 }
 
 .title h1 {
-  font-size: 4rem;
   color: var(--color-primary);
+  font-size: 4rem;
   margin-bottom: 1rem;
 }
 
 .title h1 span {
+  color: var(--color-border-grey);
   display: block;
   font-size: 3rem;
   font-style: normal;
-  color: var(--color-border-grey);
 }
 
 .title span {
+  color: var(--color-primary);
   font-size: 2rem;
   font-style: italic;
-  color: var(--color-primary);
 }
 
 .phone {
+  color: var(--color-font-grey);
+  font-weight: 600;
   margin-top: 3rem;
   width: 70%;
-  font-weight: 600;
-  color: var(--color-font-grey);
 }
 
 .rightSide {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
 }
 
 .images {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .styles {
@@ -81,39 +81,39 @@
 }
 
 .styles span {
-  font-weight: bold;
   display: block;
+  font-weight: bold;
 }
 
 .restaurants {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .restaurant {
-  transition: all 0.3s ease;
   animation-delay: 1s;
   animation-duration: 3s;
-  animation-name: slideUp;
   animation-fill-mode: forwards;
+  animation-name: slideUp;
   margin-bottom: 0;
   opacity: 0;
+  transition: all 0.3s ease;
 }
 
 @keyframes slideUp {
   from {
-    opacity: 0;
     margin-bottom: -3rem;
+    opacity: 0;
   }
 
   to {
-    opacity: 1;
     margin-bottom: 0;
+    opacity: 1;
   }
 }
 
 .restaurant:hover {
-  transform: scale(1.1);
   opacity: 0.8;
+  transform: scale(1.1);
 }

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Hero from '../components/Hero'
+import HomePlates from '../components/HomePlates'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
 
       <main>
         <Hero />
+        <HomePlates />
       </main>
     </div>
   )
