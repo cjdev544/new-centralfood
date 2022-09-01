@@ -15,13 +15,7 @@ export default function HomePlates() {
           <div className={style.products}>
             <article className={style.product}>
               <div className={style.image}>
-                <Image
-                  src={Arepa1}
-                  alt='arepa'
-                  width={150}
-                  height={150}
-                  objectFit
-                />
+                <Image src={Arepa1} alt='arepa' width={100} height={100} />
               </div>
               <div className={style.info}>
                 <div className={style.headerInfo}>
@@ -38,13 +32,7 @@ export default function HomePlates() {
             </article>
             <article className={style.product}>
               <div className={style.image}>
-                <Image
-                  src={Arepa1}
-                  alt='arepa'
-                  width={150}
-                  height={150}
-                  objectFit
-                />
+                <Image src={Arepa1} alt='arepa' width={100} height={100} />
               </div>
               <div className={style.info}>
                 <div className={style.headerInfo}>
@@ -61,13 +49,7 @@ export default function HomePlates() {
             </article>
             <article className={style.product}>
               <div className={style.image}>
-                <Image
-                  src={Arepa1}
-                  alt='arepa'
-                  width={150}
-                  height={150}
-                  objectFit
-                />
+                <Image src={Arepa1} alt='arepa' width={100} height={100} />
               </div>
               <div className={style.info}>
                 <div className={style.headerInfo}>
