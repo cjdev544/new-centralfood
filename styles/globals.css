@@ -1,9 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --color-primary: #ff5400;
+
+  --color-font-light: #fff;
+  --color-font-grey: #788;
+  --color-font-dark: #000;
+
+  --color-border-light: #fff;
+  --color-border-grey-light: #a7a7a7;
+  --color-border-grey: #444;
+  --color-border-dark: #000;
+
+  --color-background-light: #fff;
+  --color-background-grey-light: #eee;
+  --color-background-grey: #a7a7a7;
+  --color-background-grey-dark: #363636;
+  --color-background-dark: #151515;
+  --color-background-dark-absolute: #000;
+
+  --color-success: #69af00;
+  --background-gradient: linear-gradient(
+    180deg,
+    rgba(255, 84, 0, 1) 0%,
+    rgba(255, 255, 255, 0) 30rem
+  );
+
+  --media-mobile: 640px;
+  --media-table: 768px;
+  --media-max: 1536px;
+  --intern-container: 1200px;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 84, 0, 0.1) 0%,
+    rgba(255, 255, 255, 0) 5rem
+  );
+  background-repeat: no-repeat;
+}
+
+body p {
+  font-size: 16px;
 }
 
 a {
@@ -15,12 +62,8 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.container {
+  margin: 0 auto;
+  max-width: var(--media-max);
+  width: 98%;
 }

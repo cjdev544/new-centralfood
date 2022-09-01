@@ -1,0 +1,119 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+}
+
+.leftSide {
+  margin-top: 3rem;
+}
+
+.moto {
+  position: relative;
+}
+
+.moto h2 {
+  font-size: 0.8rem;
+  color: var(--color-border-grey);
+}
+
+.motoIcon {
+  animation-delay: 1s;
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-fill-mode: forwards;
+  margin-left: 0%;
+  position: absolute;
+  bottom: 0;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 0%;
+  }
+
+  to {
+    margin-left: 13rem;
+  }
+}
+
+.title h1 {
+  font-size: 4rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.title h1 span {
+  display: block;
+  font-size: 3rem;
+  font-style: normal;
+  color: var(--color-border-grey);
+}
+
+.title span {
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+.phone {
+  margin-top: 3rem;
+  width: 70%;
+  font-weight: 600;
+  color: var(--color-font-grey);
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.styles {
+  text-align: center;
+}
+
+.styles span {
+  font-weight: bold;
+  display: block;
+}
+
+.restaurants {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant {
+  transition: all 0.3s ease;
+  animation-delay: 1s;
+  animation-duration: 3s;
+  animation-name: slideUp;
+  animation-fill-mode: forwards;
+  margin-bottom: 0;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    margin-bottom: -3rem;
+  }
+
+  to {
+    opacity: 1;
+    margin-bottom: 0;
+  }
+}
+
+.restaurant:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
