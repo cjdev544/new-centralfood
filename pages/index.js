@@ -2,6 +2,7 @@ import Head from 'next/head'
 import About from '../components/About'
 import Hero from '../components/Hero'
 import HomePlates from '../components/HomePlates'
+import HomeSeparator from '../components/HomeSeparator'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <HomePlates />
         <About />
+        <HomeSeparator />
       </main>
     </div>
   )
