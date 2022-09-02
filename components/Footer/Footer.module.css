@@ -1,0 +1,75 @@
+.footer {
+  background-color: var(--color-background-dark);
+  color: var(--color-font-grey);
+  margin-top: 3rem;
+  padding: 30px;
+  width: 100vw;
+}
+
+.footer h4 {
+  color: var(--color-font-light);
+}
+
+.container {
+  max-width: var(--media-max);
+  width: 98%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+
+.icon a {
+  color: var(--color-primary);
+  margin-right: 2rem;
+}
+
+.icon a:hover {
+  color: var(--color-font-light);
+}
+
+.legacy p {
+  color: var(--color-font-grey);
+  font-size: 12px;
+  margin-bottom: 10px !important;
+}
+
+.legacy p:hover {
+  color: var(--color-font-light);
+}
+
+.copy {
+  font-size: 10px !important;
+  text-align: right;
+}
+
+.copy span {
+  color: var(--color-primary);
+}
+
+.local {
+  font-size: 12px;
+}
+
+.local a {
+  color: var(--color-primary);
+}
+
+.local a:hover {
+  color: var(--color-font-light);
+}
+
+.local span {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.map {
+  margin-left: 0.5rem;
+}

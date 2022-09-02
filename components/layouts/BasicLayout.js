@@ -1,3 +1,4 @@
+import Footer from '../Footer'
 import Header from '../Header'
 
 export default function BasicLayout({ children }) {
@@ -6,6 +7,7 @@ export default function BasicLayout({ children }) {
       <Header />
       {children}
       {/* footer */}
+      <Footer />
     </>
   )
 }
