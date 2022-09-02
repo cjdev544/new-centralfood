@@ -73,3 +73,17 @@
 .map {
   margin-left: 0.5rem;
 }
+
+/*  Media queries */
+@media (max-width: 768px) {
+  .icon a {
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    display: block;
+    text-align: center;
+  }
+}

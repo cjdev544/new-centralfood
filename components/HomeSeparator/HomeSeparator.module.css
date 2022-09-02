@@ -45,3 +45,18 @@
   font-style: italic;
   font-weight: bold;
 }
+
+/*  Media queries */
+@media (max-width: 640px) {
+  .one {
+    font-size: 1.2rem;
+  }
+
+  .two {
+    font-size: 0.8rem;
+  }
+
+  .tree {
+    font-size: 2.5rem;
+  }
+}

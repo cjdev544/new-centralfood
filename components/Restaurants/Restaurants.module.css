@@ -37,3 +37,19 @@
 .title h2 {
   color: var(--color-primary);
 }
+
+/*  Media queries */
+@media (max-width: 640px) {
+  .grid {
+    display: block;
+  }
+
+  .title {
+    text-align: center;
+    display: block;
+  }
+
+  .restaurant {
+    margin-bottom: 1rem;
+  }
+}
