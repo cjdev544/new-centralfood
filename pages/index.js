@@ -4,7 +4,6 @@ import Hero from '../components/Hero'
 import HomePlates from '../components/HomePlates'
 import HomeSeparator from '../components/HomeSeparator'
 import Restaurants from '../components/Restaurants'
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (

@@ -1,24 +1,83 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FaCartPlus } from 'react-icons/fa'
 
 import Logo from '../../public/central-food.svg'
 import style from './Header.module.css'
 
 export default function Header() {
+  const router = useRouter()
+  const currentPath = router.pathname
+
   return (
     <header className={style.headerContainer}>
       <div className={`container ${style.header}`}>
         {/* Logo */}
-        <div className={style.logo}>
-          <Image src={Logo} alt='Central Food logo' width={100} height={100} />
-        </div>
+        <Link href='/'>
+          <a>
+            <div className={style.logo}>
+              <Image
+                src={Logo}
+                alt='Central Food logo'
+                width={100}
+                height={100}
+              />
+            </div>
+          </a>
+        </Link>
 
         {/* Menu */}
         <nav className={style.nav}>
           <ul className={style.menu}>
-            <li>Inicio</li>
-            <li>Productos</li>
-            <li>Mis pedidos</li>
+            <Link href='/'>
+              <a>
+                <li
+                  style={
+                    currentPath === '/'
+                      ? {
+                          color: '#ff5400',
+                          fontWeight: 'bold',
+                        }
+                      : { fontWeight: 'normal' }
+                  }
+                >
+                  Inicio
+                </li>
+              </a>
+            </Link>
+            <Link href='/restaurantes'>
+              <a>
+                <li
+                  style={
+                    currentPath === '/restaurantes'
+                      ? {
+                          color: '#ff5400',
+                          fontWeight: 'bold',
+                        }
+                      : { fontWeight: 'normal' }
+                  }
+                >
+                  Restaurantes
+                </li>
+              </a>
+            </Link>
+            <Link href='/pedidos'>
+              <a>
+                <li
+                  style={
+                    currentPath === '/pedidos'
+                      ? {
+                          color: '#ff5400',
+                          fontWeight: 'bold',
+                        }
+                      : { fontWeight: 'normal' }
+                  }
+                >
+                  Mis pedidos
+                </li>
+              </a>
+            </Link>
           </ul>
         </nav>
 
