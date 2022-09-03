@@ -1,0 +1,82 @@
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 2rem;
+}
+
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.input {
+  border-bottom: 1px solid var(--color-border-grey-light);
+  border: none;
+  color: var(--color-border-grey-light);
+  font-size: 1.2rem;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding: 1rem;
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.input:focus,
+.input:hover {
+  border-bottom: 2px solid var(--color-border-grey-light);
+}
+
+.inputBox {
+  align-items: baseline;
+  display: flex;
+}
+
+.remember {
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.remember:hover {
+  opacity: 0.7;
+}
+
+.changeForm span {
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.changeForm span:hover {
+  opacity: 0.7;
+}
+
+.formIcon {
+  color: var(--color-border-grey-light);
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.formIconEye {
+  color: var(--color-border-grey-light);
+  cursor: pointer;
+  font-size: 1.2rem;
+}

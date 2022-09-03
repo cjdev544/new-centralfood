@@ -3,12 +3,17 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FaCartPlus } from 'react-icons/fa'
 
+import useFormModal from '../../hooks/useFormModal'
+import FormModal from '../modals/FormModal'
+import Auth from '../Auth'
 import Logo from '../../public/central-food.svg'
 import style from './Header.module.css'
 
 export default function Header() {
   const router = useRouter()
   const currentPath = router.pathname
+
+  const { openModal, setOpenModal } = useFormModal()
 
   return (
     <header className={style.headerContainer}>
@@ -87,11 +92,14 @@ export default function Header() {
             <FaCartPlus className={style.cart} />
             <span>2</span>
           </div>
-          <div className={style.profile}>
+          <div className={style.profile} onClick={() => setOpenModal(true)}>
             <Image src={Logo} alt='Central Food logo' width={50} height={50} />
           </div>
         </div>
       </div>
+      {openModal && (
+        <FormModal setOpenModal={setOpenModal} contentModal={<Auth />} />
+      )}
     </header>
   )
 }
