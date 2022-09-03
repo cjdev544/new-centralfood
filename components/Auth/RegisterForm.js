@@ -35,9 +35,9 @@ export default function RegisterForm({ setShowLogin }) {
 
   return (
     <div className={style.content}>
-      <div className={style.title}>Iniciar sesión</div>
+      <div className={style.title}>Registrate</div>
       <button className='buttonGoogle'>
-        Inicia con Gmail <FaGoogle />
+        Registrate con Google <FaGoogle />
       </button>
       <form className={style.form} onSubmit={formik.handleSubmit}>
         <div className={style.inputBox}>

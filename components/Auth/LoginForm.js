@@ -36,7 +36,7 @@ export default function LoginForm({ setShowLogin }) {
     <div className={style.content}>
       <div className={style.title}>Iniciar sesión</div>
       <button className='buttonGoogle'>
-        Inicia con Gmail <FaGoogle />
+        Inicia con Google <FaGoogle />
       </button>
       <form className={style.form} onSubmit={formik.handleSubmit}>
         <div className={style.inputBox}>

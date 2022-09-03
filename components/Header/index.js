@@ -88,10 +88,14 @@ export default function Header() {
 
         {/* Profile */}
         <div className={style.cartSide}>
-          <div className={style.cartIcon}>
-            <FaCartPlus className={style.cart} />
-            <span>2</span>
-          </div>
+          <Link href='/carrito'>
+            <a>
+              <div className={style.cartIcon}>
+                <FaCartPlus className={style.cart} />
+                <span>2</span>
+              </div>
+            </a>
+          </Link>
           <div className={style.profile} onClick={() => setOpenModal(true)}>
             <Image src={Logo} alt='Central Food logo' width={50} height={50} />
           </div>
