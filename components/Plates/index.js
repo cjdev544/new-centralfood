@@ -1,16 +1,23 @@
+import { useState } from 'react'
 import Image from 'next/image'
 
 import Arepa1 from '../../public/arepa1.jpg'
 import style from './Plates.module.css'
+import ProductModal from '../modals/ProductModal'
 
 export default function Plates() {
+  const [openModal, setOpenModal] = useState(false)
+
   return (
     <section className={style.homePlates}>
       <div className={style.opacity}>
         <div className={style.background}>
           <h2 className={style.title}>Rolls Tempura</h2>
           <div className={style.products}>
-            <article className={style.product}>
+            <article
+              onClick={() => setOpenModal(true)}
+              className={style.product}
+            >
               <div className={style.image}>
                 <Image src={Arepa1} alt='arepa' width={100} height={100} />
               </div>
@@ -64,6 +71,7 @@ export default function Plates() {
           </div>
         </div>
       </div>
+      {openModal && <ProductModal setOpenModal={setOpenModal} />}
     </section>
   )
 }

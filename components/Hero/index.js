@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import Moto from '../../public/moto.svg'
 import CentralFood from '../../public/central-food2.svg'
@@ -44,34 +45,50 @@ export default function Hero() {
             <span>Dale click en el logo y ve todos sus platos</span>
           </p>
           <div className={style.restaurants}>
-            <Image
-              src={SushiGuay}
-              alt='logo SushiGuay'
-              width={130}
-              height={130}
-              className={style.restaurant}
-            />
-            <Image
-              src={GuayWok}
-              alt='logo GuayWok'
-              width={130}
-              height={130}
-              className={style.restaurant}
-            />
-            <Image
-              src={HamVzl}
-              alt='logo hamburguesería Venezuela'
-              width={130}
-              height={130}
-              className={style.restaurant}
-            />
-            <Image
-              src={Sabor}
-              alt='logo Con sabor a casita'
-              width={130}
-              height={130}
-              className={style.restaurant}
-            />
+            <Link href='/sushiguay'>
+              <a>
+                <Image
+                  src={SushiGuay}
+                  alt='logo SushiGuay'
+                  width={130}
+                  height={130}
+                  className={style.restaurant}
+                />
+              </a>
+            </Link>
+            <Link href='/guaywok'>
+              <a>
+                <Image
+                  src={GuayWok}
+                  alt='logo GuayWok'
+                  width={130}
+                  height={130}
+                  className={style.restaurant}
+                />
+              </a>
+            </Link>
+            <Link href='/sabor-casita'>
+              <a>
+                <Image
+                  src={Sabor}
+                  alt='logo Con sabor a casita'
+                  width={130}
+                  height={130}
+                  className={style.restaurant}
+                />
+              </a>
+            </Link>
+            <Link href='/hamburgueseria-venezuela'>
+              <a>
+                <Image
+                  src={HamVzl}
+                  alt='logo hamburguesería Venezuela'
+                  width={130}
+                  height={130}
+                  className={style.restaurant}
+                />
+              </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import RestaurantPage from '../components/RestaurantPage'
 
 export default function Restaurant() {
   return (
-    <main>
+    <main style={{ overflow: 'hidden' }}>
       <RestaurantPage />
       <Plates />
     </main>
