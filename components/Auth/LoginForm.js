@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import ClipLoader from 'react-spinners/ClipLoader'
+import { toast } from 'react-toastify'
 import {
   FaEye,
   FaEyeSlash,
@@ -10,18 +11,18 @@ import {
   FaGoogle,
 } from 'react-icons/fa'
 
-import style from './formStyles.module.css'
 import useAuth from '../../hooks/useAuth'
+import style from './formStyles.module.css'
 
-export default function LoginForm({ setShowLogin }) {
+export default function LoginForm({ setOpenModal, setShowLogin }) {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  const { startWithGoogle } = useAuth()
+  const { startWithGoogle, loginWhitEmailAndPassword } = useAuth()
 
   const loginWithGoogle = () => {
     setIsLoading(true)
-    startWithGoogle(setIsLoading)
+    startWithGoogle(setOpenModal, setIsLoading)
   }
 
   const formik = useFormik({
@@ -37,15 +38,17 @@ export default function LoginForm({ setShowLogin }) {
     }),
 
     onSubmit: async (formData) => {
-      // Validate formik.errors?.email
-      console.log(formData)
+      setIsLoading(true)
+      const { email, password } = formData
+
+      loginWhitEmailAndPassword(email, password, setOpenModal, setIsLoading)
     },
   })
 
   return (
     <div className={style.content}>
       <div className={style.title}>Iniciar sesión</div>
-      <button className='buttonGoogle' loading onClick={loginWithGoogle}>
+      <button className='buttonGoogle' onClick={loginWithGoogle}>
         <ClipLoader color='#fff' loading={isLoading} size={20} />
         Inicia con Google <FaGoogle />
       </button>
@@ -59,6 +62,11 @@ export default function LoginForm({ setShowLogin }) {
             placeholder='Correo electrónico'
             autoFocus
             onChange={formik.handleChange}
+            style={
+              formik.errors?.email
+                ? { borderBottom: '1px solid red' }
+                : { borderTop: 'transparent' }
+            }
           />
         </div>
         <div className={style.inputBox}>
@@ -70,6 +78,11 @@ export default function LoginForm({ setShowLogin }) {
             placeholder='Contraseña'
             autoComplete='current-password'
             onChange={formik.handleChange}
+            style={
+              formik.errors?.password
+                ? { borderBottom: '1px solid red' }
+                : { borderTop: 'transparent' }
+            }
           />
           {showPassword ? (
             <FaEye

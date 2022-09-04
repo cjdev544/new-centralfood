@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import ClipLoader from 'react-spinners/ClipLoader'
+import { toast } from 'react-toastify'
 import {
   FaUser,
   FaEye,
@@ -10,10 +12,19 @@ import {
   FaGoogle,
 } from 'react-icons/fa'
 
+import useAuth from '../../hooks/useAuth'
 import style from './formStyles.module.css'
 
-export default function RegisterForm({ setShowLogin }) {
+export default function RegisterForm({ setOpenModal, setShowLogin }) {
   const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { startWithGoogle } = useAuth()
+
+  const loginWithGoogle = () => {
+    setIsLoading(true)
+    startWithGoogle(setOpenModal, setIsLoading)
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -36,8 +47,9 @@ export default function RegisterForm({ setShowLogin }) {
   return (
     <div className={style.content}>
       <div className={style.title}>Registrate</div>
-      <button className='buttonGoogle'>
-        Registrate con Google <FaGoogle />
+      <button className='buttonGoogle' onClick={loginWithGoogle}>
+        <ClipLoader color='#fff' loading={isLoading} size={20} />
+        Inicia con Google <FaGoogle />
       </button>
       <form className={style.form} onSubmit={formik.handleSubmit}>
         <div className={style.inputBox}>
@@ -93,7 +105,10 @@ export default function RegisterForm({ setShowLogin }) {
             />
           )}
         </div>
-        <input type='submit' value='Iniciar sesión' className='button' />
+        <button type='submit' className='button'>
+          <ClipLoader color='#fff' loading={isLoading} size={20} />
+          Registrarte
+        </button>
       </form>
       <p className={style.changeForm}>
         ¿Ya tienes una cuenta?{' '}

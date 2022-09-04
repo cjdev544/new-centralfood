@@ -23,7 +23,7 @@ const useAuth = () => {
       if (user?.uid) {
         const { uid, displayName, email, photoURL, providerData } = user
         const provider = providerData[0].providerId
-        console.log(user)
+
         if (!authUser?.uid) {
           setAuthUser({ uid, displayName, email, photoURL, provider })
         }
@@ -32,14 +32,42 @@ const useAuth = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const startWithGoogle = async (setIsLoading) => {
+  const startWithGoogle = async (setOpenModal, setIsLoading) => {
     try {
       await signInWithPopup(auth, googleProvider)
       setIsLoading(false)
+      setOpenModal(false)
     } catch (err) {
-      console.log(err)
       setIsLoading(false)
+      setOpenModal(false)
       toast.error('Error al conectar con Gmail! intente mas tarde')
+    }
+  }
+
+  const loginWhitEmailAndPassword = async (
+    emailUser,
+    password,
+    setOpenModal,
+    setIsLoading
+  ) => {
+    try {
+      await signInWithEmailAndPassword(auth, emailUser, password)
+      setIsLoading(false)
+      setOpenModal(false)
+    } catch (err) {
+      setIsLoading(false)
+
+      if (err.code === 'auth/wrong-password') {
+        toast.error('Combinación de correo y contraseña no es correcta')
+        return
+      }
+
+      if (err.code === 'auth/user-not-found') {
+        toast.error('Correo no registrado')
+        return
+      }
+
+      toast.error('Error en el servidor! intente mas tarde')
     }
   }
 
@@ -56,6 +84,7 @@ const useAuth = () => {
   return {
     authUser,
     startWithGoogle,
+    loginWhitEmailAndPassword,
     logout,
   }
 }
