@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import ClipLoader from 'react-spinners/ClipLoader'
-import { toast } from 'react-toastify'
 import {
   FaUser,
   FaEye,
@@ -19,7 +18,7 @@ export default function RegisterForm({ setOpenModal, setShowLogin }) {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  const { startWithGoogle } = useAuth()
+  const { startWithGoogle, registerWithEmailAndPassword } = useAuth()
 
   const loginWithGoogle = () => {
     setIsLoading(true)
@@ -28,19 +27,33 @@ export default function RegisterForm({ setOpenModal, setShowLogin }) {
 
   const formik = useFormik({
     initialValues: {
+      name: '',
+      lastname: '',
       email: '',
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .email('El correo no es valido')
-        .required('El correo es requerido'),
-      password: Yup.string().required('La contraseña es requerida'),
+      name: Yup.string().required(true),
+      lastname: Yup.string().required(true),
+      email: Yup.string().email(true).required(true),
+      password: Yup.string()
+        .min(6)
+        .required('La contraseña debe tener almenos 6 caracteres'),
     }),
 
     onSubmit: async (formData) => {
-      // Validate formik.errors?.email
-      console.log(formData)
+      const { email, password, name, lastname } = formData
+      const displayName = `${name} ${lastname}`
+
+      setIsLoading(true)
+
+      registerWithEmailAndPassword(
+        email,
+        password,
+        displayName,
+        setOpenModal,
+        setIsLoading
+      )
     },
   })
 
@@ -61,6 +74,11 @@ export default function RegisterForm({ setOpenModal, setShowLogin }) {
             placeholder='Nombre'
             autoFocus
             onChange={formik.handleChange}
+            style={
+              formik.errors?.name
+                ? { borderBottom: '1px solid red' }
+                : { borderTop: 'transparent' }
+            }
           />
         </div>
         <div className={style.inputBox}>
@@ -71,6 +89,11 @@ export default function RegisterForm({ setOpenModal, setShowLogin }) {
             type='text'
             placeholder='Apellido'
             onChange={formik.handleChange}
+            style={
+              formik.errors?.lastname
+                ? { borderBottom: '1px solid red' }
+                : { borderTop: 'transparent' }
+            }
           />
         </div>
         <div className={style.inputBox}>
@@ -81,6 +104,11 @@ export default function RegisterForm({ setOpenModal, setShowLogin }) {
             type='text'
             placeholder='Correo electrónico'
             onChange={formik.handleChange}
+            style={
+              formik.errors?.email
+                ? { borderBottom: '1px solid red' }
+                : { borderTop: 'transparent' }
+            }
           />
         </div>
         <div className={style.inputBox}>
@@ -92,6 +120,11 @@ export default function RegisterForm({ setOpenModal, setShowLogin }) {
             placeholder='Contraseña'
             autoComplete='current-password'
             onChange={formik.handleChange}
+            style={
+              formik.errors?.email
+                ? { borderBottom: '1px solid red' }
+                : { borderTop: 'transparent' }
+            }
           />
           {showPassword ? (
             <FaEye
@@ -105,6 +138,7 @@ export default function RegisterForm({ setOpenModal, setShowLogin }) {
             />
           )}
         </div>
+        <span className={style.error}>{formik.errors?.password}</span>
         <button type='submit' className='button'>
           <ClipLoader color='#fff' loading={isLoading} size={20} />
           Registrarte

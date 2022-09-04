@@ -23,9 +23,13 @@ export default function Header() {
   useEffect(() => {
     if (authUser && !authUser?.photoURL) {
       let initialsNames
-      const separateName = authUser.displayName.split(' ')
-      initialsNames = separateName[0].at(0) + separateName[1].at(0)
-      setInitialsName(initialsNames.toUpperCase())
+      if (authUser?.displayName) {
+        const separateName = authUser.displayName.split(' ')
+        initialsNames = separateName[0].at(0) + separateName[1].at(0)
+        setInitialsName(initialsNames.toUpperCase())
+      } else {
+        setInitialsName('Pf')
+      }
     }
   }, [authUser])
 

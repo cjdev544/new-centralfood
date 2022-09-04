@@ -44,6 +44,34 @@ const useAuth = () => {
     }
   }
 
+  const registerWithEmailAndPassword = async (
+    email,
+    password,
+    displayName,
+    setOpenModal,
+    setIsLoading
+  ) => {
+    try {
+      const credentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      await updateProfile(credentials.user, { displayName })
+      setIsLoading(false)
+      setOpenModal(false)
+    } catch (err) {
+      setIsLoading(false)
+
+      if (err.code === 'auth/email-already-in-use') {
+        toast.error('El correo ya se encuentra registrado')
+        return
+      }
+
+      toast.error('Error en el servidor! intente mas tarde')
+    }
+  }
+
   const loginWhitEmailAndPassword = async (
     emailUser,
     password,
@@ -85,6 +113,7 @@ const useAuth = () => {
     authUser,
     startWithGoogle,
     loginWhitEmailAndPassword,
+    registerWithEmailAndPassword,
     logout,
   }
 }
