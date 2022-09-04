@@ -196,7 +196,7 @@ export default function CarPage() {
             <span>10,60€</span>
           </div>
           <div className={style.amountItem}>
-            <span>Envio:</span>
+            <span>Envío:</span>
             <span>2,50€</span>
           </div>
           <div className={style.amountItem}>
