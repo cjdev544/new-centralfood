@@ -1,11 +1,28 @@
+import { ToastContainer } from 'react-toastify'
+
 import BasicLayout from '../components/layouts/BasicLayout'
+import AuthState from '../context/auth/authState'
+
+import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <BasicLayout>
-      <Component {...pageProps} />
-    </BasicLayout>
+    <AuthState>
+      <BasicLayout>
+        <Component {...pageProps} />
+        <ToastContainer
+          position='top-right'
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          draggable
+          pauseOnHover
+        />
+      </BasicLayout>
+    </AuthState>
   )
 }
 

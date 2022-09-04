@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import ClipLoader from 'react-spinners/ClipLoader'
 import {
   FaEye,
   FaEyeSlash,
@@ -10,9 +11,18 @@ import {
 } from 'react-icons/fa'
 
 import style from './formStyles.module.css'
+import useAuth from '../../hooks/useAuth'
 
 export default function LoginForm({ setShowLogin }) {
   const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { startWithGoogle } = useAuth()
+
+  const loginWithGoogle = () => {
+    setIsLoading(true)
+    startWithGoogle(setIsLoading)
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -35,7 +45,8 @@ export default function LoginForm({ setShowLogin }) {
   return (
     <div className={style.content}>
       <div className={style.title}>Iniciar sesión</div>
-      <button className='buttonGoogle'>
+      <button className='buttonGoogle' loading onClick={loginWithGoogle}>
+        <ClipLoader color='#fff' loading={isLoading} size={20} />
         Inicia con Google <FaGoogle />
       </button>
       <form className={style.form} onSubmit={formik.handleSubmit}>
@@ -75,7 +86,10 @@ export default function LoginForm({ setShowLogin }) {
         <div className={style.remember}>
           <span>¿Has olvidado la contraseña?</span>
         </div>
-        <input type='submit' value='Iniciar sesión' className='button' />
+        <button type='submit' className='button'>
+          <ClipLoader color='#fff' loading={isLoading} size={20} />
+          Iniciar sesión
+        </button>
       </form>
       <p className={style.changeForm}>
         ¿No tienes una cuenta?{' '}
