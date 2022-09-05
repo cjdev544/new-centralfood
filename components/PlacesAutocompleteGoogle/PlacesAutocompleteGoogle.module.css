@@ -1,0 +1,47 @@
+.places {
+  background-color: #fff;
+  border: 1px solid var(--color-border-grey-light);
+  border-radius: 10px;
+  color: var(--color-border-grey-light);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.places:focus-visible {
+  outline: none;
+}
+
+.places:focus,
+.places:hover {
+  border-bottom: 2px solid var(--color-border-grey-light);
+}
+
+.placesBox {
+  position: relative;
+}
+
+.placesBox ul {
+  background-color: var(--color-background-grey-dark);
+  background-color: var(--color-background-light);
+  border-radius: 5px;
+  color: var(--color-font-light);
+  padding: 10px;
+  position: absolute;
+  top: 50px;
+  z-index: 1;
+  z-index: 1;
+}
+
+.placesBox li:hover,
+.placesBox li:active {
+  background-color: var(--color-background-dark);
+  cursor: pointer;
+}
+
+.placesBox li {
+  cursor: pointer;
+  list-style: none;
+  padding: 5px;
+}

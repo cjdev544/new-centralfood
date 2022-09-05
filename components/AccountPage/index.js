@@ -1,6 +1,14 @@
+import { useState } from 'react'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
+import PlacesAutocompleteGoogle from '../PlacesAutocompleteGoogle'
 import style from './AccountPage.module.css'
 
 export default function AccountPage() {
+  const [addressNotAccepted, setAddressNotAccepted] = useState(null)
+  const [zone, setZone] = useState(null)
+
   return (
     <div className={style.account}>
       <div className={style.accountBox}>
@@ -62,7 +70,7 @@ export default function AccountPage() {
                 type='text'
                 id='title'
                 name='title'
-                placeHolder='Ejmp: Mi Casa'
+                placeholder='Ejmp: Mi Casa'
               />
             </div>
             <div className={style.inputGroup}>
@@ -72,19 +80,18 @@ export default function AccountPage() {
                 type='text'
                 id='cp'
                 name='cp'
-                placeHolder='Ejmp: Mi Casa'
+                placeholder='Ejmp: Mi Casa'
               />
             </div>
-            <div className={style.inputGroup}>
-              <label htmlFor='address'>Calle/Avenida/Zona</label>
-              <input
-                className={style.input}
-                type='text'
-                id='address'
-                name='address'
-                placeHolder='Ejmp: Mi Casa'
-              />
-            </div>
+            <PlacesAutocompleteGoogle
+              setZone={setZone}
+              setAddressNotAccepted={setAddressNotAccepted}
+            />
+            {addressNotAccepted && (
+              <span className={style.addressNotValid}>
+                Solo realizamos envios a 10km de nuestro local.
+              </span>
+            )}
             <div className={style.inputGroup}>
               <label htmlFor='address2'>Casa/Edificio/Número</label>
               <input
@@ -92,10 +99,19 @@ export default function AccountPage() {
                 type='text'
                 id='address2'
                 name='address2'
-                placeHolder='Ejmp: Mi Casa'
+                placeholder='Ejmp: Mi Casa'
               />
             </div>
-            <button type='submit' className='button'>
+            <button
+              type='submit'
+              className='button'
+              disabled={addressNotAccepted ? true : false}
+              style={
+                !addressNotAccepted
+                  ? { color: '#fff' }
+                  : { backgroundColor: 'rgba(200, 200, 200, 0.7)' }
+              }
+            >
               Crear
             </button>
           </form>
