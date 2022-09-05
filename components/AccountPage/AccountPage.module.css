@@ -1,0 +1,93 @@
+.account {
+  margin: 0 auto;
+  max-width: var(--intern-container);
+  width: 98%;
+}
+
+.accountBox {
+  display: flex;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.item {
+  border: 1px solid var(--color-border-grey-light);
+  border-radius: 10px;
+  box-shadow: 0px 6px 11px -6px #000;
+  padding: 1rem;
+}
+
+.item h4 {
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border-grey-light);
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.right {
+  background-color: rgb(248, 248, 248);
+  border-radius: 10px;
+  border: 1px solid var(--color-border-grey-light);
+  box-shadow: 0px 6px 11px -6px #000;
+  padding: 1rem;
+  width: 40%;
+  height: fit-content;
+  margin-top: 4rem;
+}
+
+.input {
+  background-color: #fff;
+  border: 1px solid var(--color-border-grey-light);
+  border-radius: 10px;
+  color: var(--color-border-grey-light);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.input:focus,
+.input:hover {
+  border-bottom: 2px solid var(--color-border-grey-light);
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  .right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .accountBox {
+    display: block;
+  }
+
+  .right {
+    width: 100%;
+  }
+}
