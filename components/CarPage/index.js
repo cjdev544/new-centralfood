@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { FaPlus, FaMinus, FaCheck } from 'react-icons/fa'
 import DatePicker, { setDefaultLocale } from 'react-datepicker'
 import es from 'date-fns/locale/es'
+import Ley from '../../public/menu-ley.png'
 import 'react-datepicker/dist/react-datepicker.css'
 
 import Arepa1 from '../../public/arepa1.jpg'
@@ -20,6 +21,7 @@ export default function CarPage() {
   const [shipping, setShipping] = useState(true)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState(0)
+  const [promotionalCode, setPromotionalCode] = useState(null)
 
   const isCloseDay = (date) => {
     const day = date.getDay()
@@ -73,6 +75,15 @@ export default function CarPage() {
             </div>
           </div>
           <span>5.50€</span>
+        </div>
+
+        <div className={style.ley}>
+          <Image src={Ley} alt='arepa' width={400} height={260} />
+          <p>
+            Alergias alimentarias o necesidades dietéticas especiales: Antes de
+            realizar su pedido, contacte directamente con en restaurante
+            Teléfono: 649-71-88-31
+          </p>
         </div>
       </div>
 
@@ -187,6 +198,12 @@ export default function CarPage() {
             type='number'
             placeholder='Teléfono de contacto'
             onChange={(e) => setPhone(e.target.value)}
+          />
+          <input
+            className={style.inputContact}
+            type='text'
+            placeholder='¿Tienes un código promocional?'
+            onChange={(e) => setPromotionalCode(e.target.value)}
           />
         </div>
 

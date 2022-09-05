@@ -97,3 +97,9 @@ a {
 .buttonGoogle:hover {
   opacity: 0.7;
 }
+
+.politic {
+  margin: 0 auto;
+  max-width: var(--intern-container);
+  width: 98%;
+}
