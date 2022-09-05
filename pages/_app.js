@@ -15,7 +15,6 @@ function MyApp({ Component, pageProps }) {
           position='top-right'
           autoClose={5000}
           hideProgressBar
-          newestOnTop
           closeOnClick
           rtl={false}
           draggable

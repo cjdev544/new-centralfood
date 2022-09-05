@@ -74,8 +74,11 @@
   border-bottom: 2px solid var(--color-border-grey-light);
 }
 
-/* Media queries */
+.settings {
+  margin-top: 2rem;
+}
 
+/* Media queries */
 @media (max-width: 768px) {
   .right {
     width: 100%;

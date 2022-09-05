@@ -99,6 +99,64 @@ const useAuth = () => {
     }
   }
 
+  const updateName = async (formData, setIsLoading) => {
+    try {
+      const user = auth.currentUser
+      await updateProfile(user, {
+        displayName: `${formData.name} ${formData.lastname}`,
+      })
+      setAuthUser({
+        ...authUser,
+        displayName: `${formData.name} ${formData.lastname}`,
+      })
+      toast.success('El nombre fue cambiado correctamente')
+      setIsLoading(false)
+    } catch (err) {
+      toast.error('Error al cambiar el nombre')
+      setIsLoading(false)
+    }
+  }
+
+  const updateEmailUser = async (formData, setIsLoading) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      )
+      console.log(userCredential.user)
+      await updateEmail(userCredential.user, formData.newEmail)
+      setAuthUser({
+        ...authUser,
+        email: formData.newEmail,
+      })
+      toast.success('El email fue cambiado correctamente')
+      setIsLoading(false)
+    } catch (err) {
+      console.log(err)
+      toast.error('Error al cambiar el correo')
+      setIsLoading(false)
+    }
+  }
+
+  const updatePasswordUser = async (formData, setIsLoading) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      )
+
+      await updatePassword(userCredential.user, formData.sewPassword)
+      toast.success('La contraseña fue cambiada correctamente')
+      setIsLoading(false)
+    } catch (err) {
+      console.log(err)
+      toast.error('Error al cambiar la contraseña')
+      setIsLoading(false)
+    }
+  }
+
   const logout = async () => {
     try {
       await signOut(auth)
@@ -114,6 +172,9 @@ const useAuth = () => {
     startWithGoogle,
     loginWhitEmailAndPassword,
     registerWithEmailAndPassword,
+    updateName,
+    updateEmailUser,
+    updatePasswordUser,
     logout,
   }
 }

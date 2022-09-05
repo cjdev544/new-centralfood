@@ -169,11 +169,6 @@
   outline: none;
 }
 
-.inputContact:focus,
-.input:hover {
-  border-bottom: 2px solid var(--color-border-grey-light);
-}
-
 .amount {
   border-bottom: 2px solid var(--color-border-grey-light);
   margin-bottom: 1rem;

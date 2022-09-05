@@ -1,13 +1,20 @@
 import { useState } from 'react'
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
+// import { useFormik } from 'formik'
+// import * as Yup from 'yup'
 
+import useAuth from '../../hooks/useAuth'
 import PlacesAutocompleteGoogle from '../PlacesAutocompleteGoogle'
+import ChangeNameForm from './ChangeNameForm'
+import ChangeEmailForm from './ChangeEmailForm'
+// import ChangePasswordForm from './ChangePasswordForm'
 import style from './AccountPage.module.css'
 
 export default function AccountPage() {
   const [addressNotAccepted, setAddressNotAccepted] = useState(null)
   const [zone, setZone] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { authUser } = useAuth()
 
   return (
     <div className={style.account}>
@@ -117,6 +124,18 @@ export default function AccountPage() {
           </form>
         </div>
       </div>
+
+      {authUser?.provider === 'password' && (
+        <div className={style.settings}>
+          {/* Change name */}
+          <ChangeNameForm isLoading={isLoading} setIsLoading={setIsLoading} />
+          <ChangeEmailForm isLoading={isLoading} setIsLoading={setIsLoading} />
+          {/* <ChangePasswordForm
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+          /> */}
+        </div>
+      )}
     </div>
   )
 }
