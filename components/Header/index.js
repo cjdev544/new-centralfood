@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import useOnclickOutside from 'react-cool-onclickoutside'
 import { FaCartPlus } from 'react-icons/fa'
 
 import useAuth from '../../hooks/useAuth'
@@ -32,6 +33,10 @@ export default function Header() {
       }
     }
   }, [authUser])
+
+  const ref = useOnclickOutside(() => {
+    setShowOptions(false)
+  })
 
   return (
     <header className={style.headerContainer}>
@@ -141,6 +146,7 @@ export default function Header() {
                 </div>
               )}
               <div
+                ref={ref}
                 className={style.options}
                 style={showOptions ? { right: '1rem' } : { right: '-15rem' }}
               >
