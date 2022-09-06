@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import AuthContext from './AuthContext'
+import AuthContext from './authContext'
 
 const AuthState = ({ children }) => {
   const [authUser, setAuthUser] = useState(undefined)

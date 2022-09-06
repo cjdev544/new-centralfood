@@ -13,7 +13,7 @@ import {
 import { toast } from 'react-toastify'
 
 import { auth, googleProvider } from '../firebase/config'
-import AuthContext from '../context/auth/AuthContext'
+import AuthContext from '../context/auth/authContext'
 
 const useAuth = () => {
   const { authUser, setAuthUser } = useContext(AuthContext)
