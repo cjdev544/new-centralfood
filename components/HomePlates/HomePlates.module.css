@@ -8,8 +8,8 @@
 .opacity {
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.8) 5%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(0, 0, 0, 0.7) 5%,
+    rgba(0, 0, 0, 0.7) 100%
   );
   background-position: center center;
   background-size: cover;

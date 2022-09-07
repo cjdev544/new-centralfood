@@ -16,8 +16,11 @@ export default function Complement({ product }) {
       onClick={handleClick}
     >
       <span>{product.nombre}</span>
-      <div className={isChecked ? style.circleItemCheck : style.circleItem}>
-        {isChecked ? <FaCheck /> : <FaPlus />}
+      <div className={style.right}>
+        <span>{product.precio}€</span>
+        <div className={isChecked ? style.circleItemCheck : style.circleItem}>
+          {isChecked ? <FaCheck /> : <FaPlus />}
+        </div>
       </div>
     </div>
   )

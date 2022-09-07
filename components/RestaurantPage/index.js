@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import style from './RestaurantPage.module.css'
 
-export default function RestaurantPage({ restaurant, setCategory }) {
+export default function RestaurantPage({ restaurant, category, setCategory }) {
   return (
     <div className={style.restaurant}>
       <div className={style.info}>
@@ -28,9 +28,13 @@ export default function RestaurantPage({ restaurant, setCategory }) {
         </p>
       </div>
       <div className={style.categories}>
-        {restaurant?.categories.map((category, idx) => (
-          <p key={idx} onClick={() => setCategory(category)}>
-            {category}
+        {restaurant?.categories.map((itemCategory, idx) => (
+          <p
+            key={idx}
+            className={category === itemCategory ? style.category : style.none}
+            onClick={() => setCategory(itemCategory)}
+          >
+            {itemCategory}
           </p>
         ))}
       </div>

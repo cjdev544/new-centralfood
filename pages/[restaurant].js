@@ -53,6 +53,7 @@ export default function Restaurant({ products, restaurants }) {
       const products = productsRestaurant.filter(
         (product) => product.categoria === restaurant.categories[0]
       )
+      setCategory(restaurant.categories[0])
       setProductCategory(products)
     } else {
       const products = productsRestaurant.filter(
@@ -67,7 +68,11 @@ export default function Restaurant({ products, restaurants }) {
     <>
       <Seo title={title} description={description} />
       <main style={{ overflow: 'hidden' }}>
-        <RestaurantPage restaurant={restaurant} setCategory={setCategory} />
+        <RestaurantPage
+          restaurant={restaurant}
+          category={category}
+          setCategory={setCategory}
+        />
         <Plates
           category={category}
           productsCategory={productsCategory}
