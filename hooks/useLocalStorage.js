@@ -1,8 +1,7 @@
 import { CART } from '../helpers/constants'
 
 export const useLocalStorage = () => {
-  const addProductCart = (plate, number) => {
-    plate.number = number
+  const addProductCart = (plate) => {
     const cart = JSON.parse(localStorage.getItem(CART))
     if (cart) {
       const newStorage = cart?.filter(

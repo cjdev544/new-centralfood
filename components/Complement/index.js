@@ -7,6 +7,10 @@ export default function Complement({ product, setComplements }) {
   const [isChecked, setIsChecked] = useState(false)
 
   useEffect(() => {
+    product.number = 1
+  }, [product])
+
+  useEffect(() => {
     if (isChecked) {
       setComplements((products) => [...products, product])
     } else {

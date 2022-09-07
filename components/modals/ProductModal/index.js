@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { round } from 'mathjs'
 import { FaRegWindowClose, FaPlus, FaMinus } from 'react-icons/fa'
+import { toast } from 'react-toastify'
 
+import { useLocalStorage } from '../../../hooks/useLocalStorage'
 import { getProductsComplements } from '../../../helpers/getProductsComplements'
 import Complement from '../../Complement'
 import style from './ProductModal.module.css'
@@ -14,6 +16,8 @@ export default function ProductModal({ products, product, setOpenModal }) {
   const [complementsCost, setComplementsCost] = useState(0)
   const [total, setTotal] = useState(0)
   const boxRef = useRef()
+
+  const { addProductCart } = useLocalStorage()
 
   useEffect(() => {
     setProductCost(round(product?.precio * counterProduct, 2))
@@ -50,6 +54,15 @@ export default function ProductModal({ products, product, setOpenModal }) {
     if (counterProduct > 1) {
       setCounterProduct(counterProduct - 1)
     }
+  }
+
+  const addCar = () => {
+    addProductCart({ ...product, number: counterProduct })
+    complements.forEach((complement) => {
+      addProductCart({ ...complement, number: 1 })
+    })
+    toast.success('Agregado al carrito')
+    setOpenModal(false)
   }
 
   return (
@@ -121,7 +134,9 @@ export default function ProductModal({ products, product, setOpenModal }) {
             </div>
           </div>
           <div className={style.button}>
-            <button className='button'>Añadir por {total}€</button>
+            <button className='button' onClick={addCar}>
+              Añadir por {total}€
+            </button>
           </div>
         </div>
       </div>
