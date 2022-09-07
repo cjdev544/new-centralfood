@@ -1,0 +1,44 @@
+.itemBox {
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid var(--color-border-grey-light);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.circleItem {
+  align-items: center;
+  background-color: rgba(255, 85, 0, 0.2);
+  border-radius: 50%;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.itemBoxCheck {
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+.circleItemCheck {
+  align-items: center;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  color: var(--color-font-light);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}

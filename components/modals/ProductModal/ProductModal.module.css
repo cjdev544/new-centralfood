@@ -38,61 +38,18 @@
   font-weight: bold;
 }
 
-/* *******************ITEM */
-.itemBox {
-  align-items: center;
-  border-radius: 10px;
-  border: 1px solid var(--color-border-grey-light);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  margin-right: 1rem;
-  padding: 1rem;
-}
-
-.circleItem {
-  align-items: center;
-  background-color: rgba(255, 85, 0, 0.2);
-  border-radius: 50%;
-  color: var(--color-primary);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding: 5px;
-}
-
-.itemBoxCheck {
-  align-items: center;
-  border-radius: 10px;
-  border: 1px solid var(--color-primary);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  margin-right: 1rem;
-  padding: 1rem;
-}
-.circleItemCheck {
-  align-items: center;
-  background-color: var(--color-primary);
-  border-radius: 50%;
-  color: var(--color-font-light);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding: 5px;
-}
-
-/* ********************* */
-
 .right {
   margin-left: 1rem;
   width: 40%;
 }
 
 .right h2 {
-  margin-bottom: 0;
+  margin: 0;
+}
+
+.right p {
+  font-size: 0.8rem;
+  margin-top: 0;
 }
 
 .product {
@@ -111,7 +68,7 @@
   font-size: 0.8rem;
   gap: 1.5rem;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .circle {
@@ -136,8 +93,8 @@
 }
 
 .button button {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* Media queries */

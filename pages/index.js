@@ -1,11 +1,13 @@
 import Head from 'next/head'
+
+import { getProducts, getDataHomepage } from '../services/data'
 import About from '../components/About'
 import Hero from '../components/Hero'
 import HomePlates from '../components/HomePlates'
 import HomeSeparator from '../components/HomeSeparator'
 import Restaurants from '../components/Restaurants'
 
-export default function Home() {
+export default function Home({ products, dataHome }) {
   return (
     <div>
       <Head>
@@ -16,11 +18,21 @@ export default function Home() {
 
       <main>
         <Hero />
-        <HomePlates />
+        <HomePlates products={products} dataHome={dataHome} />
         <About />
         <HomeSeparator />
         <Restaurants />
       </main>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  const products = await getProducts()
+  const home = await getDataHomepage()
+  const dataHome = home[0]
+
+  return {
+    props: { products, dataHome }, // will be passed to the page component as props
+  }
 }

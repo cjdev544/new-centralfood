@@ -1,36 +1,21 @@
 import Image from 'next/image'
 
-import GuayWok from '../../public/logo-guaywok.svg'
-import SushiGuay from '../../public/logo-sushi.svg'
-import HamVzl from '../../public/logo-hamburgueseria.svg'
-import Sabor from '../../public/logo-sabor.svg'
 import style from './RestaurantPage.module.css'
 
-export default function RestaurantPage() {
-  const categories = [
-    'Entrantes',
-    'Maki',
-    'Temaki',
-    'Sushiroll Fresquitos',
-    'Rolls Semetempura',
-    'Rolls Tempura',
-    'Los Combos mas Guay',
-    'Extras',
-  ]
-
+export default function RestaurantPage({ restaurant, setCategory }) {
   return (
     <div className={style.restaurant}>
       <div className={style.info}>
         <div className={style.logo}>
           <Image
-            src={SushiGuay}
-            alt='logo SushiGuay'
+            src={restaurant?.image}
+            alt={`logo de ${restaurant?.name}`}
             width={200}
             height={200}
             className={style.restaurant}
           />
-          <h1>SushiGuay</h1>
-          <span>Comida Japonesa</span>
+          <h1>{restaurant?.name}</h1>
+          <span>{restaurant?.type}</span>
         </div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -43,8 +28,10 @@ export default function RestaurantPage() {
         </p>
       </div>
       <div className={style.categories}>
-        {categories.map((category, idx) => (
-          <p key={idx}>{category}</p>
+        {restaurant?.categories.map((category, idx) => (
+          <p key={idx} onClick={() => setCategory(category)}>
+            {category}
+          </p>
         ))}
       </div>
     </div>

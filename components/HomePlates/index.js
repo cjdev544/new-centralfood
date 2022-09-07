@@ -1,9 +1,20 @@
-import Image from 'next/image'
+import { useState } from 'react'
 
-import Arepa1 from '../../public/arepa1.jpg'
+import Product from '../Product'
+import ProductModal from '../modals/ProductModal'
 import style from './HomePlates.module.css'
 
-export default function HomePlates() {
+export default function HomePlates({ products, dataHome }) {
+  const [openModal, setOpenModal] = useState(false)
+  const [product, setProduct] = useState({})
+
+  const productsInSection = dataHome?.productsSection.map((productId) => {
+    const res = products.filter(
+      (productGlobal) => productGlobal.id === productId
+    )
+    return res[0]
+  })
+
   return (
     <section className={style.homePlates}>
       <div className={style.opacity}>
@@ -11,62 +22,26 @@ export default function HomePlates() {
           <p className={style.discount}>
             Realiza tu primera compra con un <span>10% de DESCUENTO</span>
           </p>
-          <h3 className={style.title}>Nuestros platos más buscados</h3>
+          <h3 className={style.title}>Nuestros platos más pedidos</h3>
           <div className={style.products}>
-            <article className={style.product}>
-              <div className={style.image}>
-                <Image src={Arepa1} alt='arepa' width={100} height={100} />
-              </div>
-              <div className={style.info}>
-                <div className={style.headerInfo}>
-                  <h2>Arepa Peluda</h2>
-                  <p>
-                    Precio: <span>7,80€</span>
-                  </p>
-                </div>
-                <p>
-                  El arroz chino venezolano original en el mundo debido a su
-                  original en el mundo debido a su...
-                </p>
-              </div>
-            </article>
-            <article className={style.product}>
-              <div className={style.image}>
-                <Image src={Arepa1} alt='arepa' width={100} height={100} />
-              </div>
-              <div className={style.info}>
-                <div className={style.headerInfo}>
-                  <h2>Arepa Peluda</h2>
-                  <p>
-                    Precio: <span>7,80€</span>
-                  </p>
-                </div>
-                <p>
-                  El arroz chino venezolano original en el mundo debido a su
-                  original en el mundo debido a su...
-                </p>
-              </div>
-            </article>
-            <article className={style.product}>
-              <div className={style.image}>
-                <Image src={Arepa1} alt='arepa' width={100} height={100} />
-              </div>
-              <div className={style.info}>
-                <div className={style.headerInfo}>
-                  <h2>Arepa Peluda</h2>
-                  <p>
-                    Precio: <span>7,80€</span>
-                  </p>
-                </div>
-                <p>
-                  El arroz chino venezolano original en el mundo debido a su
-                  original en el mundo debido a su...
-                </p>
-              </div>
-            </article>
+            {productsInSection.map((product) => (
+              <Product
+                key={product.id}
+                product={product}
+                setOpenModal={setOpenModal}
+                setProduct={setProduct}
+              />
+            ))}
           </div>
         </div>
       </div>
+      {openModal && (
+        <ProductModal
+          setOpenModal={setOpenModal}
+          products={products}
+          product={product}
+        />
+      )}
     </section>
   )
 }
