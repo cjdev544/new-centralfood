@@ -3,7 +3,7 @@ import Image from 'next/image'
 import style from './Product.module.css'
 
 export default function Product({ product, setProduct, setOpenModal }) {
-  const cutDescription = product?.descripcion?.substring(0, 90)
+  const cutDescription = product?.descripcion?.substring(0, 80)
 
   const handleClick = () => {
     setProduct(product)
@@ -28,7 +28,7 @@ export default function Product({ product, setProduct, setOpenModal }) {
             Precio: <span>{product.precio}€</span>
           </p>
         </div>
-        <p>{cutDescription}</p>
+        <p>{cutDescription}...</p>
       </div>
     </article>
   )

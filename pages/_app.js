@@ -2,7 +2,6 @@ import { ToastContainer } from 'react-toastify'
 
 import BasicLayout from '../components/layouts/BasicLayout'
 import AuthState from '../context/auth/authState'
-
 import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.css'
 

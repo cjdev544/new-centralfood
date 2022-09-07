@@ -128,6 +128,7 @@ export default function Header() {
           )}
           {authUser && (
             <div
+              ref={ref}
               className={style.profile}
               onClick={() => setShowOptions(!showOptions)}
             >
@@ -146,9 +147,12 @@ export default function Header() {
                 </div>
               )}
               <div
-                ref={ref}
                 className={style.options}
-                style={showOptions ? { right: '1rem' } : { right: '-15rem' }}
+                style={
+                  showOptions
+                    ? { right: '1rem', opacity: '1' }
+                    : { right: '-15rem', opacity: '0' }
+                }
               >
                 <Link href='/cuenta'>
                   <a>
