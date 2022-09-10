@@ -63,3 +63,15 @@ export const isOpenOrClose = () => {
     return doc.data()?.isOpen
   })
 }
+
+export const getAddressesUser = async (userId) => {
+  const array = []
+  const q = query(collection(db, 'addresses'))
+  const querySnapshot = await getDocs(q)
+  querySnapshot.forEach((doc) => {
+    if (doc.data().user === userId) {
+      array.push({ id: doc.id, ...doc.data() })
+    }
+  })
+  return array
+}

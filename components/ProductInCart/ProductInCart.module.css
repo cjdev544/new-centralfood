@@ -1,0 +1,40 @@
+.productList {
+  align-items: center;
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.right {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.numberProducts {
+  align-items: center;
+  color: var(--color-primary);
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.circle {
+  align-items: center;
+  background-color: rgba(255, 85, 0, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.spanNumber {
+  color: var(--color-font-dark);
+  font-size: 1rem;
+}
+
+.price {
+  font-size: 1rem;
+}

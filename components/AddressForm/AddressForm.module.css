@@ -1,0 +1,48 @@
+.right {
+  background-color: rgb(248, 248, 248);
+  border-radius: 10px;
+  border: 1px solid var(--color-border-grey-light);
+  box-shadow: 0px 6px 11px -6px #000;
+  height: fit-content;
+  margin-top: 4rem;
+  padding: 1rem;
+}
+
+.inputsGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input {
+  background-color: #fff;
+  border: 1px solid var(--color-border-grey-light);
+  border-radius: 10px;
+  color: var(--color-border-grey-light);
+  font-size: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  width: 90%;
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .right {
+    width: 100%;
+  }
+
+  .inputsGroup {
+    display: flex;
+    flex-direction: column;
+  }
+}

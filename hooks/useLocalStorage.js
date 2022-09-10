@@ -1,6 +1,28 @@
+import { useContext, useEffect, useState } from 'react'
+import { round } from 'mathjs'
+
+import CartContext from '../context/cart/cartContext'
 import { CART } from '../helpers/constants'
 
-export const useLocalStorage = () => {
+const useLocalStorage = () => {
+  const { cartProducts, setCartProducts } = useContext(CartContext)
+  const [totalCostProducts, setTotalCostProducts] = useState(0)
+
+  useEffect(() => {
+    let total = 0
+    cartProducts.forEach((product) => {
+      const price = round(product?.precio * product.number, 2)
+      total = round(price + total, 2)
+    })
+    setTotalCostProducts(total)
+  }, [cartProducts])
+
+  useEffect(() => {
+    const products = JSON.parse(localStorage.getItem(CART))
+    setCartProducts(products)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const addProductCart = (plate) => {
     const cart = JSON.parse(localStorage.getItem(CART))
     if (cart) {
@@ -10,10 +32,10 @@ export const useLocalStorage = () => {
       newStorage.push(plate)
 
       localStorage.setItem(CART, JSON.stringify(newStorage))
-      return newStorage
+      setCartProducts(newStorage)
     } else {
       localStorage.setItem(CART, JSON.stringify([plate]))
-      return [plate]
+      setCartProducts([plate])
     }
   }
 
@@ -24,7 +46,7 @@ export const useLocalStorage = () => {
       productCart.id === product.id ? product : productCart
     )
     localStorage.setItem(CART, JSON.stringify(newStorage))
-    return newStorage
+    setCartProducts(newStorage)
   }
 
   const deleteProductCart = (product) => {
@@ -38,12 +60,16 @@ export const useLocalStorage = () => {
     } else {
       localStorage.removeItem(CART)
     }
-    return newStorage
+    setCartProducts(newStorage)
   }
 
   return {
+    cartProducts,
+    totalCostProducts,
     addProductCart,
     updateProductCart,
     deleteProductCart,
   }
 }
+
+export default useLocalStorage

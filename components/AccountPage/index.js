@@ -3,15 +3,12 @@ import { useState } from 'react'
 // import * as Yup from 'yup'
 
 import useAuth from '../../hooks/useAuth'
-import PlacesAutocompleteGoogle from '../PlacesAutocompleteGoogle'
+import AddressForm from '../AddressForm'
 import ChangeNameForm from './ChangeNameForm'
 import ChangeEmailForm from './ChangeEmailForm'
-// import ChangePasswordForm from './ChangePasswordForm'
 import style from './AccountPage.module.css'
 
 export default function AccountPage() {
-  const [addressNotAccepted, setAddressNotAccepted] = useState(null)
-  const [zone, setZone] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
   const { authUser } = useAuth()
@@ -67,62 +64,7 @@ export default function AccountPage() {
         </div>
 
         {/* Right */}
-        <div className={style.right}>
-          <h3>Crear dirección</h3>
-          <form className={style.form}>
-            <div className={style.inputGroup}>
-              <label htmlFor='title'>Título de la dirección</label>
-              <input
-                className={style.input}
-                type='text'
-                id='title'
-                name='title'
-                placeholder='Ejmp: Mi Casa'
-              />
-            </div>
-            <div className={style.inputGroup}>
-              <label htmlFor='cp'>Código postal</label>
-              <input
-                className={style.input}
-                type='text'
-                id='cp'
-                name='cp'
-                placeholder='Ejmp: Mi Casa'
-              />
-            </div>
-            <PlacesAutocompleteGoogle
-              setZone={setZone}
-              setAddressNotAccepted={setAddressNotAccepted}
-            />
-            {addressNotAccepted && (
-              <span className={style.addressNotValid}>
-                Solo realizamos envios a 10km de nuestro local.
-              </span>
-            )}
-            <div className={style.inputGroup}>
-              <label htmlFor='address2'>Casa/Edificio/Número</label>
-              <input
-                className={style.input}
-                type='text'
-                id='address2'
-                name='address2'
-                placeholder='Ejmp: Mi Casa'
-              />
-            </div>
-            <button
-              type='submit'
-              className='button'
-              disabled={addressNotAccepted ? true : false}
-              style={
-                !addressNotAccepted
-                  ? { color: '#fff' }
-                  : { backgroundColor: 'rgba(200, 200, 200, 0.7)' }
-              }
-            >
-              Crear
-            </button>
-          </form>
-        </div>
+        <AddressForm />
       </div>
 
       {authUser?.provider === 'password' && (

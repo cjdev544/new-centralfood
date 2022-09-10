@@ -13,37 +13,6 @@
   width: 60%;
 }
 
-.productList {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.numberProducts {
-  align-items: center;
-  color: var(--color-primary);
-  display: flex;
-  font-size: 0.8rem;
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-.circle {
-  align-items: center;
-  background-color: rgba(255, 85, 0, 0.2);
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding: 5px;
-}
-
-.spanNumber {
-  color: var(--color-font-dark);
-  font-size: 1.2rem;
-}
-
 .ley {
   border-top: 2px solid var(--color-border-grey-light);
   margin-top: 2rem;
@@ -201,6 +170,10 @@
 
 .button:hover {
   opacity: 0.7;
+}
+
+.addressTitle {
+  font-weight: bold;
 }
 
 /* Media queries */

@@ -11,12 +11,14 @@ import FormModal from '../modals/FormModal'
 import Auth from '../Auth'
 import Logo from '../../public/central-food.svg'
 import style from './Header.module.css'
+import useLocalStorage from '../../hooks/useLocalStorage'
 
 export default function Header() {
   const router = useRouter()
   const currentPath = router.pathname
 
   const { authUser, logout } = useAuth()
+  const { cartProducts } = useLocalStorage()
   const { openModal, setOpenModal } = useFormModal()
   const [showOptions, setShowOptions] = useState(false)
   const [initialsName, setInitialsName] = useState(null)
@@ -117,7 +119,7 @@ export default function Header() {
             <a>
               <div className={style.cartIcon}>
                 <FaCartPlus className={style.cart} />
-                <span>2</span>
+                {cartProducts && <span>{cartProducts?.length}</span>}
               </div>
             </a>
           </Link>

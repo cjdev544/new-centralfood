@@ -1,15 +1,20 @@
 import { useState } from 'react'
 import Image from 'next/image'
-import { FaPlus, FaMinus, FaCheck } from 'react-icons/fa'
+import { FaPlus, FaCheck } from 'react-icons/fa'
 import DatePicker, { setDefaultLocale } from 'react-datepicker'
 import es from 'date-fns/locale/es'
 import Ley from '../../public/menu-ley.png'
 import 'react-datepicker/dist/react-datepicker.css'
 
-import Arepa1 from '../../public/arepa1.jpg'
+import useAuth from '../../hooks/useAuth'
+import useLocalStorage from '../../hooks/useLocalStorage'
+import ProductInCart from '../ProductInCart'
+import AddressModal from '../modals/AddressModal'
+import FormModal from '../modals/FormModal'
+import Auth from '../Auth'
 import style from './CarPage.module.css'
 
-export default function CarPage() {
+export default function CarPage({ addresses }) {
   setDefaultLocale(es)
 
   const [cutlery, setCutlery] = useState(false)
@@ -22,60 +27,36 @@ export default function CarPage() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState(0)
   const [promotionalCode, setPromotionalCode] = useState(null)
+  const [openModal, setOpenModal] = useState(false)
+  const [openModalAuth, setOpenModalAuth] = useState(false)
+  const [deliveryCost, setDeliveryCost] = useState(0)
+  const [addressSelected, setAddressSelected] = useState({})
+
+  const { authUser } = useAuth()
+  const { cartProducts, totalCostProducts } = useLocalStorage()
 
   const isCloseDay = (date) => {
     const day = date.getDay()
     return day !== 2
   }
 
+  const handleShowModal = () => {
+    setShipping(false)
+    setDeliveryCost(2.5)
+    if (authUser?.uid) {
+      setOpenModal(true)
+    } else {
+      setOpenModalAuth(true)
+    }
+  }
+
   return (
     <div className={style.car}>
       <div className={style.left}>
         <h3>Productos agregados</h3>
-        <div className={style.productList}>
-          <Image src={Arepa1} alt='arepa' width={50} height={50} />
-          <h4>Arepa Reina pepeada</h4>
-          <div className={style.numberProducts}>
-            <div className={style.circle}>
-              <FaMinus />
-            </div>
-            <span className={style.spanNumber}>1</span>
-            <div className={style.circle}>
-              <FaPlus />
-            </div>
-          </div>
-          <span>5.50€</span>
-        </div>
-
-        <div className={style.productList}>
-          <Image src={Arepa1} alt='arepa' width={50} height={50} />
-          <h4>Arepa Reina pepeada</h4>
-          <div className={style.numberProducts}>
-            <div className={style.circle}>
-              <FaMinus />
-            </div>
-            <span className={style.spanNumber}>1</span>
-            <div className={style.circle}>
-              <FaPlus />
-            </div>
-          </div>
-          <span>5.50€</span>
-        </div>
-
-        <div className={style.productList}>
-          <Image src={Arepa1} alt='arepa' width={50} height={50} />
-          <h4>Arepa Reina pepeada</h4>
-          <div className={style.numberProducts}>
-            <div className={style.circle}>
-              <FaMinus />
-            </div>
-            <span className={style.spanNumber}>1</span>
-            <div className={style.circle}>
-              <FaPlus />
-            </div>
-          </div>
-          <span>5.50€</span>
-        </div>
+        {cartProducts.map((product) => (
+          <ProductInCart key={product.id} product={product} />
+        ))}
 
         <div className={style.ley}>
           <Image src={Ley} alt='arepa' width={400} height={260} />
@@ -175,14 +156,26 @@ export default function CarPage() {
         <div className={style.twoOptions}>
           <div className={style.twoOptionsBox}>
             <p>¿Cómo quieres realizar tu pedido?</p>
-            <div className={style.twoItems} onClick={() => setShipping(true)}>
+            <div
+              className={style.twoItems}
+              onClick={() => {
+                setShipping(true)
+                setDeliveryCost(0)
+                setAddressSelected({})
+              }}
+            >
               <span>Recogida en el local</span>
               {shipping ? <FaCheck className={style.circleItem} /> : ''}
             </div>
-            <div className={style.twoItems} onClick={() => setShipping(false)}>
+            <div className={style.twoItems} onClick={handleShowModal}>
               <span>Entrega a domicilio</span>
               {!shipping ? <FaCheck className={style.circleItem} /> : ''}
             </div>
+            {addressSelected?.title && (
+              <span className={style.addressTitle}>
+                Dirección de envío: {addressSelected.title}
+              </span>
+            )}
           </div>
         </div>
 
@@ -210,7 +203,7 @@ export default function CarPage() {
         <div className={style.amount}>
           <div className={style.amountItem}>
             <span>Productos:</span>
-            <span>10,60€</span>
+            <span>{totalCostProducts}€</span>
           </div>
           <div className={style.amountItem}>
             <span>Envío:</span>
@@ -224,6 +217,19 @@ export default function CarPage() {
 
         <button className={style.button}>Confirmar</button>
       </div>
+      {openModal && (
+        <AddressModal
+          userId={authUser.uid}
+          setAddressSelected={setAddressSelected}
+          setOpenModal={setOpenModal}
+        />
+      )}
+      {openModalAuth && (
+        <FormModal
+          setOpenModal={setOpenModalAuth}
+          contentModal={<Auth setOpenModal={setOpenModalAuth} />}
+        />
+      )}
     </div>
   )
 }

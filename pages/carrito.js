@@ -1,9 +1,9 @@
 import CarPage from '../components/CarPage'
 
-export default function Car() {
+export default function Car({ addresses }) {
   return (
     <main>
-      <CarPage />
+      <CarPage addresses={addresses} />
     </main>
   )
 }

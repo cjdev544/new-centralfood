@@ -4,7 +4,7 @@ import { round } from 'mathjs'
 import { FaRegWindowClose, FaPlus, FaMinus } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
-import { useLocalStorage } from '../../../hooks/useLocalStorage'
+import useLocalStorage from '../../../hooks/useLocalStorage'
 import { getProductsComplements } from '../../../helpers/getProductsComplements'
 import Complement from '../../Complement'
 import style from './ProductModal.module.css'
