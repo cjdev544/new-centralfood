@@ -25,10 +25,14 @@ export default function ProductModal({ products, product, setOpenModal }) {
 
   useEffect(() => {
     let total = 0
-    complements.forEach((complement) => {
-      total = round(Number(complement.precio) + total, 2)
-      setComplementsCost(total)
-    })
+    if (complements.length === 0) {
+      setComplementsCost(0)
+    } else {
+      complements.forEach((complement) => {
+        total = round(Number(complement.precio) + total, 2)
+        setComplementsCost(total)
+      })
+    }
   }, [complements])
 
   useEffect(() => {

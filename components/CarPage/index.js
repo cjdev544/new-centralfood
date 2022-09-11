@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
+import { round } from 'mathjs'
 import { FaPlus, FaCheck } from 'react-icons/fa'
 import DatePicker, { setDefaultLocale } from 'react-datepicker'
 import es from 'date-fns/locale/es'
@@ -8,13 +9,15 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import useAuth from '../../hooks/useAuth'
 import useLocalStorage from '../../hooks/useLocalStorage'
+import useCart from '../../hooks/useCart'
 import ProductInCart from '../ProductInCart'
 import AddressModal from '../modals/AddressModal'
 import FormModal from '../modals/FormModal'
 import Auth from '../Auth'
 import style from './CarPage.module.css'
+import { toast } from 'react-toastify'
 
-export default function CarPage({ addresses }) {
+export default function CarPage() {
   setDefaultLocale(es)
 
   const [cutlery, setCutlery] = useState(false)
@@ -23,17 +26,23 @@ export default function CarPage({ addresses }) {
   const [notes, setNotes] = useState('')
   const [isDeliveryNow, setIsDeliveryNow] = useState(true)
   const [startDate, setStartDate] = useState(new Date())
-  const [shipping, setShipping] = useState(true)
+  const [shipping, setShipping] = useState(false)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState(0)
-  const [promotionalCode, setPromotionalCode] = useState(null)
   const [openModal, setOpenModal] = useState(false)
   const [openModalAuth, setOpenModalAuth] = useState(false)
-  const [deliveryCost, setDeliveryCost] = useState(0)
-  const [addressSelected, setAddressSelected] = useState({})
 
   const { authUser } = useAuth()
   const { cartProducts, totalCostProducts } = useLocalStorage()
+  const {
+    deliveryCost,
+    addressSelected,
+    promotion,
+    totalProducts,
+    setDeliveryCost,
+    setAddressSelected,
+    setPromotionalCode,
+  } = useCart()
 
   const isCloseDay = (date) => {
     const day = date.getDay()
@@ -41,12 +50,15 @@ export default function CarPage({ addresses }) {
   }
 
   const handleShowModal = () => {
-    setShipping(false)
-    setDeliveryCost(2.5)
-    if (authUser?.uid) {
-      setOpenModal(true)
+    if (totalCostProducts < 12) {
+      toast.warning('La compra mínima para entrega a domicilio es de 12€')
     } else {
-      setOpenModalAuth(true)
+      setShipping(true)
+      if (authUser?.uid) {
+        setOpenModal(true)
+      } else {
+        setOpenModalAuth(true)
+      }
     }
   }
 
@@ -159,18 +171,23 @@ export default function CarPage({ addresses }) {
             <div
               className={style.twoItems}
               onClick={() => {
-                setShipping(true)
+                setShipping(false)
+                setAddressSelected(null)
                 setDeliveryCost(0)
-                setAddressSelected({})
               }}
             >
               <span>Recogida en el local</span>
-              {shipping ? <FaCheck className={style.circleItem} /> : ''}
+              {!shipping ? <FaCheck className={style.circleItem} /> : ''}
             </div>
             <div className={style.twoItems} onClick={handleShowModal}>
               <span>Entrega a domicilio</span>
-              {!shipping ? <FaCheck className={style.circleItem} /> : ''}
+              {shipping ? <FaCheck className={style.circleItem} /> : ''}
             </div>
+            {totalCostProducts < 12 && (
+              <span className={style.noShipping}>
+                La compra mínima para entrega a domicilio es de 12€
+              </span>
+            )}
             {addressSelected?.title && (
               <span className={style.addressTitle}>
                 Dirección de envío: {addressSelected.title}
@@ -205,13 +222,27 @@ export default function CarPage({ addresses }) {
             <span>Productos:</span>
             <span>{totalCostProducts}€</span>
           </div>
+          {promotion && (
+            <>
+              <div className={style.amountItem}>
+                <span>{promotion.name}:</span>
+                <span>{promotion.cost}%</span>
+              </div>
+              <div className={style.amountItem}>
+                <span>Descuento aplicado:</span>
+                <span>{totalProducts}€</span>
+              </div>
+            </>
+          )}
           <div className={style.amountItem}>
             <span>Envío:</span>
-            <span>2,50€</span>
+            <span>{deliveryCost}€</span>
           </div>
           <div className={style.amountItem}>
             <span className={style.total}>TOTAL:</span>
-            <span className={style.total}>13,10€</span>
+            <span className={style.total}>
+              {round(totalProducts + Number(deliveryCost), 2)}
+            </span>
           </div>
         </div>
 
@@ -220,6 +251,7 @@ export default function CarPage({ addresses }) {
       {openModal && (
         <AddressModal
           userId={authUser.uid}
+          setShipping={setShipping}
           setAddressSelected={setAddressSelected}
           setOpenModal={setOpenModal}
         />

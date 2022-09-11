@@ -48,14 +48,25 @@ export const getDataHomepage = async () => {
   return array
 }
 
-export const getShippingCostFirebase = async () => {
-  const array = []
-  const q = query(collection(db, 'shipping'))
-  const querySnapshot = await getDocs(q)
-  querySnapshot.forEach((doc) => {
-    array.push({ id: doc.id, ...doc.data() })
-  })
-  return { shippingCost: array }
+export const getShippingCost = async (address, setDeliveryCost) => {
+  const distance = address?.zone?.distNumber
+  let costForDelivery
+  if (distance <= 2) {
+    costForDelivery = '0 a 2km'
+  } else if (distance <= 6) {
+    costForDelivery = '2 a 6km'
+  } else {
+    costForDelivery = '6 a 10km'
+  }
+
+  if (distance) {
+    const q = query(collection(db, 'shipping'))
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((doc) => {
+      if (doc.data().distancia === costForDelivery)
+        setDeliveryCost(doc.data().costo)
+    })
+  }
 }
 
 export const isOpenOrClose = () => {
@@ -74,4 +85,26 @@ export const getAddressesUser = async (userId) => {
     }
   })
   return array
+}
+
+export const getOrdersUser = async (userId) => {
+  const array = []
+  const q = query(collection(db, 'orders'))
+  const querySnapshot = await getDocs(q)
+  querySnapshot.forEach((doc) => {
+    if (doc.data().usuario === userId) {
+      array.push({ id: doc.id, ...doc.data() })
+    }
+  })
+  return array
+}
+
+export const getFirstBuyPromotion = async () => {
+  let data = {}
+  const q = query(collection(db, 'firstBuy'))
+  const querySnapshot = await getDocs(q)
+  querySnapshot.forEach((doc) => {
+    data = doc.data()
+  })
+  return data
 }

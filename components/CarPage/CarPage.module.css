@@ -176,6 +176,10 @@
   font-weight: bold;
 }
 
+.noShipping {
+  color: red;
+}
+
 /* Media queries */
 @media (max-width: 640px) {
   .car {

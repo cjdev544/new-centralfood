@@ -7,6 +7,7 @@ import style from './AddressModal.module.css'
 
 export default function AddressModal({
   userId,
+  setShipping,
   setAddressSelected,
   setOpenModal,
 }) {
@@ -20,6 +21,7 @@ export default function AddressModal({
 
   const isClicked = (e) => {
     if (!boxRef.current.contains(e.target)) {
+      setShipping(false)
       setOpenModal(false)
     }
   }
@@ -34,7 +36,10 @@ export default function AddressModal({
       <div ref={boxRef} className={style.box}>
         <FaRegWindowClose
           className={style.close}
-          onClick={() => setOpenModal(false)}
+          onClick={() => {
+            setShipping(false)
+            setOpenModal(false)
+          }}
         />
         <div className={style.left}>
           <h3>Direcciones</h3>
