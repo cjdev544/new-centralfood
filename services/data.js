@@ -4,10 +4,12 @@ import {
   doc,
   getDoc,
   getDocs,
+  setDoc,
   onSnapshot,
 } from 'firebase/firestore'
+import { v4 as uuidv4 } from 'uuid'
 
-import { db } from '../firebase/config'
+import { auth, db } from '../firebase/config'
 
 export const getRestaurants = async () => {
   const array = []
@@ -58,7 +60,6 @@ export const getShippingCost = async (address, setDeliveryCost) => {
   } else {
     costForDelivery = '6 a 10km'
   }
-
   if (distance) {
     const q = query(collection(db, 'shipping'))
     const querySnapshot = await getDocs(q)
@@ -107,4 +108,15 @@ export const getFirstBuyPromotion = async () => {
     data = doc.data()
   })
   return data
+}
+
+export const createAddress = async (address) => {
+  const addressId = uuidv4()
+  const addressRef = doc(db, 'addresses', addressId)
+  const user = auth.currentUser
+
+  await setDoc(addressRef, {
+    ...address,
+    user: user.uid,
+  })
 }

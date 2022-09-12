@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import ClipLoader from 'react-spinners/ClipLoader'
-import { toast } from 'react-toastify'
 import {
   FaEye,
   FaEyeSlash,

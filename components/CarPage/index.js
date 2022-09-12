@@ -62,6 +62,13 @@ export default function CarPage() {
     }
   }
 
+  const handleSubmit = () => {
+    if (!name || !phone) {
+      toast.warning('El nombre y el teléfono son obligatorios')
+      return
+    }
+  }
+
   return (
     <div className={style.car}>
       <div className={style.left}>
@@ -246,7 +253,9 @@ export default function CarPage() {
           </div>
         </div>
 
-        <button className={style.button}>Confirmar</button>
+        <button className={style.button} onClick={handleSubmit}>
+          Confirmar
+        </button>
       </div>
       {openModal && (
         <AddressModal

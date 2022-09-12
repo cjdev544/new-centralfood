@@ -22,31 +22,12 @@ export default function Restaurant({ products, restaurants }) {
   )
 
   useEffect(() => {
-    const restaurant = {
-      sushiguay: 'Sushi Guay',
-      guaywok: 'Guay Wok',
-      'sabor-casita': 'Con Sabor a Casita',
-      'hamburgueseria-venezuela': 'La Hamburguesería VZLA',
-      'postres-bebidas': 'Postres y Bebidas',
-    }
-    const desc = {
-      sushiguay:
-        'Sushi Guay, restaurante de comida japonesa, sushi, maki, temaki, rolls tempura, rolls semitempura, ensaladas y platos combinados.',
-      guaywok:
-        'Guay Wok, restaourante de comida china, arroz, lumpia, pollo agridulce, chopsuey y platos combinados.',
-      'sabor-casita':
-        'Con Sabor a Casita, restaurante de comida latína, empanadas ,arepas, tostones playeros, cachapas, camperos y pabellon.',
-      'hamburgueseria-venezuela':
-        'Hamburguesería con el mejor sabor Venezolano, Hamburguesas, Perros calientes, Pepitos y Camperos',
-      'postres-bebidas':
-        'Postres y Bebidas, acompaña tu comida con la variedad de bebidas y postres que tenemos para ti.',
-    }
-    setTitle(restaurant[path] || 'Central Food')
+    setTitle(restaurant?.name || 'Central Food')
     setDescription(
-      desc[path] ||
+      restaurant?.description ||
         'Central Food, porque en la variedad esta el gusto. Comida venezolana en Málaga. Hamburguesas venezolana, comida china venezolana, sushi venezolano, comida casera venezolana'
     )
-  }, [path])
+  }, [path, restaurant])
 
   useEffect(() => {
     if (!category) {

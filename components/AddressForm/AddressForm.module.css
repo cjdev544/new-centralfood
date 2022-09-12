@@ -29,6 +29,11 @@
   outline: none;
 }
 
+.addressNotValid {
+  color: red;
+  font-size: 0.8rem;
+}
+
 /* Media queries */
 @media (max-width: 768px) {
   .right {

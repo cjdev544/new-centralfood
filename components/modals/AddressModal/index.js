@@ -23,6 +23,7 @@ export default function AddressModal({
     if (!boxRef.current.contains(e.target)) {
       setShipping(false)
       setOpenModal(false)
+      setAddressSelected(null)
     }
   }
 
@@ -39,10 +40,12 @@ export default function AddressModal({
           onClick={() => {
             setShipping(false)
             setOpenModal(false)
+            setAddressSelected(null)
           }}
         />
         <div className={style.left}>
           <h3>Direcciones</h3>
+          {addresses.length === 0 && <p>No se han agregado direcciones</p>}
           {addresses.map((address) => (
             <div
               key={address.id}
@@ -59,7 +62,10 @@ export default function AddressModal({
           ))}
         </div>
         <div className={style.right}>
-          <AddressForm />
+          <AddressForm
+            setOpenModal={setOpenModal}
+            setAddressSelected={setAddressSelected}
+          />
         </div>
       </div>
     </div>
