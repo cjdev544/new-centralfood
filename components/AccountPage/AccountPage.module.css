@@ -6,6 +6,7 @@
 
 .accountBox {
   display: flex;
+  justify-content: space-between;
 }
 
 .items {

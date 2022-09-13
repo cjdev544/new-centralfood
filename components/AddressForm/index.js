@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { toast } from 'react-toastify'
 
 import useAuth from '../../hooks/useAuth'
-import { createAddress } from '../../services/data'
+import { createAddress, updateAddress } from '../../services/data'
 import PlacesAutocompleteGoogle from '../PlacesAutocompleteGoogle'
 import style from './AddressForm.module.css'
 
@@ -13,12 +13,18 @@ export default function AddressForm({
   address,
   setOpenModal,
   setAddressSelected,
+  setAddresses,
 }) {
   const [addressNotAccepted, setAddressNotAccepted] = useState(null)
   const [zone, setZone] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
   const { authUser } = useAuth()
+
+  useEffect(() => {
+    if (address) setZone(address?.zone)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const formik = useFormik({
     initialValues: {
@@ -39,10 +45,20 @@ export default function AddressForm({
       if (!address) {
         createAddress(formData)
           .then((res) => {
-            if (setAddressSelected)
+            if (setAddressSelected) {
               setAddressSelected({ ...formData, user: authUser.uid })
+            }
+
+            if (setOpenModal) setOpenModal(false)
+
+            if (setAddresses) {
+              setAddresses((last) => [
+                { ...formData, user: authUser.uid },
+                ...last,
+              ])
+            }
+
             toast.success('Dirección agragada correctamente')
-            setOpenModal(false)
             setIsLoading(false)
           })
           .catch((err) => {
@@ -52,8 +68,31 @@ export default function AddressForm({
             setIsLoading(false)
           })
       } else {
-        setOpenModal(false)
-        //updateAddress(dataTemp, setShowModal, setIsLoading)
+        console.log({ address })
+        console.log({ formData })
+        updateAddress(address, {
+          ...formData,
+          user: authUser.uid,
+          id: address.id,
+        })
+          .then((res) => {
+            setAddresses((last) =>
+              last.map((element) =>
+                element.id !== address.id
+                  ? element
+                  : { ...formData, user: authUser.uid, id: address.id }
+              )
+            )
+            toast.success('Dirección editada correctamente')
+            setIsLoading(false)
+            setOpenModal(false)
+          })
+          .catch((err) => {
+            console.log(err)
+            toast.error('Error al editar la dirección')
+            setIsLoading(false)
+            setOpenModal(false)
+          })
       }
     },
   })
@@ -95,6 +134,7 @@ export default function AddressForm({
           />
         </div>
         <PlacesAutocompleteGoogle
+          zone={address?.zone?.address || null}
           setZone={setZone}
           setAddressNotAccepted={setAddressNotAccepted}
         />
@@ -130,7 +170,7 @@ export default function AddressForm({
           }
         >
           <ClipLoader color='#fff' loading={isLoading} size={20} />
-          Crear
+          {address ? 'Editar' : 'Crear'}
         </button>
       </form>
     </div>

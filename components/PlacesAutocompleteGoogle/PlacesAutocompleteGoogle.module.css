@@ -4,9 +4,9 @@
   border-radius: 10px;
   color: var(--color-border-grey-light);
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
   padding: 0.5rem;
-  width: 100%;
+  width: 90%;
 }
 
 .places:focus-visible {
@@ -43,4 +43,11 @@
   cursor: pointer;
   list-style: none;
   padding: 5px;
+}
+
+/* Media queries */
+@media (max-width: 640px) {
+  .places {
+    width: 100%;
+  }
 }

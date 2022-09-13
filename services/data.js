@@ -5,6 +5,7 @@ import {
   getDoc,
   getDocs,
   setDoc,
+  updateDoc,
   onSnapshot,
 } from 'firebase/firestore'
 import { v4 as uuidv4 } from 'uuid'
@@ -119,4 +120,9 @@ export const createAddress = async (address) => {
     ...address,
     user: user.uid,
   })
+}
+
+export const updateAddress = async (address, updateAddress) => {
+  const addressRef = doc(db, 'addresses', address.id)
+  await updateDoc(addressRef, updateAddress)
 }

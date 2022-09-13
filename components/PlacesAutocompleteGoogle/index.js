@@ -7,6 +7,7 @@ import useOnclickOutside from 'react-cool-onclickoutside'
 import style from './PlacesAutocompleteGoogle.module.css'
 
 export default function PlacesAutocompleteGoogle({
+  zone,
   setZone,
   setAddressNotAccepted,
 }) {
@@ -114,7 +115,7 @@ export default function PlacesAutocompleteGoogle({
         value={value}
         onChange={handleInput}
         disabled={!ready}
-        placeholder='Marca del autocompletado'
+        placeholder={zone || 'Marca del autocompletado'}
       />
       {/* ********** */}
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
