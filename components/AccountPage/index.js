@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
+import ClipLoader from 'react-spinners/ClipLoader'
+import { toast } from 'react-toastify'
 
 import useAuth from '../../hooks/useAuth'
 import AddressForm from '../AddressForm'
-import { getAddressesUser } from '../../services/data'
+import { deleteAddress, getAddressesUser } from '../../services/data'
 import ChangeNameForm from './ChangeNameForm'
 import ChangeEmailForm from './ChangeEmailForm'
 import style from './AccountPage.module.css'
@@ -21,6 +23,23 @@ export default function AccountPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authUser])
+
+  const removeAddress = (addressForDelete) => {
+    setIsLoading(true)
+    deleteAddress(addressForDelete)
+      .then((res) => {
+        setAddresses((last) =>
+          last.filter((element) => element.id !== addressForDelete.id)
+        )
+        toast.success('Dirección eliminda correctamente')
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+        toast.error('Error al eliminar la dirección')
+        setIsLoading(false)
+      })
+  }
 
   return (
     <div className={style.account}>
@@ -45,9 +64,16 @@ export default function AccountPage() {
                         setOpenModal(true)
                       }}
                     >
+                      <ClipLoader color='#fff' loading={isLoading} size={20} />
                       Editar
                     </button>
-                    <button className='other-button'>Eliminar</button>
+                    <button
+                      className='other-button'
+                      onClick={() => removeAddress(address)}
+                    >
+                      <ClipLoader color='#fff' loading={isLoading} size={20} />
+                      Eliminar
+                    </button>
                   </div>
                 </div>
               </div>
