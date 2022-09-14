@@ -40,6 +40,7 @@ const useAuth = () => {
     } catch (err) {
       setIsLoading(false)
       setOpenModal(false)
+      console.log(err)
       toast.error('Error al conectar con Gmail! intente mas tarde')
     }
   }
