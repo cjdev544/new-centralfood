@@ -9,12 +9,14 @@ const useLocalStorage = () => {
   const [totalCostProducts, setTotalCostProducts] = useState(0)
 
   useEffect(() => {
-    let total = 0
-    cartProducts.forEach((product) => {
-      const price = round(product?.precio * product.number, 2)
-      total = round(price + total, 2)
-    })
-    setTotalCostProducts(total)
+    if (cartProducts) {
+      let total = 0
+      cartProducts.forEach((product) => {
+        const price = round(product?.precio * product.number, 2)
+        total = round(price + total, 2)
+      })
+      setTotalCostProducts(total)
+    }
   }, [cartProducts])
 
   useEffect(() => {
