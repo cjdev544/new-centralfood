@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "1.10.0",
+    "@stripe/stripe-js": "1.36.0",
     "firebase": "9.9.4",
     "firebase-admin": "11.0.1",
     "formik": "2.2.9",
@@ -22,6 +24,7 @@
     "react-icons": "4.4.0",
     "react-spinners": "0.13.4",
     "react-toastify": "9.0.8",
+    "stripe": "10.8.0",
     "use-places-autocomplete": "4.0.0",
     "uuid": "9.0.0",
     "yup": "0.32.11"
