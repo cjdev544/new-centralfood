@@ -32,9 +32,6 @@ export async function getServerSideProps() {
   const home = await getDataHomepage()
   const dataHome = home[0]
 
-  console.log({ products })
-  console.log({ home })
-
   return {
     props: { products, dataHome }, // will be passed to the page component as props
   }
