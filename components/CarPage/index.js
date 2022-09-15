@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { round } from 'mathjs'
-import { FaPlus, FaCheck } from 'react-icons/fa'
+import moment from 'moment'
 import DatePicker, { setDefaultLocale } from 'react-datepicker'
 import es from 'date-fns/locale/es'
+import { FaPlus, FaCheck } from 'react-icons/fa'
 import Ley from '../../public/menu-ley.png'
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -16,6 +17,7 @@ import FormModal from '../modals/FormModal'
 import Auth from '../Auth'
 import style from './CarPage.module.css'
 import { toast } from 'react-toastify'
+import PaymentModal from '../modals/PaymentModal'
 
 export default function CarPage() {
   setDefaultLocale(es)
@@ -31,6 +33,31 @@ export default function CarPage() {
   const [phone, setPhone] = useState(0)
   const [openModal, setOpenModal] = useState(false)
   const [openModalAuth, setOpenModalAuth] = useState(false)
+  const [openModalPay, setOpenModalPay] = useState(false)
+  const [values, setValues] = useState({})
+
+  useEffect(() => {
+    setValues({
+      shipping,
+      cutlery,
+      numberCutlery,
+      notes,
+      isDeliveryNow,
+      dateDelivery: moment(startDate).format('DD/MM/YY'),
+      timeDelivery: moment(startDate).format('LT'),
+      name,
+      phone,
+    })
+  }, [
+    shipping,
+    cutlery,
+    numberCutlery,
+    notes,
+    isDeliveryNow,
+    startDate,
+    name,
+    phone,
+  ])
 
   const { authUser } = useAuth()
   const { cartProducts, totalCostProducts } = useLocalStorage()
@@ -67,6 +94,7 @@ export default function CarPage() {
       toast.warning('El nombre y el teléfono son obligatorios')
       return
     }
+    setOpenModalPay(true)
   }
 
   return (
@@ -248,7 +276,7 @@ export default function CarPage() {
           <div className={style.amountItem}>
             <span className={style.total}>TOTAL:</span>
             <span className={style.total}>
-              {round(totalProducts + Number(deliveryCost), 2)}
+              {round(totalProducts + Number(deliveryCost), 2)}€
             </span>
           </div>
         </div>
@@ -269,6 +297,22 @@ export default function CarPage() {
         <FormModal
           setOpenModal={setOpenModalAuth}
           contentModal={<Auth setOpenModal={setOpenModalAuth} />}
+        />
+      )}
+      {openModalPay && (
+        <PaymentModal
+          values={values}
+          name={name}
+          phone={phone}
+          shipping={shipping}
+          address={addressSelected}
+          deliveryCost={deliveryCost}
+          products={cartProducts}
+          promotion={promotion}
+          totalProducts={totalProducts}
+          totalCostProducts={totalCostProducts}
+          total={round(totalProducts + Number(deliveryCost), 2)}
+          setOpenModalPay={setOpenModalPay}
         />
       )}
     </div>
