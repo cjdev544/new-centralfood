@@ -33,7 +33,7 @@ export default function PaymentModal({
       setOpenModalPay(false)
     }
   }
-
+  console.log(values)
   return (
     <div className={style.modal} onClick={isClicked}>
       <div ref={boxRef} className={style.box}>
@@ -98,12 +98,20 @@ export default function PaymentModal({
                 {cashPayment ? (
                   <PayWithCash
                     isLoading={isLoading}
+                    products={products}
+                    address={address}
+                    values={values}
+                    priceShipping={deliveryCost}
                     setIsLoading={setIsLoading}
                     setOpenModalPay={setOpenModalPay}
                   />
                 ) : (
                   <PayWithCard
                     isLoading={isLoading}
+                    products={products}
+                    address={address}
+                    values={values}
+                    priceShipping={deliveryCost}
                     setIsLoading={setIsLoading}
                     setOpenModalPay={setOpenModalPay}
                   />

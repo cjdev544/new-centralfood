@@ -133,3 +133,21 @@ export const deleteAddress = async (address) => {
   const addressRef = doc(db, 'addresses', address.id)
   await deleteDoc(addressRef)
 }
+
+export const getUserOrders = async (userId) => {
+  const array = []
+  const ordersRef = collection(db, 'orders')
+  const q = query(ordersRef, where('usuario', '==', userId))
+  const querySnapshot = await getDocs(q)
+  querySnapshot.forEach((doc) => {
+    array.push({ id: doc.id, ...doc.data() })
+  })
+  const sortOrders = array?.sort((a, b) => b.createdAt - a.createdAt)
+  return sortOrders
+}
+
+export const addNewOrder = async (order) => {
+  const orderRef = doc(db, 'orders', order.id)
+  await setDoc(orderRef, order)
+  return order
+}
