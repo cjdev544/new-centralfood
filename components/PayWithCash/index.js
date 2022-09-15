@@ -3,8 +3,8 @@ import { useState } from 'react'
 export default function PayWithCash({ isLoading, setIsLoading, setOpenModal }) {
   const [cash, setCash] = useState(null)
 
-  const handleSubmit = () => {
-    console.log('submit')
+  const handleSubmit = (e) => {
+    e.preventDefault()
   }
 
   return (

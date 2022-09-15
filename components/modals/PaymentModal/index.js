@@ -7,9 +7,7 @@ import PayWithCard from '../../PayWithCard'
 import style from './PaymentModal.module.css'
 import PayWithCash from '../../PayWithCash'
 
-const stripePromise = loadStripe(
-  'pk_test_51JMa0kH50To1XM2mXTTxOXJNuigCHg5Eowji8in3Zt5qiYS2w3FmpOc3hrlUJiSZOCKgcCi5rFSEwAuzW8uiQruL006IGlx4lZ'
-)
+const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_KEY}`)
 
 export default function PaymentModal({
   values,
@@ -91,7 +89,7 @@ export default function PaymentModal({
           className={style.button}
           onClick={() => setCashPayment(!cashPayment)}
         >
-          {cashPayment ? 'Pagar con tarjeta' : 'Pagar a la entrega'}
+          {cashPayment ? 'Pagar con tarjeta' : 'Pagar con efectivo'}
         </button>
         <div className={style.right}>
           <div className={style.payment}>
