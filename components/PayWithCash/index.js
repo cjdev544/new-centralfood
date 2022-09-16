@@ -22,8 +22,15 @@ export default function PayWithCash({
   const handleSubmit = (e) => {
     e.preventDefault()
     setIsLoading(true)
-    console.log('comprando...')
-    fetchPaymentApi(products, authUser, address, values, priceShipping)
+
+    fetchPaymentApi(
+      'payment',
+      products,
+      authUser,
+      address,
+      values,
+      priceShipping
+    )
       .then((response) => {
         if (response?.msg) {
           toast.error(response.msg)

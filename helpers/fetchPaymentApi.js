@@ -1,4 +1,5 @@
 export const fetchPaymentApi = async (
+  routeApi,
   products,
   authUser,
   address,
@@ -6,7 +7,7 @@ export const fetchPaymentApi = async (
   priceShipping
 ) => {
   try {
-    const res = await fetch('/api/payment', {
+    const res = await fetch(`/api/${routeApi}`, {
       body: JSON.stringify({
         products,
         idUser: authUser.uid,

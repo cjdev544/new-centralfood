@@ -1,10 +1,22 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import { toast } from 'react-toastify'
 
-//import style from './PayWithCard.module.css'
+import useAuth from '../../hooks/useAuth'
+import useOrders from '../../hooks/useOrders'
+import { fetchPaymentApi } from '../../helpers/fetchPaymentApi'
 
-export default function PayWithCard({ setOpenModalPay }) {
+export default function PayWithCard({
+  products,
+  address,
+  values,
+  priceShipping,
+  setOpenModalPay,
+}) {
+  const { authUser } = useAuth()
+  const { createNewOrder } = useOrders()
+
   const [succeeded, setSucceeded] = useState(false)
   const [error, setError] = useState(null)
   const [processing, setProcessing] = useState('')
@@ -42,8 +54,46 @@ export default function PayWithCard({ setOpenModalPay }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     setProcessing(true)
-    console.log('hacer compra')
-    setOpenModalPay(false)
+
+    fetchPaymentApi(
+      'stripe',
+      products,
+      authUser,
+      address,
+      values,
+      priceShipping
+    )
+      .then(async (response) => {
+        const { clientSecret, order } = response
+
+        const payload = await stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: elements.getElement(CardElement),
+          },
+        })
+
+        if (payload.error) {
+          setError(`Error en el pago. ${payload.error.message}`)
+          toast.error(payload.error.message)
+          setProcessing(false)
+        } else {
+          // Create order in firebase
+          createNewOrder(order)
+          setError(null)
+          setProcessing(false)
+          setSucceeded(true)
+          setOpenModalPay(false)
+          toast.success('La orden ha sido enviada')
+          //router.push('/pedidos')
+          //removeAllProductsCart()
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+        setProcessing(false)
+        toast.error('Error en el servidor, intente nuevamente')
+        return null
+      })
   }
 
   return (
