@@ -1,6 +1,5 @@
-// api/nopay.js
 const admin = require('firebase-admin')
-const { round } = require('mathjs')
+const { round, isNumber } = require('mathjs')
 const { nanoid } = require('nanoid')
 
 if (!admin.apps.length) {
@@ -17,7 +16,6 @@ const db = admin.firestore()
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-  console.log('Entro back')
   try {
     const {
       products,
@@ -70,7 +68,7 @@ export default async (req, res) => {
 
       const subTotalForProduct = round(product.number * searchProduct.precio, 2)
 
-      totalPayment += subTotalForProduct
+      totalPayment = Number(totalPayment) + Number(subTotalForProduct)
 
       const meibyPepperPlate = searchProduct.path.includes('noodles')
       let namePepperPlate
@@ -90,15 +88,17 @@ export default async (req, res) => {
     }
 
     if (firstBuyDiscount) {
-      notDiscount = round(totalPayment, 2)
-      totalPayment = totalPayment - (totalPayment * firstBuyDiscount) / 100
+      notDiscount = round(Number(totalPayment), 2)
+      totalPayment =
+        Number(totalPayment) -
+        (Number(totalPayment) * Number(firstBuyDiscount)) / 100
     }
 
     if (values?.shipping) {
-      totalPayment += priceShipping
+      totalPayment = Number(totalPayment) + Number(priceShipping)
     }
 
-    totalPayment = round(totalPayment * 100, 2)
+    totalPayment = round(Number(totalPayment) * 100, 2)
 
     if (values?.cutlery) {
       values.cubiertosParaPersonas = values?.numberCutlery
@@ -122,7 +122,7 @@ export default async (req, res) => {
       sinDescuento: notDiscount,
       descuento,
       createdAt: Date.now(),
-      totalCompra: round(totalPayment / 100, 2),
+      totalCompra: round(Number(totalPayment) / 100, 2),
       idPago: null,
       id: nanoid(),
       direccionEnvio: addressShipping || 'Recogida en el local',

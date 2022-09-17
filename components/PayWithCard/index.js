@@ -14,6 +14,7 @@ export default function PayWithCard({
   priceShipping,
   setOpenModalPay,
 }) {
+  const router = useRouter()
   const { authUser } = useAuth()
   const { createNewOrder } = useOrders()
 
@@ -24,7 +25,6 @@ export default function PayWithCard({
 
   const stripe = useStripe()
   const elements = useElements()
-  const router = useRouter()
 
   const cardStyle = {
     style: {
@@ -84,7 +84,7 @@ export default function PayWithCard({
           setSucceeded(true)
           setOpenModalPay(false)
           toast.success('La orden ha sido enviada')
-          //router.push('/pedidos')
+          router.push('/pedidos')
           //removeAllProductsCart()
         }
       })

@@ -102,6 +102,7 @@ export default function PaymentModal({
                     address={address}
                     values={values}
                     priceShipping={deliveryCost}
+                    total={total}
                     setIsLoading={setIsLoading}
                     setOpenModalPay={setOpenModalPay}
                   />

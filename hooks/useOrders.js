@@ -4,15 +4,18 @@ import { db } from '../firebase/config'
 
 import useAuth from './useAuth'
 import { createCounterInLocalStorage } from '../helpers/createCounterInLocalStorage'
-import { addNewOrder } from '../services/data'
+import { addNewOrder, getUserOrders } from '../services/data'
 
 const useOrders = () => {
   const { authUser } = useAuth()
 
   const createNewOrder = addNewOrder
 
+  const getOrdersUser = getUserOrders
+
   return {
     createNewOrder,
+    getOrdersUser,
   }
 }
 

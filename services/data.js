@@ -8,6 +8,7 @@ import {
   updateDoc,
   deleteDoc,
   onSnapshot,
+  where,
 } from 'firebase/firestore'
 import { v4 as uuidv4 } from 'uuid'
 

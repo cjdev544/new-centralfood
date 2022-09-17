@@ -27,6 +27,8 @@ const useAuth = () => {
         if (!authUser?.uid) {
           setAuthUser({ uid, displayName, email, photoURL, provider })
         }
+      } else {
+        setAuthUser(null)
       }
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps

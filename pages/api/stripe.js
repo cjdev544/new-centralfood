@@ -68,7 +68,7 @@ export default async (req, res) => {
 
       const subTotalForProduct = round(product.number * searchProduct.precio, 2)
 
-      totalPayment += subTotalForProduct
+      totalPayment = Number(totalPayment) + Number(subTotalForProduct)
 
       const meibyPepperPlate = searchProduct.path.includes('noodles')
       let namePepperPlate
@@ -88,61 +88,56 @@ export default async (req, res) => {
     }
 
     if (firstBuyDiscount) {
-      notDiscount = round(totalPayment, 2)
-      totalPayment = totalPayment - (totalPayment * firstBuyDiscount) / 100
+      notDiscount = round(Number(totalPayment), 2)
+      totalPayment =
+        Number(totalPayment) -
+        (Number(totalPayment) * Number(firstBuyDiscount)) / 100
     }
 
-    if (values?.shipping === 'Entrega a domicilio') {
-      totalPayment += priceShipping
+    if (values?.shipping) {
+      totalPayment = Number(totalPayment) + Number(priceShipping)
     }
 
-    totalPayment = round(totalPayment * 100, 2)
+    totalPayment = round(Number(totalPayment) * 100, 2)
+
+    if (values?.cutlery) {
+      values.cubiertosParaPersonas = values?.numberCutlery
+    } else {
+      values.cubiertosParaPersonas = 0
+    }
+
+    if (values.isDeliveryNow) {
+      values.fechaEntrega = 'Hoy'
+      values.horaEntrega = 'Lo antes posible'
+    } else {
+      values.fechaEntrega = values?.dateDelivery
+      values.horaEntrega = values?.timeDelivery
+    }
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: totalPayment,
       currency: 'eur',
     })
 
-    if (values?.shipping === 'Entrega a domicilio') {
-      data = {
-        usuario: idUser,
-        username,
-        sinDescuento: notDiscount,
-        descuento,
-        createdAt: Date.now(),
-        totalCompra: round(totalPayment / 100, 2),
-        idPago: paymentIntent.id,
-        id: paymentIntent.id,
-        direccionEnvio: addressShipping,
-        pedido: productsSend,
-        totalProductos: round(totalPayment / 100 - priceShipping, 2),
-        costoEnvio: priceShipping,
-        cubiertosParaPersonas: values?.cubiertosParaPersonas,
-        fechaEntrega: values?.fechaEntrega,
-        horaEntrega: values?.horaEntrega,
-        notas: values?.notes,
-      }
-    } else {
-      data = {
-        name: values.name,
-        phone: values.phone,
-        usuario: idUser,
-        username,
-        sinDescuento: notDiscount,
-        descuento,
-        createdAt: Date.now(),
-        totalCompra: round(totalPayment / 100, 2),
-        idPago: paymentIntent.id,
-        id: paymentIntent.id,
-        direccionEnvio: addressShipping,
-        pedido: productsSend,
-        totalProductos: round(totalPayment / 100 - priceShipping, 2),
-        costoEnvio: priceShipping,
-        cubiertosParaPersonas: values?.cubiertosParaPersonas,
-        fechaEntrega: values?.fechaEntrega,
-        horaEntrega: values?.horaEntrega,
-        notas: values?.notes,
-      }
+    data = {
+      name: values.name,
+      phone: values.phone,
+      usuario: idUser,
+      username,
+      sinDescuento: notDiscount,
+      descuento,
+      createdAt: Date.now(),
+      totalCompra: round(Number(totalPayment) / 100, 2),
+      idPago: paymentIntent.id,
+      id: paymentIntent.id,
+      direccionEnvio: addressShipping || 'Recogida en el local',
+      pedido: productsSend,
+      totalProductos: round(totalPayment / 100 - priceShipping, 2),
+      costoEnvio: priceShipping,
+      cubiertosParaPersonas: values?.cubiertosParaPersonas,
+      fechaEntrega: values?.fechaEntrega,
+      horaEntrega: values?.horaEntrega,
+      notas: values?.notes,
     }
 
     res.status(200).json({

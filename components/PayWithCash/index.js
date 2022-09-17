@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { toast } from 'react-toastify'
 
@@ -12,15 +13,23 @@ export default function PayWithCash({
   address,
   values,
   priceShipping,
+  total,
   setIsLoading,
   setOpenModalPay,
 }) {
-  const [cash, setCash] = useState(null)
+  const router = useRouter()
   const { authUser } = useAuth()
+  const [cash, setCash] = useState(null)
   const { createNewOrder } = useOrders()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if (total > cash) {
+      toast.warning('El efectivo debe ser mayor al monto a pagar')
+      return
+    }
+
     setIsLoading(true)
 
     fetchPaymentApi(
@@ -45,7 +54,7 @@ export default function PayWithCash({
         setIsLoading(false)
         setOpenModalPay(false)
         toast.success('La orden ha sido enviada')
-        //router.push('/pedidos')
+        router.push('/pedidos')
         //removeAllProductsCart()
       })
       .catch((err) => {
@@ -64,7 +73,7 @@ export default function PayWithCash({
         placeholder='Cambio para'
         onChange={(e) => setCash(e.target.value)}
       />
-      <button className='submit' type='submit'>
+      <button className='submit' type='submit' disabled={isLoading}>
         <ClipLoader color='#fff' loading={isLoading} size={20} />
         Realizar pedido
       </button>
