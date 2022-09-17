@@ -8,7 +8,7 @@ export default function BasicLayout({ children }) {
   useAuth()
 
   const { isOpen } = useData()
-  console.log({ isOpen })
+
   return (
     <>
       {isOpen === false && (

@@ -128,8 +128,9 @@ a {
 .form-payment {
   border-radius: 7px;
   margin: 0 auto;
-  max-width: 500px !important;
+  max-width: 100%;
   padding-top: 0.5rem;
+  width: 500px;
 }
 .form-payment span {
   font-size: 0.8rem;

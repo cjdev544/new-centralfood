@@ -13,7 +13,7 @@ export default function MoreOrderInfoModal({ order, setOpenModal }) {
       setOpenModal(false)
     }
   }
-  console.log(order)
+
   return (
     <div className={style.modal} onClick={isClicked}>
       <div ref={boxRef} className={style.box}>
