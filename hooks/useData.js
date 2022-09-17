@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   query,
   collection,
@@ -11,6 +12,14 @@ import { toast } from 'react-toastify'
 import { db } from '../firebase/config'
 
 const useData = () => {
+  const [isOpen, setIsOpen] = useState(undefined)
+
+  useEffect(() => {
+    if (isOpen === undefined) {
+      isOpenOrClose(setIsOpen)
+    }
+  }, [])
+
   const getRestaurants = async () => {
     const array = []
     const q = query(collection(db, 'restaurants'))
@@ -67,17 +76,17 @@ const useData = () => {
 
   const isOpenOrClose = () => {
     onSnapshot(doc(db, 'openClose', '8Wru5Z1vmVYRzzNbBOJA'), (doc) => {
-      return doc.data()?.isOpen
+      setIsOpen(doc.data()?.isOpen)
     })
   }
 
   return {
+    isOpen,
     getRestaurants,
     getProducts,
     getProduct,
     getDataHomepage,
     getShippingCostFirebase,
-    isOpenOrClose,
   }
 }
 

@@ -8,6 +8,7 @@ import { FaPlus, FaCheck } from 'react-icons/fa'
 import Ley from '../../public/menu-ley.png'
 import 'react-datepicker/dist/react-datepicker.css'
 
+import useData from '../../hooks/useData'
 import useAuth from '../../hooks/useAuth'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import useCart from '../../hooks/useCart'
@@ -21,6 +22,19 @@ import PaymentModal from '../modals/PaymentModal'
 
 export default function CarPage() {
   setDefaultLocale(es)
+
+  const { isOpen } = useData()
+  const { authUser } = useAuth()
+  const { cartProducts, totalCostProducts } = useLocalStorage()
+  const {
+    deliveryCost,
+    addressSelected,
+    promotion,
+    totalProducts,
+    setDeliveryCost,
+    setAddressSelected,
+    setPromotionalCode,
+  } = useCart()
 
   const [cutlery, setCutlery] = useState(false)
   const [numberCutlery, setNumberCutlery] = useState(1)
@@ -59,18 +73,6 @@ export default function CarPage() {
     phone,
   ])
 
-  const { authUser } = useAuth()
-  const { cartProducts, totalCostProducts } = useLocalStorage()
-  const {
-    deliveryCost,
-    addressSelected,
-    promotion,
-    totalProducts,
-    setDeliveryCost,
-    setAddressSelected,
-    setPromotionalCode,
-  } = useCart()
-
   const isCloseDay = (date) => {
     const day = date.getDay()
     return day !== 2
@@ -90,6 +92,11 @@ export default function CarPage() {
   }
 
   const handleSubmit = () => {
+    if (!isOpen) {
+      toast.warning('El restaurante se encuentra cerrado en estos momentos')
+      return
+    }
+
     if (!name || !phone) {
       toast.warning('El nombre y el teléfono son obligatorios')
       return

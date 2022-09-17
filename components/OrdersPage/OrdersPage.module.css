@@ -5,6 +5,10 @@
   width: 98%;
 }
 
+.orders h1 {
+  text-align: center;
+}
+
 .orderList {
   display: flex;
   flex-wrap: wrap;

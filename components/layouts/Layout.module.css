@@ -1,9 +1,10 @@
-.layout {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 84, 0, 0.1) 0%,
-    rgba(255, 255, 255, 0) 5rem
-  );
-  background-color: #fff;
-  z-index: 10;
+.isOpen {
+  background-color: red;
+  color: #fff;
+  left: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 1000;
 }

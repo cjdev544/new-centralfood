@@ -17,7 +17,7 @@ export default function OrdersPage({ userId, orders }) {
 
   return (
     <div className={style.orders}>
-      <h1>Pedidos</h1>
+      <h1>Mis pedidos</h1>
       {orders?.length === 0 ? (
         <h3>
           Todavía no has realizado ninguna compra. Obten un descuento por tu

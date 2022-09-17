@@ -85,7 +85,7 @@ export default function MoreOrderInfoModal({ order, setOpenModal }) {
         </p>
         <p>
           <span className={style.bold}>Metodo de pago:</span>{' '}
-          {order.idPago ? 'Tarjeta' : 'Efectivo'}€
+          {order.idPago ? 'Tarjeta' : 'Efectivo'}
         </p>
       </div>
     </div>
