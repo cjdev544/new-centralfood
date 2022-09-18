@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import useOnclickOutside from 'react-cool-onclickoutside'
 import { FaCartPlus } from 'react-icons/fa'
 
@@ -12,11 +11,9 @@ import Auth from '../Auth'
 import Logo from '../../public/central-food.svg'
 import style from './Header.module.css'
 import useLocalStorage from '../../hooks/useLocalStorage'
+import NavBar from '../NavBar'
 
 export default function Header() {
-  const router = useRouter()
-  const currentPath = router.pathname
-
   const { authUser, logout } = useAuth()
   const { cartProducts } = useLocalStorage()
   const { openModal, setOpenModal } = useFormModal()
@@ -58,60 +55,7 @@ export default function Header() {
         </Link>
 
         {/* Menu */}
-        <nav className={style.nav}>
-          <ul className={style.menu}>
-            <Link href='/'>
-              <a>
-                <li
-                  style={
-                    currentPath === '/'
-                      ? {
-                          color: '#ff5400',
-                          fontWeight: 'bold',
-                        }
-                      : { fontWeight: 'normal' }
-                  }
-                >
-                  Inicio
-                </li>
-              </a>
-            </Link>
-            <Link href='/restaurantes'>
-              <a>
-                <li
-                  style={
-                    currentPath === '/restaurantes'
-                      ? {
-                          color: '#ff5400',
-                          fontWeight: 'bold',
-                        }
-                      : { fontWeight: 'normal' }
-                  }
-                >
-                  Restaurantes
-                </li>
-              </a>
-            </Link>
-            {authUser && (
-              <Link href='/pedidos'>
-                <a>
-                  <li
-                    style={
-                      currentPath === '/pedidos'
-                        ? {
-                            color: '#ff5400',
-                            fontWeight: 'bold',
-                          }
-                        : { fontWeight: 'normal' }
-                    }
-                  >
-                    Mis pedidos
-                  </li>
-                </a>
-              </Link>
-            )}
-          </ul>
-        </nav>
+        <NavBar />
 
         {/* Profile */}
         <div className={style.cartSide}>

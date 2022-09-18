@@ -63,8 +63,7 @@ export default function OrderAlert({ order }) {
       const buyTime = moment(order.createdAt)
       var duration = moment.duration(now.diff(buyTime))
       const minutes = duration.asMinutes()
-      console.log({ minutes })
-      if (minutes > 155) setOrderAlert(null)
+      if (minutes > 160) setOrderAlert(null)
     }
   }, [order])
 

@@ -1,0 +1,27 @@
+.navBar {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+/*  Media queries */
+@media (max-width: 640px) {
+  .menu {
+    display: block;
+    text-align: center;
+  }
+
+  .menu li {
+    margin-bottom: 1rem;
+  }
+}

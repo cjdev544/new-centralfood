@@ -265,3 +265,15 @@ a {
     width: 80vw;
   }
 }
+
+/* Media queries */
+@media (max-width: 640px) {
+  html,
+  body {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 84, 0, 0.4) 0%,
+      rgba(255, 255, 255, 0) 10rem
+    );
+  }
+}

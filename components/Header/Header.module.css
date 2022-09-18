@@ -4,22 +4,6 @@
   justify-content: space-between;
 }
 
-.nav {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-.menu {
-  align-items: center;
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  text-transform: uppercase;
-}
-
 .cartSide {
   align-items: center;
   display: flex;
