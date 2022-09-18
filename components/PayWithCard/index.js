@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import useAuth from '../../hooks/useAuth'
 import useOrders from '../../hooks/useOrders'
 import { fetchPaymentApi } from '../../helpers/fetchPaymentApi'
+import { fetchSendEmail } from '../../helpers/fetchSendEmail'
 
 export default function PayWithCard({
   products,
@@ -78,7 +79,8 @@ export default function PayWithCard({
           setProcessing(false)
         } else {
           // Create order in firebase
-          createNewOrder(order)
+          await createNewOrder(order)
+          await fetchSendEmail(authUser?.email, order)
           setError(null)
           setProcessing(false)
           setSucceeded(true)

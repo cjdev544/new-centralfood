@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import useAuth from '../../hooks/useAuth'
 import useOrders from '../../hooks/useOrders'
 import { fetchPaymentApi } from '../../helpers/fetchPaymentApi'
+import { fetchSendEmail } from '../../helpers/fetchSendEmail'
 
 export default function PayWithCash({
   isLoading,
@@ -40,7 +41,7 @@ export default function PayWithCash({
       values,
       priceShipping
     )
-      .then((response) => {
+      .then(async (response) => {
         if (response?.msg) {
           toast.error(response.msg)
           setIsLoading(false)
@@ -50,10 +51,12 @@ export default function PayWithCash({
         const { order } = response
         order.cash = cash
         // Create order in firebase
-        createNewOrder(order)
+        await createNewOrder(order)
+        await fetchSendEmail(authUser?.email, order)
+        console.log(order)
         setIsLoading(false)
         setOpenModalPay(false)
-        toast.success('La orden ha sido enviada')
+        toast.success('Recivira un correo con los detalles del pedido')
         router.push('/pedidos')
         //removeAllProductsCart()
       })

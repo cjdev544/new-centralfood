@@ -57,7 +57,7 @@ export default function Order({ order, setOpenModal, setOrderSelected }) {
             <div className={style.data}>
               <h4>{product.producto}</h4>
               <span>Precio unitario: {product.precioUnitario}€</span>
-              <span>Cantidad del producto: {product.cantidadDelProducto}€</span>
+              <span>Cantidad del producto: {product.cantidadDelProducto}</span>
               <span>Subtotal: {product.subTotal}€</span>
             </div>
           </div>
