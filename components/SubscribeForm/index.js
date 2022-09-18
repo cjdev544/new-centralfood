@@ -6,6 +6,7 @@ import ClipLoader from 'react-spinners/ClipLoader'
 
 import style from './SubscribeForm.module.css'
 import { toast } from 'react-toastify'
+import { subscribeEmail } from '../../helpers/subscribeEmail'
 
 export default function SubscribeForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -13,11 +14,9 @@ export default function SubscribeForm() {
 
   const formik = useFormik({
     initialValues: {
-      name: '',
       email: '',
     },
     validationSchema: Yup.object({
-      name: Yup.string().required('El nombre es obligatorio'),
       email: Yup.string()
         .email('El correo no es valido')
         .required('El correo es obligatorio'),
@@ -29,10 +28,19 @@ export default function SubscribeForm() {
         return
       }
 
+      const { email } = formData
+
       setIsLoading(true)
-      const { name, email } = formData
-      console.log(name, email)
-      setIsLoading(false)
+      subscribeEmail(email)
+        .then(() => {
+          toast.success('Gracias por suscribirte')
+          setIsLoading(false)
+        })
+        .catch((err) => {
+          console.log(err)
+          toast.error('Error en el servidor. Intenta nuevamente')
+          setIsLoading(false)
+        })
     },
   })
 
@@ -48,14 +56,7 @@ export default function SubscribeForm() {
         </div>
         <input
           className={style.input}
-          type='text'
-          name='name'
-          placeholder='Escribe tu nombre'
-          onChange={formik.handleChange}
-        />
-        <input
-          className={style.input}
-          type='text'
+          type='email'
           name='email'
           placeholder='Correo electrónico'
           onChange={formik.handleChange}
