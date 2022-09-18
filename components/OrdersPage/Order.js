@@ -10,7 +10,9 @@ import style from './OrdersPage.module.css'
 export default function Order({ order, setOpenModal, setOrderSelected }) {
   return (
     <div key={order.id} className={style.order}>
-      {!order?.deliveryIn && <div className={style.alert}>Por confirmar</div>}
+      {!order?.deliveryIn && !order?.cancel && (
+        <div className={style.alert}>Por confirmar</div>
+      )}
       {order?.deliveryIn && !order?.orderSend && (
         <div className={style.sending}>
           Entrega aproximada: {order.deliveryIn} min

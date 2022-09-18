@@ -152,3 +152,8 @@ export const addNewOrder = async (order) => {
   await setDoc(orderRef, order)
   return order
 }
+
+export const updateOrder = async (order) => {
+  const orderRef = doc(db, 'orders', order.id)
+  await updateDoc(orderRef, { ...order, orderSend: true })
+}
