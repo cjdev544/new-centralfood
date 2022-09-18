@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { getProducts, getDataHomepage } from '../services/data'
 import About from '../components/About'
 import Hero from '../components/Hero'
+import SubscribeForm from '../components/SubscribeForm'
 import HomePlates from '../components/HomePlates'
 import HomeSeparator from '../components/HomeSeparator'
 import Restaurants from '../components/Restaurants'
@@ -18,6 +19,7 @@ export default function Home({ products, dataHome }) {
 
       <main>
         <Hero />
+        <SubscribeForm />
         <HomePlates products={products} dataHome={dataHome} />
         <About />
         <HomeSeparator />

@@ -1,0 +1,59 @@
+.subscribe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  align-items: center;
+  background-color: var(--color-background-grey-dark);
+  border-radius: 10px;
+  box-shadow: 0px 6px 11px -6px #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.header p {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.header span {
+  font-size: 0.8rem;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid var(--color-border-grey-light);
+  border-radius: 10px;
+  color: var(--color-border-grey-light);
+  font-size: 1.2rem;
+  padding: 0.3rem;
+  padding-left: 1rem;
+  width: 100%;
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.checkBox {
+  font-size: 0.8rem;
+}
+
+.checkBox a {
+  color: var(--color-primary);
+}
+
+.checkBox a:hover {
+  text-decoration: underline;
+}
