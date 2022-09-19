@@ -58,6 +58,7 @@ export default function Restaurant({ products, restaurants }) {
           category={category}
           productsCategory={productsCategory}
           products={products}
+          restaurant={restaurant}
         />
       </main>
     </>
@@ -65,8 +66,10 @@ export default function Restaurant({ products, restaurants }) {
 }
 
 export async function getServerSideProps() {
-  const products = await getProducts()
+  const allProducts = await getProducts()
   const restaurants = await getRestaurants()
+
+  const products = allProducts?.filter((product) => product.disponible)
 
   return {
     props: { products, restaurants }, // will be passed to the page component as props

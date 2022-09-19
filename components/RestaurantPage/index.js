@@ -27,6 +27,11 @@ export default function RestaurantPage({ restaurant, category, setCategory }) {
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </div>
+      {!restaurant?.isOpen && (
+        <span className={style.close}>
+          {restaurant?.name} se encuentra cerrado en estos momentos
+        </span>
+      )}
       <div className={style.categories}>
         {restaurant?.categories.map((itemCategory, idx) => (
           <p

@@ -18,6 +18,8 @@
 .background {
   margin-top: 3rem;
   margin: 0 auto;
+  margin: 0 auto;
+  max-width: var(--intern-container);
   max-width: var(--intern-container);
   padding-bottom: 2rem;
   padding-top: 2rem;

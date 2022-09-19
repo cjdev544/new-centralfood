@@ -55,7 +55,9 @@ export default function Header() {
         </Link>
 
         {/* Menu */}
-        <NavBar />
+        <div className={style.firstMenu}>
+          <NavBar />
+        </div>
 
         {/* Profile */}
         <div className={style.cartSide}>
@@ -63,7 +65,17 @@ export default function Header() {
             <a>
               <div className={style.cartIcon}>
                 <FaCartPlus className={style.cart} />
-                {cartProducts && <span>{cartProducts?.length}</span>}
+                {cartProducts && (
+                  <span
+                    style={
+                      !cartProducts?.length
+                        ? { display: 'none' }
+                        : { color: '#fff' }
+                    }
+                  >
+                    {cartProducts?.length}
+                  </span>
+                )}
               </div>
             </a>
           </Link>
@@ -96,8 +108,8 @@ export default function Header() {
                 className={style.options}
                 style={
                   showOptions
-                    ? { right: '1rem', opacity: '1' }
-                    : { right: '-15rem', opacity: '0' }
+                    ? { opacity: '1', top: '5rem' }
+                    : { opacity: '0', top: '-10rem' }
                 }
               >
                 <Link href='/cuenta'>
@@ -110,6 +122,9 @@ export default function Header() {
             </div>
           )}
         </div>
+      </div>
+      <div className={style.secundMenu}>
+        <NavBar />
       </div>
       {openModal && (
         <FormModal

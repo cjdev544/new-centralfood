@@ -107,8 +107,11 @@ export default function CarPage() {
   return (
     <div className={style.car}>
       <div className={style.left}>
-        <h3>Productos agregados</h3>
-        {cartProducts.map((product) => (
+        <h2>Productos agregados</h2>
+        {!cartProducts && (
+          <p style={{ textAlign: 'center' }}>No se han agregado productos.</p>
+        )}
+        {cartProducts?.map((product) => (
           <ProductInCart key={product.id} product={product} />
         ))}
 

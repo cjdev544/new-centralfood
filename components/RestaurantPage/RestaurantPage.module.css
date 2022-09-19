@@ -9,6 +9,15 @@
   margin: 0;
 }
 
+.close {
+  display: block;
+  color: #fff;
+  background-color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
+
 .info {
   align-items: center;
   display: flex;
@@ -59,5 +68,9 @@
   .categories {
     display: block;
     text-align: center;
+  }
+
+  .categories p {
+    padding: 0.5rem;
   }
 }

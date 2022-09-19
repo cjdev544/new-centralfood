@@ -5,7 +5,12 @@ import ProductModal from '../modals/ProductModal'
 import style from './Plates.module.css'
 import Transition from '../Transition'
 
-export default function Plates({ category, productsCategory, products }) {
+export default function Plates({
+  category,
+  productsCategory,
+  products,
+  restaurant,
+}) {
   const [openModal, setOpenModal] = useState(false)
   const [product, setProduct] = useState({})
 
@@ -33,6 +38,7 @@ export default function Plates({ category, productsCategory, products }) {
           setOpenModal={setOpenModal}
           products={products}
           product={product}
+          restaurant={restaurant}
         />
       )}
     </section>

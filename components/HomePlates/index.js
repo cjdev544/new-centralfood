@@ -10,7 +10,7 @@ export default function HomePlates({ products, dataHome }) {
 
   const productsInSection = dataHome?.productsSection.map((productId) => {
     const res = products.filter(
-      (productGlobal) => productGlobal.id === productId
+      (productGlobal) => productGlobal.id === productId && products?.disponible
     )
     return res[0]
   })
@@ -22,17 +22,21 @@ export default function HomePlates({ products, dataHome }) {
           <p className={style.discount}>
             Realiza tu primera compra con un <span>10% de DESCUENTO</span>
           </p>
-          <h3 className={style.title}>Nuestros platos más pedidos</h3>
-          <div className={style.products}>
-            {productsInSection.map((product) => (
-              <Product
-                key={product.id}
-                product={product}
-                setOpenModal={setOpenModal}
-                setProduct={setProduct}
-              />
-            ))}
-          </div>
+          {productsInSection[0] !== undefined && (
+            <>
+              <h3 className={style.title}>Nuestros platos más pedidos</h3>
+              <div className={style.products}>
+                {productsInSection.map((product) => (
+                  <Product
+                    key={product.id}
+                    product={product}
+                    setOpenModal={setOpenModal}
+                    setProduct={setProduct}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
       {openModal && (

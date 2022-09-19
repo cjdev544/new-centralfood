@@ -3,13 +3,19 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { round } from 'mathjs'
 import { FaRegWindowClose, FaPlus, FaMinus, FaCheck } from 'react-icons/fa'
+import { toast } from 'react-toastify'
 
 import useLocalStorage from '../../../hooks/useLocalStorage'
 import { getProductsComplements } from '../../../helpers/getProductsComplements'
 import Complement from '../../Complement'
 import style from './ProductModal.module.css'
 
-export default function ProductModal({ products, product, setOpenModal }) {
+export default function ProductModal({
+  products,
+  product,
+  setOpenModal,
+  restaurant,
+}) {
   const router = useRouter()
 
   const [counterProduct, setCounterProduct] = useState(1)
@@ -89,6 +95,10 @@ export default function ProductModal({ products, product, setOpenModal }) {
   }
 
   const addCar = () => {
+    if (!restaurant?.isOpen) {
+      toast.warning(`${restaurant.name} se encuentra cerrado en estos momentos`)
+      return
+    }
     if (isPepper) {
       addProductCart({ ...pepperPlate, number: counterProduct })
       complements.forEach((complement) => {
