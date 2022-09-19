@@ -32,7 +32,10 @@ export default function Home({ products, dataHome }) {
 export async function getServerSideProps() {
   const products = await getProducts()
   const home = await getDataHomepage()
-  const dataHome = home[0]
+  let dataHome = {}
+  if (home?.length > 0) {
+    dataHome = home[0]
+  }
 
   return {
     props: { products, dataHome }, // will be passed to the page component as props

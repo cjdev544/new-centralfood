@@ -50,8 +50,8 @@ export default function Hero() {
                 <Image
                   src={SushiGuay}
                   alt='logo SushiGuay'
-                  width={130}
-                  height={130}
+                  width={120}
+                  height={120}
                   className={style.restaurant}
                 />
               </a>
@@ -61,8 +61,8 @@ export default function Hero() {
                 <Image
                   src={GuayWok}
                   alt='logo GuayWok'
-                  width={130}
-                  height={130}
+                  width={120}
+                  height={120}
                   className={style.restaurant}
                 />
               </a>
@@ -72,8 +72,8 @@ export default function Hero() {
                 <Image
                   src={Sabor}
                   alt='logo Con sabor a casita'
-                  width={130}
-                  height={130}
+                  width={120}
+                  height={120}
                   className={style.restaurant}
                 />
               </a>
@@ -83,8 +83,8 @@ export default function Hero() {
                 <Image
                   src={HamVzl}
                   alt='logo hamburguesería Venezuela'
-                  width={130}
-                  height={130}
+                  width={120}
+                  height={120}
                   className={style.restaurant}
                 />
               </a>
