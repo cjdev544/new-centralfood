@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+// import TagManager from 'react-gtm-module'
 import { ToastContainer } from 'react-toastify'
 
 import AuthState from '../context/auth/authState'
@@ -8,6 +10,10 @@ import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-NR4NJ22' })
+  }, [])
+
   return (
     <AuthState>
       <CartState>
