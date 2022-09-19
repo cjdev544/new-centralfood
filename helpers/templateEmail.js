@@ -9,9 +9,7 @@ export const templateEmail = (order) => {
   <h4>Teléfono: 649-71-88-31</h4>
   <a href='https://centralfoodmalaga.com'>www.centralfoodmalaga.com</a>
   <hr>
-  <br>
-  <hr>
-  <p></p>
+  <h4>Tome en cuenta que al momento que el repartidor a sido enviado a la dirección introducida y esta es cambiada. Sera cobrado un recargo que dependera de la distancia de la nueva dirección</h4>
   <hr>
 
   Pedido N°: ${order.id}
@@ -28,11 +26,11 @@ export const templateEmail = (order) => {
   ${moment(order.createdAt).format('LT')}
 </p>
 <p>
-  Fecha de entrega:</spa${' '}
+  Fecha de entrega: ${' '}
   ${order.fechaEntrega}
 </p>
 <p>
-  Hora de entrega:</spa${' '}
+  Hora de entrega: ${' '}
   ${order.horaEntrega}
 </p>
 

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { round } from 'mathjs'
-import { FaRegWindowClose, FaPlus, FaMinus } from 'react-icons/fa'
-import { toast } from 'react-toastify'
+import { FaRegWindowClose, FaPlus, FaMinus, FaCheck } from 'react-icons/fa'
 
 import useLocalStorage from '../../../hooks/useLocalStorage'
 import { getProductsComplements } from '../../../helpers/getProductsComplements'
@@ -10,10 +10,15 @@ import Complement from '../../Complement'
 import style from './ProductModal.module.css'
 
 export default function ProductModal({ products, product, setOpenModal }) {
+  const router = useRouter()
+
   const [counterProduct, setCounterProduct] = useState(1)
   const [productCost, setProductCost] = useState(0)
   const [complements, setComplements] = useState([])
   const [complementsCost, setComplementsCost] = useState(0)
+  const [isPepper, setIsPepper] = useState(false)
+  const [selectPepper, setSelectPepper] = useState(false)
+  const [pepperPlate, setPepperPlate] = useState(null)
   const [total, setTotal] = useState(0)
   const boxRef = useRef()
 
@@ -45,6 +50,29 @@ export default function ProductModal({ products, product, setOpenModal }) {
     }
   }
 
+  useEffect(() => {
+    if (product) {
+      const plateIsPepper = product.path.includes('noodles')
+      if (plateIsPepper) {
+        setIsPepper(true)
+      } else {
+        setIsPepper(false)
+      }
+    }
+  }, [product])
+
+  useEffect(() => {
+    if (isPepper) {
+      let msg
+      if (selectPepper) {
+        msg = '(Con Picante)'
+      } else {
+        msg = '(Sin Picante)'
+      }
+      setPepperPlate({ ...product, nombre: `${product.nombre} ${msg}` })
+    }
+  }, [product, isPepper, selectPepper])
+
   const { extras, drinks, beer, desserts } = getProductsComplements(
     products,
     product
@@ -61,12 +89,19 @@ export default function ProductModal({ products, product, setOpenModal }) {
   }
 
   const addCar = () => {
-    addProductCart({ ...product, number: counterProduct })
-    complements.forEach((complement) => {
-      addProductCart({ ...complement, number: 1 })
-    })
-    toast.success('Agregado al carrito')
+    if (isPepper) {
+      addProductCart({ ...pepperPlate, number: counterProduct })
+      complements.forEach((complement) => {
+        addProductCart({ ...complement, number: 1 })
+      })
+    } else {
+      addProductCart({ ...product, number: counterProduct })
+      complements.forEach((complement) => {
+        addProductCart({ ...complement, number: 1 })
+      })
+    }
     setOpenModal(false)
+    router.push('/carrito')
   }
 
   return (
@@ -116,6 +151,7 @@ export default function ProductModal({ products, product, setOpenModal }) {
             />
           ))}
         </div>
+
         <div className={style.right}>
           <div className={style.product}>
             <Image
@@ -127,6 +163,42 @@ export default function ProductModal({ products, product, setOpenModal }) {
           </div>
           <h2>{product.nombre}</h2>
           <p>{product.descripcion}</p>
+          {isPepper && (
+            <div className={style.pepper}>
+              <div
+                style={
+                  !selectPepper
+                    ? { fontWeight: 'bold' }
+                    : {
+                        backgroundColor: 'transparent',
+                        border: '2px solid #000',
+                        color: '#000',
+                      }
+                }
+                className={style.select}
+                onClick={() => setSelectPepper(false)}
+              >
+                <span>Sin picante</span>
+                {!selectPepper && <FaCheck />}
+              </div>
+              <div
+                style={
+                  selectPepper
+                    ? { fontWeight: 'bold' }
+                    : {
+                        backgroundColor: 'transparent',
+                        border: '2px solid #000',
+                        color: '#000',
+                      }
+                }
+                className={style.select}
+                onClick={() => setSelectPepper(true)}
+              >
+                <span>Con picante</span>
+                {selectPepper && <FaCheck />}
+              </div>
+            </div>
+          )}
           <span className={style.productPrice}>{product.precio}€</span>
           <div className={style.numberProducts}>
             <div className={style.circle} onClick={minusPlate}>
