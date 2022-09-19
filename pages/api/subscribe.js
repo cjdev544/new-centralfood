@@ -2,7 +2,7 @@ const mailchimp = require('@mailchimp/mailchimp_marketing')
 
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
-  server: process.env.NEXT_PUBLIC_MAILCHIMP_SERVER,
+  server: process.env.MAILCHIMP_SERVER,
 })
 
 // eslint-disable-next-line import/no-anonymous-default-export

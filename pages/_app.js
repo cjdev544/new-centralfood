@@ -10,9 +10,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    TagManager.initialize({ gtmId: 'GTM-NR4NJ22' })
-  }, [])
+  // useEffect(() => {
+  //   TagManager.initialize({ gtmId: 'GTM-NR4NJ22' })
+  // }, [])
 
   return (
     <AuthState>
