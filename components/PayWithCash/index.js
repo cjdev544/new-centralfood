@@ -53,7 +53,6 @@ export default function PayWithCash({
         // Create order in firebase
         await createNewOrder(order)
         await fetchSendEmail(authUser?.email, order)
-        console.log(order)
         setIsLoading(false)
         setOpenModalPay(false)
         toast.success('Recivira un correo con los detalles del pedido')

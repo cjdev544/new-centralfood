@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Moto from '../../public/moto.svg'
-import CentralFood from '../../public/central-food2.svg'
+import CentralFood from '../../public/centralfood10.svg'
 import GuayWok from '../../public/logo-guaywok.svg'
 import SushiGuay from '../../public/logo-sushi.svg'
 import HamVzl from '../../public/logo-hamburgueseria.svg'
