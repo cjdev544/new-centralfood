@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 
 import useAuth from '../../hooks/useAuth'
 import useOrders from '../../hooks/useOrders'
+import useLocalStorage from '../../hooks/useLocalStorage'
 import { fetchPaymentApi } from '../../helpers/fetchPaymentApi'
 import { fetchSendEmail } from '../../helpers/fetchSendEmail'
 
@@ -18,6 +19,7 @@ export default function PayWithCard({
   const router = useRouter()
   const { authUser } = useAuth()
   const { createNewOrder } = useOrders()
+  const { removeAllProductsCart } = useLocalStorage()
 
   const [succeeded, setSucceeded] = useState(false)
   const [error, setError] = useState(null)
@@ -87,7 +89,7 @@ export default function PayWithCard({
           setOpenModalPay(false)
           toast.success('La orden ha sido enviada')
           router.push('/pedidos')
-          //removeAllProductsCart()
+          removeAllProductsCart()
         }
       })
       .catch((err) => {

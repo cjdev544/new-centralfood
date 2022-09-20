@@ -1,3 +1,6 @@
+import { Link, animateScroll as scroll } from 'react-scroll'
+import { FaArrowCircleUp } from 'react-icons/fa'
+
 import useData from '../../hooks/useData'
 import useAuth from '../../hooks/useAuth'
 import useOrders from '../../hooks/useOrders'
@@ -14,6 +17,7 @@ export default function BasicLayout({ children }) {
 
   return (
     <>
+      <div id='up' />
       {isOpen === false && (
         <div className={style.isOpen}>
           <span>El restaurante se encuentra cerrado en estod momentos</span>
@@ -27,6 +31,15 @@ export default function BasicLayout({ children }) {
       {children}
       {/* footer */}
       <Footer />
+      <Link
+        className={style.arrow}
+        to='up'
+        smooth={true}
+        offset={0}
+        duration={500}
+      >
+        <FaArrowCircleUp />
+      </Link>
     </>
   )
 }

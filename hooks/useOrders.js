@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
 import { doc, onSnapshot } from 'firebase/firestore'
-import { db } from '../firebase/config'
 
+import { db } from '../firebase/config'
 import AlertsContext from '../context/alerts/alertsContext'
 import useAuth from './useAuth'
 import { createCounterInLocalStorage } from '../helpers/createCounterInLocalStorage'
-import { addNewOrder, getUserOrders, updateOrder } from '../services/data'
+import { addNewOrder, getUserOrders } from '../services/data'
 
 const useOrders = () => {
   const { ordersAlert, setOrdersAlert } = useContext(AlertsContext)

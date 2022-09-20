@@ -65,12 +65,18 @@ const useLocalStorage = () => {
     setCartProducts(newStorage)
   }
 
+  const removeAllProductsCart = () => {
+    localStorage.removeItem(CART)
+    setCartProducts([])
+  }
+
   return {
     cartProducts,
     totalCostProducts,
     addProductCart,
     updateProductCart,
     deleteProductCart,
+    removeAllProductsCart,
   }
 }
 
