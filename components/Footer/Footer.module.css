@@ -1,5 +1,5 @@
 .footer {
-  background-color: var(--color-background-dark);
+  background-color: var(--color-background-grey-dark);
   color: var(--color-font-grey);
   margin-top: 3rem;
   padding: 30px;
@@ -46,7 +46,7 @@
 
 .copy {
   font-size: 10px !important;
-  text-align: right;
+  text-align: left;
 }
 
 .copy span {

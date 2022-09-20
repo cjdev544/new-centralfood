@@ -44,7 +44,7 @@ export default function Restaurant({ products, restaurants }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category])
-
+  console.log(path, restaurants)
   return (
     <>
       <Seo title={title} description={description} />

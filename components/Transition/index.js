@@ -7,13 +7,13 @@ export default function Transition({ category, children }) {
     out: {
       opacity: 0,
       transition: {
-        duration: 0.75,
+        duration: 0.3,
       },
     },
     in: {
       opacity: 1,
       transition: {
-        duration: 0.75,
+        duration: 0.3,
         delay: 0.5,
       },
     },

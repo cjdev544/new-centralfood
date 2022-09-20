@@ -9,7 +9,6 @@ import HomeSeparator from '../components/HomeSeparator'
 import Restaurants from '../components/Restaurants'
 
 export default function Home({ products, dataHome }) {
-  console.log(dataHome)
   return (
     <div>
       <Head>

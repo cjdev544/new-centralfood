@@ -121,6 +121,7 @@
 /* Media queries */
 @media (max-width: 768px) {
   .left {
+    padding-bottom: 5rem;
     width: 50%;
   }
 
@@ -153,5 +154,9 @@
     position: fixed;
     margin-top: 2rem;
     bottom: 1rem;
+  }
+
+  .close {
+    position: fixed;
   }
 }
