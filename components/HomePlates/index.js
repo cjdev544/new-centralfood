@@ -8,12 +8,15 @@ export default function HomePlates({ products, dataHome }) {
   const [openModal, setOpenModal] = useState(false)
   const [product, setProduct] = useState({})
 
-  const productsInSection = dataHome?.productsSection.map((productId) => {
+  const productsFilter = dataHome?.productsSection?.map((productId) => {
     const res = products.filter(
-      (productGlobal) => productGlobal.id === productId && products?.disponible
+      (productGlobal) => productGlobal.id === productId
     )
     return res[0]
   })
+  const productsInSection = productsFilter?.filter(
+    (product) => product.disponible
+  )
 
   return (
     <section className={style.homePlates}>

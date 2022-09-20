@@ -9,6 +9,7 @@ import HomeSeparator from '../components/HomeSeparator'
 import Restaurants from '../components/Restaurants'
 
 export default function Home({ products, dataHome }) {
+  console.log(dataHome)
   return (
     <div>
       <Head>
@@ -20,7 +21,7 @@ export default function Home({ products, dataHome }) {
       <main>
         <Hero />
         <SubscribeForm />
-        <HomePlates products={products} dataHome={dataHome} />
+        <HomePlates products={products} dataHome={dataHome[0]} />
         <About />
         <HomeSeparator />
         <Restaurants />
@@ -31,11 +32,7 @@ export default function Home({ products, dataHome }) {
 
 export async function getServerSideProps() {
   const products = await getProducts()
-  const home = await getDataHomepage()
-  let dataHome = {}
-  if (home?.length > 0) {
-    dataHome = home[0]
-  }
+  const dataHome = await getDataHomepage()
 
   return {
     props: { products, dataHome }, // will be passed to the page component as props

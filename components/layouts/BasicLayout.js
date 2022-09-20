@@ -20,7 +20,7 @@ export default function BasicLayout({ children }) {
       <div id='up' />
       {isOpen === false && (
         <div className={style.isOpen}>
-          <span>El restaurante se encuentra cerrado en estod momentos</span>
+          <span>El restaurante se encuentra cerrado en estos momentos</span>
         </div>
       )}
       {ordersAlert?.length > 0 &&
