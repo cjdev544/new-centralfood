@@ -13,58 +13,52 @@ export default function NavBar() {
   return (
     <nav className={style.navBar}>
       <ul className={style.menu}>
-        <Link href='/'>
-          <a>
-            <li
-              style={
-                currentPath === '/'
-                  ? {
-                      color: '#363636',
-                      fontWeight: 'bold',
-                      borderBottom: '2px solid #363636',
-                    }
-                  : { fontWeight: 'normal' }
-              }
-            >
-              Inicio
-            </li>
-          </a>
-        </Link>
-        <Link href='/restaurantes'>
-          <a>
-            <li
-              style={
-                currentPath === '/restaurantes'
-                  ? {
-                      color: '#363636',
-                      fontWeight: 'bold',
-                      borderBottom: '2px solid #363636',
-                    }
-                  : { fontWeight: 'normal' }
-              }
-            >
-              Restaurantes
-            </li>
-          </a>
-        </Link>
-        {authUser && (
-          <Link href='/pedidos'>
-            <a>
-              <li
-                style={
-                  currentPath === '/pedidos'
-                    ? {
-                        color: '#363636',
-                        fontWeight: 'bold',
-                        borderBottom: '2px solid #363636',
-                      }
-                    : { fontWeight: 'normal' }
+        <li
+          style={
+            currentPath === '/'
+              ? {
+                  color: '#363636',
+                  fontWeight: 'bold',
+                  borderBottom: '2px solid #363636',
                 }
-              >
-                Mis pedidos
-              </li>
-            </a>
+              : { fontWeight: 'normal' }
+          }
+        >
+          <Link href='/'>
+            <a>Inicio</a>
           </Link>
+        </li>
+        <li
+          style={
+            currentPath === '/restaurantes'
+              ? {
+                  color: '#363636',
+                  fontWeight: 'bold',
+                  borderBottom: '2px solid #363636',
+                }
+              : { fontWeight: 'normal' }
+          }
+        >
+          <Link href='/restaurantes'>
+            <a>Restaurantes</a>
+          </Link>
+        </li>
+        {authUser && (
+          <li
+            style={
+              currentPath === '/pedidos'
+                ? {
+                    color: '#363636',
+                    fontWeight: 'bold',
+                    borderBottom: '2px solid #363636',
+                  }
+                : { fontWeight: 'normal' }
+            }
+          >
+            <Link href='/pedidos'>
+              <a>Mis pedidos</a>
+            </Link>
+          </li>
         )}
       </ul>
     </nav>

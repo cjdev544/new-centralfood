@@ -63,7 +63,7 @@ export default function Header() {
         <div className={style.cartSide}>
           <Link href='/carrito'>
             <a>
-              <div className={style.cartIcon}>
+              <div className={style.cartIcon} aria-label='carrito de compras'>
                 <FaCartPlus className={style.cart} />
                 {cartProducts && (
                   <span
