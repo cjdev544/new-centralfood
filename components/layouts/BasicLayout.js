@@ -37,6 +37,7 @@ export default function BasicLayout({ children }) {
         smooth={true}
         offset={0}
         duration={500}
+        aria-label='Ir arriba'
       >
         <FaArrowCircleUp />
       </Link>

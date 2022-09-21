@@ -11,13 +11,14 @@ import Complement from '../../Complement'
 import style from './ProductModal.module.css'
 
 export default function ProductModal({
+  restaurants,
   products,
   product,
   setOpenModal,
-  restaurant,
 }) {
   const router = useRouter()
 
+  const [restaurant, setRestaurant] = useState(null)
   const [counterProduct, setCounterProduct] = useState(1)
   const [productCost, setProductCost] = useState(0)
   const [complements, setComplements] = useState([])
@@ -28,7 +29,14 @@ export default function ProductModal({
   const [total, setTotal] = useState(0)
   const boxRef = useRef()
 
-  const { addProductCart } = useLocalStorage()
+  const { addProductCart } = useLocalStorage({})
+
+  useEffect(() => {
+    const restaurantProduct = restaurants.find(
+      (restaurant) => restaurant.page === product.restaurante
+    )
+    setRestaurant(restaurantProduct)
+  }, [product, restaurants])
 
   useEffect(() => {
     setProductCost(round(product?.precio * counterProduct, 2))

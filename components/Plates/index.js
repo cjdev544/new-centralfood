@@ -9,7 +9,7 @@ export default function Plates({
   category,
   productsCategory,
   products,
-  restaurant,
+  restaurants,
 }) {
   const [openModal, setOpenModal] = useState(false)
   const [product, setProduct] = useState({})
@@ -38,7 +38,7 @@ export default function Plates({
           setOpenModal={setOpenModal}
           products={products}
           product={product}
-          restaurant={restaurant}
+          restaurants={restaurants}
         />
       )}
     </section>

@@ -4,9 +4,10 @@ import Product from '../Product'
 import ProductModal from '../modals/ProductModal'
 import style from './HomePlates.module.css'
 
-export default function HomePlates({ products, dataHome }) {
+export default function HomePlates({ products, restaurants, dataHome }) {
   const [openModal, setOpenModal] = useState(false)
   const [product, setProduct] = useState({})
+  const [restaurant, setRestaurant] = useState(null)
 
   const productsFilter = dataHome?.productsSection?.map((productId) => {
     const res = products.filter(
@@ -47,6 +48,7 @@ export default function HomePlates({ products, dataHome }) {
           setOpenModal={setOpenModal}
           products={products}
           product={product}
+          restaurants={restaurants}
         />
       )}
     </section>
