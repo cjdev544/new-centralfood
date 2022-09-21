@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { round } from 'mathjs'
 import moment from 'moment'
@@ -10,13 +9,12 @@ import Ley from '../../public/menu-ley.png'
 import { toast } from 'react-toastify'
 import 'react-datepicker/dist/react-datepicker.css'
 
-const AddressModal = dynamic(import('../modals/AddressModal'))
-const FormModal = dynamic(import('../modals/FormModal'))
-const PaymentModal = dynamic(import('../modals/PaymentModal'))
-
 import useData from '../../hooks/useData'
 import useAuth from '../../hooks/useAuth'
 import useLocalStorage from '../../hooks/useLocalStorage'
+import AddressModal from '../modals/AddressModal'
+import FormModal from '../modals/FormModal'
+import PaymentModal from '../modals/PaymentModal'
 import useCart from '../../hooks/useCart'
 import ProductInCart from '../ProductInCart'
 import Auth from '../Auth'

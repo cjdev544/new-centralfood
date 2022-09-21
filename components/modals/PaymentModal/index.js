@@ -2,10 +2,11 @@ import { useRef, useState } from 'react'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { FaRegWindowClose } from 'react-icons/fa'
+import dynamic from 'next/dynamic'
 
-import PayWithCard from '../../PayWithCard'
+const PayWithCard = dynamic(import('../../PayWithCard'))
+const PayWithCash = dynamic(import('../../PayWithCash'))
 import style from './PaymentModal.module.css'
-import PayWithCash from '../../PayWithCash'
 
 const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_KEY}`)
 

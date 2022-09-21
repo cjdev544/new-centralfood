@@ -20,7 +20,15 @@ const useCart = () => {
   const { cartProducts, totalCostProducts } = useLocalStorage()
 
   useEffect(() => {
-    if (!authUser?.uid) return
+    if (!authUser?.uid) {
+      if (!promotionalCode) {
+        setTotalProducts(totalCostProducts)
+        return
+      } else {
+        //buscar codigo de promocion
+      }
+    }
+
     getOrdersUser(authUser.uid).then((res) => {
       if (res?.length === 0) {
         getFirstBuyPromotion().then((res) => {
