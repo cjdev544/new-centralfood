@@ -1,12 +1,15 @@
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import ClipLoader from 'react-spinners/ClipLoader'
 
+const subscribeEmail = dynamic(() =>
+  import('../../helpers/subscribeEmail').then((res) => res.subscribeEmail)
+)
 import style from './SubscribeForm.module.css'
 import { toast } from 'react-toastify'
-import { subscribeEmail } from '../../helpers/subscribeEmail'
 
 export default function SubscribeForm() {
   const [isLoading, setIsLoading] = useState(false)

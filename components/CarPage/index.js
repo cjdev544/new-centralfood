@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { round } from 'mathjs'
 import moment from 'moment'
@@ -6,19 +7,20 @@ import DatePicker, { setDefaultLocale } from 'react-datepicker'
 import es from 'date-fns/locale/es'
 import { FaPlus, FaCheck } from 'react-icons/fa'
 import Ley from '../../public/menu-ley.png'
+import { toast } from 'react-toastify'
 import 'react-datepicker/dist/react-datepicker.css'
+
+const AddressModal = dynamic(import('../modals/AddressModal'))
+const FormModal = dynamic(import('../modals/FormModal'))
+const PaymentModal = dynamic(import('../modals/PaymentModal'))
 
 import useData from '../../hooks/useData'
 import useAuth from '../../hooks/useAuth'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import useCart from '../../hooks/useCart'
 import ProductInCart from '../ProductInCart'
-import AddressModal from '../modals/AddressModal'
-import FormModal from '../modals/FormModal'
 import Auth from '../Auth'
 import style from './CarPage.module.css'
-import { toast } from 'react-toastify'
-import PaymentModal from '../modals/PaymentModal'
 
 export default function CarPage() {
   setDefaultLocale(es)

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import useOnclickOutside from 'react-cool-onclickoutside'
 import { FaCartPlus } from 'react-icons/fa'
 
+const FormModal = dynamic(import('../modals/FormModal'))
 import useAuth from '../../hooks/useAuth'
 import useFormModal from '../../hooks/useFormModal'
-import FormModal from '../modals/FormModal'
 import Auth from '../Auth'
 import Logo from '../../public/centralfood.svg'
 import style from './Header.module.css'

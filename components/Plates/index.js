@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 
+const ProductModal = dynamic(import('../modals/ProductModal'))
 import Product from '../Product'
-import ProductModal from '../modals/ProductModal'
-import style from './Plates.module.css'
 import Transition from '../Transition'
+import style from './Plates.module.css'
 
 export default function Plates({
   category,
