@@ -1,12 +1,13 @@
 import { Link, animateScroll as scroll } from 'react-scroll'
 import { FaArrowCircleUp } from 'react-icons/fa'
+import dynamic from 'next/dynamic'
 
+const OrderAlert = dynamic(import('../OrderAlert'))
+const Footer = dynamic(import('../Footer'))
 import useData from '../../hooks/useData'
 import useAuth from '../../hooks/useAuth'
 import useOrders from '../../hooks/useOrders'
 import Header from '../Header'
-import Footer from '../Footer'
-import OrderAlert from '../OrderAlert'
 import style from './Layout.module.css'
 
 export default function BasicLayout({ children }) {

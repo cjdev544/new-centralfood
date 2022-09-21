@@ -1,12 +1,13 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 
+const About = dynamic(import('../components/About'))
+const HomePlates = dynamic(import('../components/HomePlates'))
+const HomeSeparator = dynamic(import('../components/HomeSeparator'))
+const Restaurants = dynamic(import('../components/Restaurants'))
 import { getProducts, getDataHomepage, getRestaurants } from '../services/data'
-import About from '../components/About'
 import Hero from '../components/Hero'
 import SubscribeForm from '../components/SubscribeForm'
-import HomePlates from '../components/HomePlates'
-import HomeSeparator from '../components/HomeSeparator'
-import Restaurants from '../components/Restaurants'
 
 export default function Home({ products, restaurants, dataHome }) {
   return (
