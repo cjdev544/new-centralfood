@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 // import TagManager from 'react-gtm-module'
 import { ToastContainer } from 'react-toastify'
+import CookieConsent from 'react-cookie-consent'
 
 import AuthState from '../context/auth/authState'
 import CartState from '../context/cart/cartState'
@@ -10,9 +11,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-  // useEffect(() => {
-  //   TagManager.initialize({ gtmId: 'GTM-NR4NJ22' })
-  // }, [])
+  const handleAcceptCookie = () => {
+    //   TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID })
+  }
 
   return (
     <AuthState>
@@ -29,6 +30,15 @@ function MyApp({ Component, pageProps }) {
               draggable
               pauseOnHover
             />
+            <CookieConsent
+              enableDeclineButton
+              onAccept={handleAcceptCookie}
+              buttonText='Aceptar'
+              declineButtonText='Rechazar'
+            >
+              Este sitio web utiliza cookies para mejorar la experiencia del
+              usuario.
+            </CookieConsent>
           </BasicLayout>
         </AlertState>
       </CartState>

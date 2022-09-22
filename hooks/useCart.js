@@ -17,7 +17,7 @@ const useCart = () => {
   const [totalProducts, setTotalProducts] = useState(null)
 
   const { authUser } = useAuth()
-  const { cartProducts, totalCostProducts } = useLocalStorage()
+  const { totalCostProducts } = useLocalStorage()
 
   useEffect(() => {
     if (!authUser?.uid) {

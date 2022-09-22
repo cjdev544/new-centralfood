@@ -1,24 +1,28 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { round } from 'mathjs'
 import moment from 'moment'
 import DatePicker, { setDefaultLocale } from 'react-datepicker'
 import es from 'date-fns/locale/es'
 import { FaPlus, FaCheck } from 'react-icons/fa'
-import Ley from '../../public/menu-ley.png'
 import { toast } from 'react-toastify'
 import 'react-datepicker/dist/react-datepicker.css'
 
+import Ley from '../../public/menu-ley.png'
 import useData from '../../hooks/useData'
 import useAuth from '../../hooks/useAuth'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import AddressModal from '../modals/AddressModal'
 import FormModal from '../modals/FormModal'
-import PaymentModal from '../modals/PaymentModal'
 import useCart from '../../hooks/useCart'
 import ProductInCart from '../ProductInCart'
 import Auth from '../Auth'
 import style from './CarPage.module.css'
+
+const PaymentModal = dynamic(() => import('../modals/PaymentModal'), {
+  suspense: true,
+})
 
 export default function CarPage() {
   setDefaultLocale(es)
@@ -94,6 +98,11 @@ export default function CarPage() {
   const handleSubmit = () => {
     if (!isOpen) {
       toast.warning('El restaurante se encuentra cerrado en estos momentos')
+      return
+    }
+
+    if (!authUser?.uid) {
+      setOpenModalAuth(true)
       return
     }
 
@@ -310,20 +319,22 @@ export default function CarPage() {
         />
       )}
       {openModalPay && (
-        <PaymentModal
-          values={values}
-          name={name}
-          phone={phone}
-          shipping={shipping}
-          address={addressSelected}
-          deliveryCost={deliveryCost}
-          products={cartProducts}
-          promotion={promotion}
-          totalProducts={totalProducts}
-          totalCostProducts={totalCostProducts}
-          total={round(totalProducts + Number(deliveryCost), 2)}
-          setOpenModalPay={setOpenModalPay}
-        />
+        <Suspense fallback={`...Cargando`}>
+          <PaymentModal
+            values={values}
+            name={name}
+            phone={phone}
+            shipping={shipping}
+            address={addressSelected}
+            deliveryCost={deliveryCost}
+            products={cartProducts}
+            promotion={promotion}
+            totalProducts={totalProducts}
+            totalCostProducts={totalCostProducts}
+            total={round(totalProducts + Number(deliveryCost), 2)}
+            setOpenModalPay={setOpenModalPay}
+          />
+        </Suspense>
       )}
     </div>
   )

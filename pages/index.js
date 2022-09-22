@@ -1,13 +1,21 @@
+import { Suspense } from 'react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
-const About = dynamic(import('../components/About'))
-const HomePlates = dynamic(import('../components/HomePlates'))
-const HomeSeparator = dynamic(import('../components/HomeSeparator'))
-const Restaurants = dynamic(import('../components/Restaurants'))
 import { getProducts, getDataHomepage, getRestaurants } from '../services/data'
 import Hero from '../components/Hero'
 import SubscribeForm from '../components/SubscribeForm'
+
+const HomePlates = dynamic(() => import('../components/HomePlates'), {
+  suspense: true,
+})
+const About = dynamic(() => import('../components/About'), { suspense: true })
+const HomeSeparator = dynamic(() => import('../components/HomeSeparator'), {
+  suspense: true,
+})
+const Restaurants = dynamic(() => import('../components/Restaurants'), {
+  suspense: true,
+})
 
 export default function Home({ products, restaurants, dataHome }) {
   return (
@@ -21,14 +29,26 @@ export default function Home({ products, restaurants, dataHome }) {
       <main>
         <Hero />
         <SubscribeForm />
-        <HomePlates
-          products={products}
-          restaurants={restaurants}
-          dataHome={dataHome[0]}
-        />
-        <About />
-        <HomeSeparator />
-        <Restaurants />
+        <Suspense fallback={`Loading...`}>
+          <HomePlates
+            products={products}
+            restaurants={restaurants}
+            dataHome={dataHome[0]}
+          />
+        </Suspense>
+        <Suspense fallback={`<h2>Quienes somos</h2>`}>
+          <About />
+        </Suspense>
+        <Suspense
+          fallback={`<h3>Comida internacional en Málaga
+                      con sabor a
+                      Venezuela</h3>`}
+        >
+          <HomeSeparator />
+        </Suspense>
+        <Suspense fallback={`<h2>Nuestros restaurantes</h2>`}>
+          <Restaurants />
+        </Suspense>
       </main>
     </div>
   )
