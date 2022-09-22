@@ -3,9 +3,9 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
 import { getProducts, getDataHomepage, getRestaurants } from '../services/data'
-import Hero from '../components/Hero'
 import SubscribeForm from '../components/SubscribeForm'
 
+const Hero = dynamic(() => import('../components/Hero'), { suspense: true })
 const HomePlates = dynamic(() => import('../components/HomePlates'), {
   suspense: true,
 })
@@ -27,9 +27,11 @@ export default function Home({ products, restaurants, dataHome }) {
       </Head>
 
       <main>
-        <Hero />
+        <Suspense fallback={`Cargando...`}>
+          <Hero />
+        </Suspense>
         <SubscribeForm />
-        <Suspense fallback={`Loading...`}>
+        <Suspense fallback={`<h2>Platos mas pedidos</h2>`}>
           <HomePlates
             products={products}
             restaurants={restaurants}

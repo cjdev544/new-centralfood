@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 // import TagManager from 'react-gtm-module'
 import { ToastContainer } from 'react-toastify'
 import CookieConsent from 'react-cookie-consent'

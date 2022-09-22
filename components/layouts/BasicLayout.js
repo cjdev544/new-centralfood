@@ -1,14 +1,16 @@
+import { Suspense } from 'react'
+import dynamic from 'next/dynamic'
 import { Link, animateScroll as scroll } from 'react-scroll'
 import { FaArrowCircleUp } from 'react-icons/fa'
-import dynamic from 'next/dynamic'
 
-const OrderAlert = dynamic(import('../OrderAlert'))
-const Footer = dynamic(import('../Footer'))
 import useData from '../../hooks/useData'
 import useAuth from '../../hooks/useAuth'
 import useOrders from '../../hooks/useOrders'
-import Header from '../Header'
 import style from './Layout.module.css'
+
+const Header = dynamic(() => import('../Header'), { suspense: true })
+const OrderAlert = dynamic(() => import('../OrderAlert'), { suspense: true })
+const Footer = dynamic(() => import('../Footer'), { suspense: true })
 
 export default function BasicLayout({ children }) {
   useAuth()
@@ -26,12 +28,18 @@ export default function BasicLayout({ children }) {
       )}
       {ordersAlert?.length > 0 &&
         ordersAlert.map((order) => (
-          <OrderAlert key={order?.id} order={order} />
+          <Suspense key={order?.id} fallback={`Cargando...`}>
+            <OrderAlert order={order} />
+          </Suspense>
         ))}
-      <Header />
+      <Suspense fallback={`Cargando...`}>
+        <Header />
+      </Suspense>
       {children}
       {/* footer */}
-      <Footer />
+      <Suspense fallback={`Cargando...`}>
+        <Footer />
+      </Suspense>
       <Link
         className={style.arrow}
         to='up'

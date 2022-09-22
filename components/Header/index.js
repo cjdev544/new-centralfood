@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import useOnclickOutside from 'react-cool-onclickoutside'
 import { FaCartPlus } from 'react-icons/fa'
 
-const FormModal = dynamic(import('../modals/FormModal'))
+const FormModal = dynamic(() => import('../modals/FormModal'), {
+  suspense: true,
+})
 import useAuth from '../../hooks/useAuth'
 import useFormModal from '../../hooks/useFormModal'
 import Auth from '../Auth'
@@ -128,10 +130,12 @@ export default function Header() {
         <NavBar />
       </div>
       {openModal && (
-        <FormModal
-          setOpenModal={setOpenModal}
-          contentModal={<Auth setOpenModal={setOpenModal} />}
-        />
+        <Suspense fallback={`Cargando...`}>
+          <FormModal
+            setOpenModal={setOpenModal}
+            contentModal={<Auth setOpenModal={setOpenModal} />}
+          />
+        </Suspense>
       )}
     </header>
   )
