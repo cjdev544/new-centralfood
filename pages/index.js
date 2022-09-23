@@ -56,7 +56,7 @@ export default function Home({ products, restaurants, dataHome }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const products = await getProducts()
   const restaurants = await getRestaurants()
   const dataHome = await getDataHomepage()

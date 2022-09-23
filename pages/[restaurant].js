@@ -5,6 +5,7 @@ import { getProducts, getRestaurants } from '../services/data'
 import Plates from '../components/Plates'
 import Seo from '../components/Seo'
 import RestaurantPage from '../components/RestaurantPage'
+// import { createFetchValidate } from '../helpers/createFetchValidate'
 
 export default function Restaurant({ products, restaurants }) {
   const [title, setTitle] = useState('')
@@ -65,11 +66,39 @@ export default function Restaurant({ products, restaurants }) {
   )
 }
 
-export async function getServerSideProps() {
+// const createFetchValidate = (path, secret) => {
+//   // const baseUrl = req.headers.host
+//   return fetch(`http://localhost:3000/api/validate`, {
+//     body: JSON.stringify({
+//       path,
+//       secret,
+//     }),
+//     headers: {
+//       'Content-type': 'application/json',
+//     },
+//     method: 'POST',
+//   })
+// }
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { restaurant: 'guaywok' } },
+      { params: { restaurant: 'sabor-casita' } },
+    ],
+    fallback: 'blocking',
+  }
+}
+
+export async function getStaticProps(context) {
+  const { params } = context
   const allProducts = await getProducts()
   const restaurants = await getRestaurants()
+  const path = params?.restaurant
 
   const products = allProducts?.filter((product) => product.disponible)
+
+  // await createFetchValidate(path, process.env.REVALIDATE_SECRET_TOKEN)
 
   return {
     props: { products, restaurants }, // will be passed to the page component as props
