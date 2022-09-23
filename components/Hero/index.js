@@ -39,6 +39,8 @@ export default function Hero() {
             alt='Logo CentralFood'
             width={300}
             height={300}
+            priority={true}
+            quality={50}
           />
           <p className={style.styles}>
             Cuatro restaurantes, Cuatro estilos.
@@ -53,6 +55,7 @@ export default function Hero() {
                   width={120}
                   height={120}
                   className={style.restaurant}
+                  priority={true}
                 />
               </a>
             </Link>
@@ -64,6 +67,7 @@ export default function Hero() {
                   width={120}
                   height={120}
                   className={style.restaurant}
+                  priority={true}
                 />
               </a>
             </Link>
@@ -75,6 +79,7 @@ export default function Hero() {
                   width={120}
                   height={120}
                   className={style.restaurant}
+                  priority={true}
                 />
               </a>
             </Link>
@@ -86,6 +91,7 @@ export default function Hero() {
                   width={120}
                   height={120}
                   className={style.restaurant}
+                  priority={true}
                 />
               </a>
             </Link>

@@ -52,6 +52,7 @@ export default function Header() {
                 alt='Central Food logo'
                 width={100}
                 height={100}
+                priority={true}
               />
             </div>
           </a>
