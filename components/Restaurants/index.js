@@ -13,7 +13,7 @@ export default function Restaurants() {
       <h3>Cuatro restaurantes, Cuatro estilos</h3>
       <div className={style.grid}>
         {/* SushiGuay */}
-        <Link href='/sushiguay'>
+        <Link href='/sushiguay' prefetch={false}>
           <a>
             <div className={style.restaurant}>
               <div className={style.title}>
@@ -42,7 +42,7 @@ export default function Restaurants() {
         </Link>
 
         {/* GuayWok */}
-        <Link href='/guaywok'>
+        <Link href='/guaywok' prefetch={false}>
           <a>
             <div className={style.restaurant}>
               <div className={style.title}>
@@ -68,7 +68,7 @@ export default function Restaurants() {
         </Link>
 
         {/* Con sabor a Casita */}
-        <Link href='/sabor-casita'>
+        <Link href='/sabor-casita' prefetch={false}>
           <a>
             <div className={style.restaurant}>
               <div className={style.title}>
@@ -96,7 +96,7 @@ export default function Restaurants() {
         </Link>
 
         {/* Hamburguesería Venezuela */}
-        <Link href='/hamburgueseria-venezuela'>
+        <Link href='/hamburgueseria-venezuela' prefetch={false}>
           <a>
             <div className={style.restaurant}>
               <div className={style.title}>

@@ -12,7 +12,7 @@ export default function RestaurantsPage() {
     <div className={style.restaurants}>
       <h1>Nuestros Restaurantes</h1>
       <div className={style.logos}>
-        <Link href='/sushiguay'>
+        <Link href='/sushiguay' prefetch={false}>
           <a>
             <div className={style.restaurant}>
               <Image
@@ -27,7 +27,7 @@ export default function RestaurantsPage() {
             </div>
           </a>
         </Link>
-        <Link href='/guaywok'>
+        <Link href='/guaywok' prefetch={false}>
           <a>
             <div className={style.restaurant}>
               <Image
@@ -42,7 +42,7 @@ export default function RestaurantsPage() {
             </div>
           </a>
         </Link>
-        <Link href='/sabor-casita'>
+        <Link href='/sabor-casita' prefetch={false}>
           <a>
             <div className={style.restaurant}>
               <Image
@@ -57,7 +57,7 @@ export default function RestaurantsPage() {
             </div>
           </a>
         </Link>
-        <Link href='/hamburgueseria-venezuela'>
+        <Link href='/hamburgueseria-venezuela' prefetch={false}>
           <a>
             <div className={style.restaurant}>
               <Image
@@ -73,7 +73,7 @@ export default function RestaurantsPage() {
           </a>
         </Link>
       </div>
-      <Link href='/postres-bebidas'>
+      <Link href='/postres-bebidas' prefetch={false}>
         <a className={style.drinks}>
           <div className={style.button}>
             <h2>Postres y Bebidas</h2>

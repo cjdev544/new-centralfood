@@ -24,7 +24,7 @@ export default function NavBar() {
               : { fontWeight: 'normal' }
           }
         >
-          <Link href='/'>
+          <Link href='/' prefetch={false}>
             <a>Inicio</a>
           </Link>
         </li>
@@ -39,7 +39,7 @@ export default function NavBar() {
               : { fontWeight: 'normal' }
           }
         >
-          <Link href='/restaurantes'>
+          <Link href='/restaurantes' prefetch={false}>
             <a>Restaurantes</a>
           </Link>
         </li>
@@ -55,7 +55,7 @@ export default function NavBar() {
                 : { fontWeight: 'normal' }
             }
           >
-            <Link href='/pedidos'>
+            <Link href='/pedidos' prefetch={false}>
               <a>Mis pedidos</a>
             </Link>
           </li>

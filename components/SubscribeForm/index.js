@@ -71,9 +71,9 @@ export default function SubscribeForm() {
             value='first_checkbox'
             onChange={(e) => setChecked(e.target.checked)}
           />{' '}
-          He leído y acepto la{' '}
-          <Link href='/politica-privacidad'>
-            <a>política de privacidad</a>
+          He leído y acepto los{' '}
+          <Link href='/terminos-condiciones' prefetch={false}>
+            <a>Términos y condiciones</a>
           </Link>
         </div>
         <button type='submit' className='button' disabled={isLoading}>

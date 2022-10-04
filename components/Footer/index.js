@@ -40,17 +40,17 @@ const Footer = () => {
           <div className={style.column}>
             <h4>Legales</h4>
             <div className={style.legacy}>
-              <Link href='/terminos-condiciones'>
+              <Link href='/terminos-condiciones' prefetch={false}>
                 <a>
                   <p>Términos y condiciones</p>
                 </a>
               </Link>
-              <Link href='/politica-cookies'>
+              <Link href='/politica-cookies' prefetch={false}>
                 <a>
                   <p>Política de cookies</p>
                 </a>
               </Link>
-              <Link href='/derecho-desistimiento'>
+              <Link href='/derecho-desistimiento' prefetch={false}>
                 <a>
                   <p>Derecho de desistimiento</p>
                 </a>

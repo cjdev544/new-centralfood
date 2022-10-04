@@ -12,9 +12,9 @@ import useAuth from '../../hooks/useAuth'
 import useFormModal from '../../hooks/useFormModal'
 import Auth from '../Auth'
 import Logo from '../../public/centralfood.svg'
-import style from './Header.module.css'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import NavBar from '../NavBar'
+import style from './Header.module.css'
 
 export default function Header() {
   const { authUser, logout } = useAuth()
@@ -44,7 +44,7 @@ export default function Header() {
     <header className={style.headerContainer}>
       <div className={`container ${style.header}`}>
         {/* Logo */}
-        <Link href='/'>
+        <Link href='/' prefetch={false}>
           <a>
             <div className={style.logo}>
               <Image
@@ -65,7 +65,7 @@ export default function Header() {
 
         {/* Profile */}
         <div className={style.cartSide}>
-          <Link href='/carrito'>
+          <Link href='/carrito' prefetch={false}>
             <a>
               <div className={style.cartIcon} aria-label='carrito de compras'>
                 <FaCartPlus className={style.cart} />
@@ -116,7 +116,7 @@ export default function Header() {
                     : { opacity: '0', top: '-10rem' }
                 }
               >
-                <Link href='/cuenta'>
+                <Link href='/cuenta' prefetch={false}>
                   <a>
                     <span>Perfil de usuario</span>
                   </a>

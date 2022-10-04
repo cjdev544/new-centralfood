@@ -47,7 +47,7 @@ export default function Hero() {
             <span>Dale click en el logo y ve todos sus platos</span>
           </p>
           <div className={style.restaurants}>
-            <Link href='/sushiguay'>
+            <Link href='/sushiguay' prefetch={false}>
               <a>
                 <Image
                   src={SushiGuay}
@@ -59,7 +59,7 @@ export default function Hero() {
                 />
               </a>
             </Link>
-            <Link href='/guaywok'>
+            <Link href='/guaywok' prefetch={false}>
               <a>
                 <Image
                   src={GuayWok}
@@ -71,7 +71,7 @@ export default function Hero() {
                 />
               </a>
             </Link>
-            <Link href='/sabor-casita'>
+            <Link href='/sabor-casita' prefetch={false}>
               <a>
                 <Image
                   src={Sabor}
@@ -83,7 +83,7 @@ export default function Hero() {
                 />
               </a>
             </Link>
-            <Link href='/hamburgueseria-venezuela'>
+            <Link href='/hamburgueseria-venezuela' prefetch={false}>
               <a>
                 <Image
                   src={HamVzl}
