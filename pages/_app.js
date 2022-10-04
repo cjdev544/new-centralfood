@@ -1,12 +1,11 @@
+import Link from 'next/link'
 // import TagManager from 'react-gtm-module'
-import { ToastContainer } from 'react-toastify'
 import CookieConsent from 'react-cookie-consent'
 
 import AuthState from '../context/auth/authState'
 import CartState from '../context/cart/cartState'
 import AlertState from '../context/alerts/alertsState'
 import BasicLayout from '../components/layouts/BasicLayout'
-import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
@@ -20,23 +19,18 @@ function MyApp({ Component, pageProps }) {
         <AlertState>
           <BasicLayout>
             <Component {...pageProps} />
-            <ToastContainer
-              position='top-right'
-              autoClose={5000}
-              hideProgressBar
-              closeOnClick
-              rtl={false}
-              draggable
-              pauseOnHover
-            />
             <CookieConsent
               enableDeclineButton
               onAccept={handleAcceptCookie}
               buttonText='Aceptar'
               declineButtonText='Rechazar'
             >
-              Este sitio web utiliza cookies para mejorar la experiencia del
-              usuario.
+              Esta página web utiliza cookies para analizar de forma anónima y
+              estadística el uso que haces de la web, mejorar los contenidos y
+              tu experiencia de navegación. Para más información accede a la{' '}
+              <Link href='politica-cookies'>
+                <a style={{ color: 'orange' }}>Política de Cookies</a>
+              </Link>
             </CookieConsent>
           </BasicLayout>
         </AlertState>

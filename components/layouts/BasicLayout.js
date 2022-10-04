@@ -2,6 +2,8 @@ import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import { Link, animateScroll as scroll } from 'react-scroll'
 import { FaArrowCircleUp } from 'react-icons/fa'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import useData from '../../hooks/useData'
 import useAuth from '../../hooks/useAuth'
@@ -20,6 +22,15 @@ export default function BasicLayout({ children }) {
 
   return (
     <>
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar
+        closeOnClick
+        rtl={false}
+        draggable
+        pauseOnHover
+      />
       <div id='up' />
       {isOpen === false && (
         <div className={style.isOpen}>

@@ -19,7 +19,6 @@ export default function Product({ product, setProduct, setOpenModal }) {
           alt={product.nombre}
           width={100}
           height={100}
-          quality={40}
         />
       </div>
       <div className={style.info}>
