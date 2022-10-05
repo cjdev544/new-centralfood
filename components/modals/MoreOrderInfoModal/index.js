@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { FaRegWindowClose } from 'react-icons/fa'
-import moment from 'moment'
-import 'moment/locale/es'
+import { format } from 'date-fns'
 
 import style from './MoreOrderInfoModal.module.css'
 
@@ -44,8 +43,7 @@ export default function MoreOrderInfoModal({ order, setOpenModal }) {
         )}
         <p>
           <span className={style.bold}>Fecha de pedido:</span>{' '}
-          {moment(order.createdAt).format('L')} -{' '}
-          {moment(order.createdAt).format('LT')}
+          {format(order.createdAt, 'dd/MM/yy - h:m a')}
         </p>
         {order.cubiertosParaPersonas > 1 && (
           <p>

@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaEye } from 'react-icons/fa'
-import moment from 'moment'
-import 'moment/locale/es'
+import { format } from 'date-fns'
 
 import NoImage from '../../public/no-image.png'
 import style from './OrdersPage.module.css'
@@ -26,10 +25,7 @@ export default function Order({ order, setOpenModal, setOrderSelected }) {
       <div className={style.header}>
         <span>Pedido: {order.id}</span>
         <div className={style.flex}>
-          <span>
-            {moment(order.createdAt).format('L')} -{' '}
-            {moment(order.createdAt).format('LT')}
-          </span>
+          <span>{format(order.createdAt, 'dd/MM/yyyy - h:m a')}</span>
           <span
             className={style.icon}
             onClick={() => {

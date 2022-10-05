@@ -2,9 +2,9 @@ import { Suspense, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { round } from 'mathjs'
-import moment from 'moment'
-import DatePicker, { setDefaultLocale } from 'react-datepicker'
+import { format } from 'date-fns'
 import es from 'date-fns/locale/es'
+import DatePicker, { setDefaultLocale } from 'react-datepicker'
 import { FaPlus, FaCheck } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -61,8 +61,8 @@ export default function CarPage() {
       numberCutlery,
       notes,
       isDeliveryNow,
-      dateDelivery: moment(startDate).format('DD/MM/YY'),
-      timeDelivery: moment(startDate).format('LT'),
+      dateDelivery: format(startDate, 'dd/MM/yy'),
+      timeDelivery: format(startDate, 'h:m a'),
       name,
       phone,
     })

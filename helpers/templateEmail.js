@@ -1,5 +1,4 @@
-import moment from 'moment'
-import 'moment/locale/es'
+import { format } from 'date-fns'
 
 export const templateEmail = (order) => {
   return `
@@ -22,8 +21,7 @@ export const templateEmail = (order) => {
 </p>
 <p>
   Fecha de pedido:
-  ${moment(order.createdAt).format('L')} -${' '}
-  ${moment(order.createdAt).format('LT')}
+  ${format(order.createdAt, 'dd/MM/yyyy - h:m a')}
 </p>
 <p>
   Fecha de entrega: ${' '}

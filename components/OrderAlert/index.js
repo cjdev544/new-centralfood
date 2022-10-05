@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
-import moment from 'moment'
+import { formatDistanceStrict } from 'date-fns'
 
 import useAuth from '../../hooks/useAuth'
 import Counter from '../Counter'
 import style from './OrderAlert.module.css'
-import { or } from 'mathjs'
 
 export default function OrderAlert({ order }) {
   const { authUser } = useAuth()
@@ -59,10 +58,9 @@ export default function OrderAlert({ order }) {
 
   useEffect(() => {
     if (order?.cancel) {
-      const now = moment(new Date())
-      const buyTime = moment(order.createdAt)
-      var duration = moment.duration(now.diff(buyTime))
-      const minutes = duration.asMinutes()
+      const minutes = formatDistanceStrict(new Date(), order.createdAt, {
+        unit: 'minute',
+      })
       if (minutes > 160) setOrderAlert(null)
     }
   }, [order])
