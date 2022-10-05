@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
               Esta página web utiliza cookies para analizar de forma anónima y
               estadística el uso que haces de la web, mejorar los contenidos y
               tu experiencia de navegación. Para más información accede a la{' '}
-              <Link href='politica-cookies'>
+              <Link href='politica-cookies' prefetch={false}>
                 <a style={{ color: 'orange' }}>Política de Cookies</a>
               </Link>
             </CookieConsent>
