@@ -9,10 +9,16 @@ export default function About() {
     <section className={style.about}>
       <h3>Quienes somos</h3>
       <div className={style.img1}>
-        <Image src={Arepa2} alt='Arepa' width={300} height={300} />
+        <Image src={Arepa2} alt='Arepa' width={300} height={300} quality={30} />
       </div>
       <div className={style.img2}>
-        <Image src={Cachapa} alt='Cachapa' width={300} height={300} />
+        <Image
+          src={Cachapa}
+          alt='Cachapa'
+          width={300}
+          height={300}
+          quality={30}
+        />
       </div>
       <div className={style.info}>
         <p>

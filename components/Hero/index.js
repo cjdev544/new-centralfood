@@ -34,14 +34,15 @@ export default function Hero() {
       {/* RightSide */}
       <div className={style.rightSide}>
         <div className={style.images}>
-          <Image
-            src={CentralFood}
-            alt='Logo CentralFood'
-            width={300}
-            height={300}
-            priority={true}
-            quality={50}
-          />
+          <div className={style.principalImage}>
+            <Image
+              src={CentralFood}
+              alt='Logo CentralFood'
+              width={400}
+              height={300}
+              priority={true}
+            />
+          </div>
           <p className={style.styles}>
             Cuatro restaurantes, Cuatro estilos.
             <span>Dale click en el logo y ve todos sus platos</span>

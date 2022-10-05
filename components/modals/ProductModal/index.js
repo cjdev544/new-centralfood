@@ -177,6 +177,7 @@ export default function ProductModal({
               alt={product.nombre}
               width={200}
               height={200}
+              quality={50}
             />
           </div>
           <h2>{product.nombre}</h2>
