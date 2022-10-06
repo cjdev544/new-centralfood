@@ -9,7 +9,7 @@ const Footer = () => {
       <div className={style.container}>
         <div className={style.grid}>
           <div className={style.column}>
-            <h4>Visita nuestras redes</h4>
+            <p className={style.footerTitle}>Visita nuestras redes</p>
             <div className={style.icon}>
               <a
                 href='https://www.facebook.com/Centralfoodmalaga'
@@ -38,7 +38,7 @@ const Footer = () => {
             </div>
           </div>
           <div className={style.column}>
-            <h4>Legales</h4>
+            <p className={style.footerTitle}>Legales</p>
             <div className={style.legacy}>
               <Link href='/terminos-condiciones' prefetch={false}>
                 <a>
@@ -58,7 +58,7 @@ const Footer = () => {
             </div>
           </div>
           <div className={style.column}>
-            <h4>Local</h4>
+            <p className={style.footerTitle}>Dirección</p>
             <div className={style.local}>
               <a
                 href='https://www.google.com/maps/place/Central+food+M%C3%A1laga/@36.7212638,-4.4411586,17z/data=!3m1!4b1!4m5!3m4!1s0xd72f73a27895f9b:0x783c668421062425!8m2!3d36.7212596!4d-4.4389589?hl=es'

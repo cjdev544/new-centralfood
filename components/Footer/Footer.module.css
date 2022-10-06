@@ -1,12 +1,12 @@
 .footer {
-  background-color: var(--color-background-grey-dark);
+  background-color: var(--color-background-dark);
   color: var(--color-font-grey);
   margin-top: 3rem;
   padding: 30px;
   width: 100vw;
 }
 
-.footer h4 {
+.footerTitle {
   color: var(--color-font-light);
 }
 
@@ -59,6 +59,7 @@
 
 .local a {
   color: var(--color-primary);
+  margin: 0;
 }
 
 .local a:hover {

@@ -24,10 +24,8 @@ export default function Product({ product, setProduct, setOpenModal }) {
       </div>
       <div className={style.info}>
         <div className={style.headerInfo}>
-          <h2>{product.nombre}</h2>
-          <p>
-            Precio: <span>{product.precio}€</span>
-          </p>
+          <h3>{product.nombre}</h3>
+          <p>{product.precio}€</p>
         </div>
         <p>{cutDescription}...</p>
       </div>

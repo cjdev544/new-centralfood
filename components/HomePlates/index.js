@@ -28,7 +28,7 @@ export default function HomePlates({ products, restaurants, dataHome }) {
           </p>
           {productsInSection[0] !== undefined && (
             <>
-              <h3 className={style.title}>Nuestros platos más pedidos</h3>
+              <h2 className={style.title}>Nuestros platos más pedidos</h2>
               <div className={style.products}>
                 {productsInSection.map((product) => (
                   <Product

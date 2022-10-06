@@ -65,20 +65,22 @@ export default function SubscribeForm() {
           onChange={formik.handleChange}
         />
         <div className={style.checkBox}>
-          <input
-            type='checkbox'
-            id='cbox1'
-            value='first_checkbox'
-            onChange={(e) => setChecked(e.target.checked)}
-          />{' '}
-          He leído y acepto los{' '}
-          <Link href='/terminos-condiciones' prefetch={false}>
-            <a>Términos y condiciones</a>
-          </Link>
+          <label>
+            <input
+              type='checkbox'
+              id='cbox1'
+              value='first_checkbox'
+              onChange={(e) => setChecked(e.target.checked)}
+            />{' '}
+            He leído y acepto los{' '}
+            <Link href='/terminos-condiciones' prefetch={false}>
+              <a>Términos y condiciones</a>
+            </Link>
+          </label>
         </div>
         <button type='submit' className='button' disabled={isLoading}>
-          <ClipLoader color='#fff' loading={isLoading} size={20} />
-          Suscribirme
+          <ClipLoader color='#000' loading={isLoading} size={20} />
+          <span className={style.spanButton}>Suscribirme</span>
         </button>
       </form>
     </section>

@@ -5,7 +5,8 @@
 }
 
 .restaurant h1 {
-  color: var(--color-primary);
+  color: var(--color-background-grey-dark);
+  font-style: italic;
   margin: 0;
 }
 

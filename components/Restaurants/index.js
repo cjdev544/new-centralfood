@@ -10,7 +10,7 @@ import style from './Restaurants.module.css'
 export default function Restaurants() {
   return (
     <section className={style.restaurants}>
-      <h3>Cuatro restaurantes, Cuatro estilos</h3>
+      <p className={style.titleSection}>Cuatro restaurantes, Cuatro estilos</p>
       <div className={style.grid}>
         {/* SushiGuay */}
         <Link href='/sushiguay' prefetch={false}>
