@@ -40,7 +40,6 @@ const useData = () => {
       })
       return array
     } catch (err) {
-      console.log(err)
       toast.error('Error en el servidor')
     }
   }

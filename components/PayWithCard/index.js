@@ -93,7 +93,6 @@ export default function PayWithCard({
         }
       })
       .catch((err) => {
-        console.log(err)
         setProcessing(false)
         toast.error('Error en el servidor, intente nuevamente')
         return null

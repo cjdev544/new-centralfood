@@ -13,7 +13,5 @@ export const fetchSendEmail = async (email, order) => {
 
     const response = await res.json()
     return response
-  } catch (err) {
-    console.log(err)
-  }
+  } catch (err) {}
 }

@@ -24,7 +24,5 @@ export const fetchPaymentApi = async (
 
     const response = await res.json()
     return response
-  } catch (err) {
-    console.log(ree)
-  }
+  } catch (err) {}
 }

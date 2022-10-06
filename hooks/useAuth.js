@@ -42,7 +42,6 @@ const useAuth = () => {
     } catch (err) {
       setIsLoading(false)
       setOpenModal(false)
-      console.log(err)
       toast.error('Error al conectar con Gmail! intente mas tarde')
     }
   }
@@ -127,7 +126,6 @@ const useAuth = () => {
         formData.email,
         formData.password
       )
-      console.log(userCredential.user)
       await updateEmail(userCredential.user, formData.newEmail)
       setAuthUser({
         ...authUser,
@@ -136,7 +134,6 @@ const useAuth = () => {
       toast.success('El email fue cambiado correctamente')
       setIsLoading(false)
     } catch (err) {
-      console.log(err)
       toast.error('Error al cambiar el correo')
       setIsLoading(false)
     }
@@ -154,7 +151,6 @@ const useAuth = () => {
       toast.success('La contraseña fue cambiada correctamente')
       setIsLoading(false)
     } catch (err) {
-      console.log(err)
       toast.error('Error al cambiar la contraseña')
       setIsLoading(false)
     }
@@ -165,7 +161,6 @@ const useAuth = () => {
       await signOut(auth)
       setAuthUser(null)
     } catch (err) {
-      console.log(err)
       toast.error('Error en el servidor! intente mas tarde')
     }
   }

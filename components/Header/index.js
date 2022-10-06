@@ -50,8 +50,8 @@ export default function Header() {
               <Image
                 src={Logo}
                 alt='Central Food logo'
-                width={100}
-                height={100}
+                width={143}
+                height={97}
                 priority={true}
               />
             </div>
@@ -81,6 +81,7 @@ export default function Header() {
                   </span>
                 )}
               </div>
+              <span className={style.hidden}>carrito de compras</span>
             </a>
           </Link>
           {!authUser && (

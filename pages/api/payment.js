@@ -139,7 +139,6 @@ export default async (req, res) => {
       order: data,
     })
   } catch (err) {
-    console.log(err)
     res.status(500).json({
       msg: 'Error de servidor, intente de nuevooooo',
     })

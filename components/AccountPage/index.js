@@ -35,7 +35,6 @@ export default function AccountPage() {
         setIsLoading(false)
       })
       .catch((err) => {
-        console.log(err)
         toast.error('Error al eliminar la dirección')
         setIsLoading(false)
       })

@@ -62,7 +62,6 @@ export default function PayWithCash({
         removeAllProductsCart()
       })
       .catch((err) => {
-        console.log(err)
         toast.warning('Error al crear la orden')
         setIsLoading(false)
         setOpenModalPay(false)

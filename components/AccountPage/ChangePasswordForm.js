@@ -30,7 +30,6 @@ export default function ChangePasswordForm({ isLoading, setIsLoading }) {
       updatePasswordUser(formData, setIsLoading)
     },
   })
-  console.log(formik.errors)
 
   return (
     <div className={style.changeForm}>

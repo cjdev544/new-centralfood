@@ -62,14 +62,11 @@ export default function AddressForm({
             setIsLoading(false)
           })
           .catch((err) => {
-            console.log(err)
             toast.error('Error al crear la dirección')
             setOpenModal(false)
             setIsLoading(false)
           })
       } else {
-        console.log({ address })
-        console.log({ formData })
         updateAddress(address, {
           ...formData,
           user: authUser.uid,
@@ -88,7 +85,6 @@ export default function AddressForm({
             setOpenModal(false)
           })
           .catch((err) => {
-            console.log(err)
             toast.error('Error al editar la dirección')
             setIsLoading(false)
             setOpenModal(false)

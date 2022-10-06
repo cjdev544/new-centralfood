@@ -40,7 +40,6 @@ export default function SubscribeForm() {
           setIsLoading(false)
         })
         .catch((err) => {
-          console.log(err)
           toast.error('Error en el servidor. Intenta nuevamente')
           setIsLoading(false)
         })

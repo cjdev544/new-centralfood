@@ -11,6 +11,5 @@ export const createFetchValidate = async (path, secret) => {
     method: 'POST',
   })
 
-  console.log({ res })
   return res.status(200).json({ ok: true })
 }

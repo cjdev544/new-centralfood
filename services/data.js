@@ -130,7 +130,6 @@ export const updateAddress = async (address, updateAddress) => {
 }
 
 export const deleteAddress = async (address) => {
-  console.log({ address })
   const addressRef = doc(db, 'addresses', address.id)
   await deleteDoc(addressRef)
 }
