@@ -34,9 +34,40 @@ const useAuth = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const stateChangeWithPassword = (displayName) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user?.uid) {
+        const { uid, email, photoURL, providerData } = user
+        const provider = providerData[0].providerId
+
+        if (!authUser?.uid) {
+          setAuthUser({ uid, displayName, email, photoURL, provider })
+        }
+      } else {
+        setAuthUser(null)
+      }
+    })
+  }
+
+  const stateChangeWithProvider = () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user?.uid) {
+        const { uid, email, photoURL, providerData } = user
+        const provider = providerData[0].providerId
+
+        if (!authUser?.uid) {
+          setAuthUser({ uid, displayName, email, photoURL, provider })
+        }
+      } else {
+        setAuthUser(null)
+      }
+    })
+  }
+
   const startWithGoogle = async (setOpenModal, setIsLoading) => {
     try {
       await signInWithPopup(auth, googleProvider)
+      stateChangeWithProvider()
       setIsLoading(false)
       setOpenModal(false)
     } catch (err) {
@@ -53,6 +84,7 @@ const useAuth = () => {
     setOpenModal,
     setIsLoading
   ) => {
+    console.log({ displayName })
     try {
       const credentials = await createUserWithEmailAndPassword(
         auth,
@@ -60,6 +92,7 @@ const useAuth = () => {
         password
       )
       await updateProfile(credentials.user, { displayName })
+      stateChangeWithPassword(displayName)
       setIsLoading(false)
       setOpenModal(false)
     } catch (err) {

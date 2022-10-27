@@ -57,6 +57,8 @@ export default function BasicLayout({ children }) {
         smooth={true}
         offset={0}
         duration={500}
+        rel='noreferrer noopener'
+        aria-label='Ia al principio de página'
       >
         <FaArrowCircleUp />
       </Link>

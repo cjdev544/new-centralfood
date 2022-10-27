@@ -11,7 +11,7 @@ export const fetchPaymentApi = async (
       body: JSON.stringify({
         products,
         idUser: authUser.uid,
-        username: authUser.name,
+        username: authUser.displayName,
         addressShipping: address,
         values,
         priceShipping,
