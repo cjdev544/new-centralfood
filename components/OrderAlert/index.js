@@ -61,7 +61,8 @@ export default function OrderAlert({ order }) {
       const minutes = formatDistanceStrict(new Date(), order.createdAt, {
         unit: 'minute',
       })
-      if (minutes > 160) setOrderAlert(null)
+
+      if (Number(minutes.split(' ')[0]) > 160) setOrderAlert(null)
     }
   }, [order])
 
