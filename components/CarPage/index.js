@@ -319,7 +319,7 @@ export default function CarPage() {
         />
       )}
       {openModalPay && (
-        <Suspense fallback={`...Cargando`}>
+        <Suspense fallback={''}>
           <PaymentModal
             values={values}
             name={name}

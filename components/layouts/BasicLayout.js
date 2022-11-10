@@ -39,16 +39,16 @@ export default function BasicLayout({ children }) {
       )}
       {ordersAlert?.length > 0 &&
         ordersAlert.map((order) => (
-          <Suspense key={order?.id} fallback={`Cargando...`}>
+          <Suspense key={order?.id} fallback={''}>
             <OrderAlert order={order} />
           </Suspense>
         ))}
-      <Suspense fallback={`Cargando...`}>
+      <Suspense fallback={''}>
         <Header />
       </Suspense>
       {children}
       {/* footer */}
-      <Suspense fallback={`Cargando...`}>
+      <Suspense fallback={''}>
         <Footer />
       </Suspense>
       <Link

@@ -130,7 +130,7 @@ export default function Header() {
         <NavBar />
       </div>
       {openModal && (
-        <Suspense fallback={`Cargando...`}>
+        <Suspense fallback={''}>
           <FormModal
             setOpenModal={setOpenModal}
             contentModal={<Auth setOpenModal={setOpenModal} />}
