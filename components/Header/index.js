@@ -21,7 +21,7 @@ export default function Header() {
   const { cartProducts } = useLocalStorage()
   const { openModal, setOpenModal } = useFormModal()
   const [showOptions, setShowOptions] = useState(false)
-  const [initialsName, setInitialsName] = useState(null)
+  const [initialsName, setInitialsName] = useState('Pf')
 
   useEffect(() => {
     if (authUser && !authUser?.photoURL) {
@@ -30,8 +30,6 @@ export default function Header() {
         const separateName = authUser.displayName.split(' ')
         initialsNames = separateName[0].at(0) + separateName[1].at(0)
         setInitialsName(initialsNames.toUpperCase())
-      } else {
-        setInitialsName('Pf')
       }
     }
   }, [authUser])

@@ -16,9 +16,9 @@ export default function HomePlates({ products, restaurants, dataHome }) {
     return res[0]
   })
   const productsInSection = productsFilter?.filter(
-    (product) => product.disponible
+    (product) => product?.disponible
   )
-
+  
   return (
     <section className={style.homePlates}>
       <div className={style.opacity}>
@@ -28,7 +28,7 @@ export default function HomePlates({ products, restaurants, dataHome }) {
           </p>
           {productsInSection[0] !== undefined && (
             <>
-              <h2 className={style.title}>Nuestros platos más pedidos</h2>
+              <h2 className={style.title}>{dataHome?.title}</h2>
               <div className={style.products}>
                 {productsInSection.map((product) => (
                   <Product

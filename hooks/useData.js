@@ -18,6 +18,7 @@ const useData = () => {
     if (isOpen === undefined) {
       isOpenOrClose(setIsOpen)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getRestaurants = async () => {

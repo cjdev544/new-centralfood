@@ -84,7 +84,6 @@ const useAuth = () => {
     setOpenModal,
     setIsLoading
   ) => {
-    console.log({ displayName })
     try {
       const credentials = await createUserWithEmailAndPassword(
         auth,
