@@ -21,7 +21,7 @@ export default function Transition({ category, children }) {
 
   return (
     <div className={style.transition}>
-      <AnimatePresence initial={false} exitBeforeEnter>
+      <AnimatePresence initial={false} mode='wait'>
         <motion.div
           key={category}
           variants={variants}

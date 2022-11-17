@@ -14,6 +14,25 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { auth, db } from '../firebase/config'
 
+export const getUsers = async () => {
+  const array = []
+  const q = query(collection(db, 'users'))
+  const querySnapshot = await getDocs(q)
+  querySnapshot.forEach((doc) => {
+    array.push({ id: doc.id, ...doc.data() })
+  })
+  return array
+}
+
+export const createUser = async (user) => {
+  const docRef = doc(db, 'users', user.uid)
+  await setDoc(docRef, {
+    uid: user.uid,
+    email: user.email,
+    username: user.displayName,
+  })
+}
+
 export const getRestaurants = async () => {
   const array = []
   const q = query(collection(db, 'restaurants'))

@@ -6,10 +6,10 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
-  sendPasswordResetEmail,
   updateEmail,
   updatePassword,
 } from 'firebase/auth'
+import { getUsers, createUser } from '../services/data'
 import { toast } from 'react-toastify'
 
 import { auth, googleProvider } from '../firebase/config'
@@ -34,6 +34,24 @@ const useAuth = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(() => {
+    if (authUser?.uid) {
+      checkUserExistInDataBase()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authUser])
+
+  const checkUserExistInDataBase = () => {
+    getUsers().then((res) => {
+      const userExist = res?.find((user) => user.uid === authUser.uid)
+      if (!userExist) createUserDataBase()
+    })
+  }
+
+  const createUserDataBase = () => {
+    createUser(authUser)
+  }
+
   const stateChangeWithPassword = (displayName) => {
     onAuthStateChanged(auth, (user) => {
       if (user?.uid) {
@@ -52,11 +70,8 @@ const useAuth = () => {
   const stateChangeWithProvider = () => {
     onAuthStateChanged(auth, (user) => {
       if (user?.uid) {
-        const { uid, email, photoURL, providerData } = user
-        const provider = providerData[0].providerId
-
         if (!authUser?.uid) {
-          setAuthUser({ uid, displayName, email, photoURL, provider })
+          if (user?.displayName) setAuthUser(user)
         }
       } else {
         setAuthUser(null)
