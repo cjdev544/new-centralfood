@@ -4,6 +4,7 @@ export const fetchPaymentApi = async (
   authUser,
   address,
   values,
+  promotion,
   priceShipping
 ) => {
   try {
@@ -14,6 +15,7 @@ export const fetchPaymentApi = async (
         username: authUser.displayName,
         addressShipping: address,
         values,
+        promotion,
         priceShipping,
       }),
       headers: {

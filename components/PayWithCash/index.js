@@ -14,6 +14,7 @@ export default function PayWithCash({
   products,
   address,
   values,
+  promotion,
   priceShipping,
   total,
   setIsLoading,
@@ -41,6 +42,7 @@ export default function PayWithCash({
       authUser,
       address,
       values,
+      promotion,
       priceShipping
     )
       .then(async (response) => {

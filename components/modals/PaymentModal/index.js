@@ -19,6 +19,7 @@ export default function PaymentModal({
   deliveryCost,
   products,
   promotion,
+  isPromotionCodeCorrect,
   totalCostProducts,
   totalProducts,
   total,
@@ -53,7 +54,11 @@ export default function PaymentModal({
           {promotion && (
             <>
               <div className={style.amountItem}>
-                <span>{promotion.name}:</span>
+                {isPromotionCodeCorrect ? (
+                  <span>Cupon {promotion.name}:</span>
+                ) : (
+                  <span>{promotion.name}:</span>
+                )}
                 <span>{promotion.cost}%</span>
               </div>
               <div className={style.amountItem}>
@@ -102,6 +107,7 @@ export default function PaymentModal({
                     products={products}
                     address={address}
                     values={values}
+                    promotion={promotion}
                     priceShipping={deliveryCost}
                     total={total}
                     setIsLoading={setIsLoading}
@@ -112,6 +118,7 @@ export default function PaymentModal({
                     products={products}
                     address={address}
                     values={values}
+                    promotion={promotion}
                     priceShipping={deliveryCost}
                     setOpenModalPay={setOpenModalPay}
                   />

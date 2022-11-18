@@ -1,5 +1,5 @@
 const admin = require('firebase-admin')
-const { round, isNumber } = require('mathjs')
+const { round } = require('mathjs')
 const { nanoid } = require('nanoid')
 
 if (!admin.apps.length) {
@@ -22,6 +22,7 @@ export default async (req, res) => {
       idUser,
       username,
       addressShipping,
+      promotion,
       values,
       priceShipping,
     } = req.body
@@ -54,7 +55,8 @@ export default async (req, res) => {
       array.push(doc.data())
     })
     if (!array?.length) {
-      getFirstBuyDiscount()
+      if (promotion?.name === 'Descuento por primera compra')
+        getFirstBuyDiscount()
     }
 
     // Search and calculate subtotal for products
@@ -92,6 +94,26 @@ export default async (req, res) => {
       totalPayment =
         Number(totalPayment) -
         (Number(totalPayment) * Number(firstBuyDiscount)) / 100
+    }
+
+    if (promotion?.id) {
+      const docRef = db.collection('discount').doc(promotion.id)
+      const doc = await docRef.get()
+      descuento = {
+        nombre: doc.data().name,
+        cost: doc.data().discount,
+        type: doc.data().type,
+        use: doc.data().use,
+      }
+      await db
+        .collection('discount')
+        .doc(promotion.id)
+        .set({ ...doc.data(), use: doc.data().use + 1 })
+
+      notDiscount = round(Number(totalPayment), 2)
+      totalPayment =
+        Number(totalPayment) -
+        (Number(totalPayment) * Number(descuento.cost)) / 100
     }
 
     if (values?.shipping) {

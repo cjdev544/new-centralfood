@@ -34,6 +34,8 @@ export default function CarPage() {
     deliveryCost,
     addressSelected,
     promotion,
+    promotionalCode,
+    isPromotionCodeCorrect,
     totalProducts,
     setDeliveryCost,
     setAddressSelected,
@@ -110,6 +112,13 @@ export default function CarPage() {
       toast.warning('El nombre y el teléfono son obligatorios')
       return
     }
+    if (promotionalCode?.length) {
+      if (!isPromotionCodeCorrect) {
+        toast.warning('El codigo introducido no es valido')
+        return
+      }
+    }
+
     setOpenModalPay(true)
   }
 
@@ -265,6 +274,9 @@ export default function CarPage() {
           />
           <input
             className={style.inputContact}
+            style={
+              !isPromotionCodeCorrect ? { color: 'red' } : { color: 'green' }
+            }
             type='text'
             placeholder='¿Tienes un código promocional?'
             onChange={(e) => setPromotionalCode(e.target.value)}
@@ -279,7 +291,11 @@ export default function CarPage() {
           {promotion && (
             <>
               <div className={style.amountItem}>
-                <span>{promotion.name}:</span>
+                {isPromotionCodeCorrect ? (
+                  <span>Cupon {promotion.name}:</span>
+                ) : (
+                  <span>{promotion.name}:</span>
+                )}
                 <span>{promotion.cost}%</span>
               </div>
               <div className={style.amountItem}>
@@ -329,6 +345,7 @@ export default function CarPage() {
             deliveryCost={deliveryCost}
             products={cartProducts}
             promotion={promotion}
+            isPromotionCodeCorrect={isPromotionCodeCorrect}
             totalProducts={totalProducts}
             totalCostProducts={totalCostProducts}
             total={round(totalProducts + Number(deliveryCost), 2)}

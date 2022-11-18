@@ -13,6 +13,7 @@ export default function PayWithCard({
   products,
   address,
   values,
+  promotion,
   priceShipping,
   setOpenModalPay,
 }) {
@@ -64,6 +65,7 @@ export default function PayWithCard({
       authUser,
       address,
       values,
+      promotion,
       priceShipping
     )
       .then(async (response) => {

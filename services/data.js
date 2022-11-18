@@ -175,3 +175,13 @@ export const updateOrder = async (order) => {
   const orderRef = doc(db, 'orders', order.id)
   await updateDoc(orderRef, { ...order, orderSend: true })
 }
+
+export const getDiscounts = async () => {
+  const array = []
+  const q = query(collection(db, 'discount'))
+  const querySnapshot = await getDocs(q)
+  querySnapshot.forEach((doc) => {
+    array.push({ id: doc.id, ...doc.data() })
+  })
+  return array
+}

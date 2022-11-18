@@ -18,7 +18,7 @@ export default function HomePlates({ products, restaurants, dataHome }) {
   const productsInSection = productsFilter?.filter(
     (product) => product?.disponible
   )
-  
+
   return (
     <section className={style.homePlates}>
       <div className={style.opacity}>
@@ -26,7 +26,7 @@ export default function HomePlates({ products, restaurants, dataHome }) {
           <p className={style.discount}>
             Realiza tu primera compra con un <span>10% de DESCUENTO</span>
           </p>
-          {productsInSection[0] !== undefined && (
+          {productsInSection?.length && (
             <>
               <h2 className={style.title}>{dataHome?.title}</h2>
               <div className={style.products}>
