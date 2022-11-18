@@ -9,11 +9,11 @@ class MyDocument extends Document {
           <link rel='apple-touch-icon' href='/icon.png'></link>
           <meta name='theme-color' content='#fff' />
 
-          {/* <script
+          <script
             async
             defer
-            src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBERa0jlcgpGXzcp-b2w5FdrhwcjAUe-tM&libraries=places'
-          ></script> */}
+            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_PLACES_API_KEY}&libraries=places`}
+          ></script>
         </Head>
         <body>
           <Main />

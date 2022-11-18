@@ -105,11 +105,6 @@ export default function PlacesAutocompleteGoogle({
 
   return (
     <div ref={registerRef} className={style.placesBox}>
-      <Script
-        src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBERa0jlcgpGXzcp-b2w5FdrhwcjAUe-tM&libraries=places'
-        strategy='afterInteractive'
-      />
-      {/* ********** */}
       <label htmlFor='address'>Calle/Avenida/Zona</label>
       <input
         id='address'
