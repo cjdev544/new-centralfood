@@ -25,7 +25,7 @@ export default function About() {
           Hola y bienvenido a CentralFood Málaga. Somos una pareja de
           venezolanos con gran pasión y entusiasmo por la comida y sus
           diferentes sabores. ¡Si! Somos un restaurante venezolano en Málaga,
-          pero, traemos la comida internacional fusionada con nuestro sabor
+          pero, traemos la comida internacional fusionada con nuestro toque
           caribeño para crear una explocion de sabores. Ofrecemos comida
           internacional con sabor a Venezuela, cinco restaurantes, cada uno con
           el sabor característico de su lugar de origen incorporando nuestra

@@ -10,7 +10,7 @@ import style from './Restaurants.module.css'
 export default function Restaurants() {
   return (
     <section className={style.restaurants}>
-      <p className={style.titleSection}>Cuatro restaurantes, Cuatro estilos</p>
+      <p className={style.titleSection}>Cinco restaurantes, Cinco estilos</p>
       <div className={style.grid}>
         {/* SushiGuay */}
         <Link href='/sushiguay' prefetch={false}>
@@ -26,17 +26,12 @@ export default function Restaurants() {
                 <h2>SushiGuay</h2>
               </div>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum nisi lectus, aliquet a malesuada vitae, semper vitae
-                nibh. Proin convallis ornare ipsum, eget lobortis velit tempus
-                nec. Proin pretium porta purus sit amet luctus. Pellentesque
-                aliquet consectetur malesuada. Etiam nec finibus tellus.
-                Suspendisse ipsum enim, accumsan at magna congue, gravida porta
-                magna. Nullam ipsum ipsum, aliquet at fermentum vitae, tempus id
-                nunc. Aliquam molestie nunc quis eros commodo, finibus cursus
-                dui ultrices. In risus sapien, viverra ac sem id, facilisis
-                tincidunt orci. Mauris pulvinar, arcu quis varius tin
+                SushiGuay un restaurante japonés en Málaga. Ofrecemos gran
+                variedad de sushi, como los Maki, Sushiroll, Rolls Tempura,
+                Rolls Semi Tempura y varios combos, puedes ver nuestro menú por
+                apartados dando click en cada sección para verlos en detalle.
               </p>
+              <p>SushiGuay tu sushi en Málaga.</p>
             </div>
           </a>
         </Link>
