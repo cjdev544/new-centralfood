@@ -22,24 +22,22 @@ export default function About() {
       </div>
       <div className={style.info}>
         <p>
-          Hola!!! que gusto nos da tenerte de visita en busca de un buen sushi a
-          domicilio en Málaga… pues estas en el lugar indicado, donde probaras
-          sabores que te encantaran, aprovechamos este privilegio para
-          presentarnos somos un emprendimiento joven y este oficio paso de ser
-          nuestro hobby amantes de la comida japonesa a una realidad, esto
-          comenzó en noviembre del 2019 Cuando de tanto buscar un rico sushi en
-          tempura era casi misión imposible o un arroz frito como el de
-          Venezuela y woow nada, muy rico sí!, pero allí faltaba algo… un buen
-          fin de semana una amiga me llama y me dice; Jennifer es posible que tu
-          esposo nos haga sushi para una pequeña quedada yo le respondí que sí,
-          y compramos los ingredientes al llegar el día al que mi amiga invita a
-          varios de sus conocidos, vaya sorpresa la nuestra en esa reunión
-          estaban varios dueños de locales que al pasar la velada después de
-          servir el sushi, donde Gabriel mi esposo se destacó y preparo su best
-          seller el Plátano Roll con salmón en tempura su salsa de anguila y sus
-          roles crocantes en tempura como el Tiger Roll yo prepare arroz frito a
-          nuestro estilo venezolano, teníamos poco tiempo de estar aquí en
-          Málaga por ende no comprendíamos muchas palabras!...
+          Hola y bienvenido a CentralFood Málaga. Somos una pareja de
+          venezolanos con gran pasión y entusiasmo por la comida y sus
+          diferentes sabores. ¡Si! Somos un restaurante venezolano en Málaga,
+          pero, traemos la comida internacional fusionada con nuestro sabor
+          caribeño para crear una explocion de sabores. Ofrecemos comida
+          internacional con sabor a Venezuela, cinco restaurantes, cada uno con
+          el sabor característico de su lugar de origen incorporando nuestra
+          firma auténtica para sorprender tu paladar, como dice nuestro eslogan:
+          “En la variedad está el gusto”.
+        </p>
+        <p>
+          Puedes disfrutar de nuestro menú en un local acogedor, atendido por
+          nosotros, donde nuestra prioridad será tu comodidad, bienestar y
+          disfrute, ó si prefieres degustar una rica comida en la comodidad de
+          tu hogar, ofrecemos entregas a domicilio a tu casa. Revisa el menu de
+          todos nuestros restaurantes, elije lo que quieras y pasala Guay.
         </p>
       </div>
     </section>
