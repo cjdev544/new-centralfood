@@ -77,17 +77,17 @@ export default function Restaurants() {
                 />
                 <h2>Con sabor a Casita</h2>
               </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum nisi lectus, aliquet a malesuada vitae, semper vitae
-                nibh. Proin convallis ornare ipsum, eget lobortis velit tempus
-                nec. Proin pretium porta purus sit amet luctus. Pellentesque
-                aliquet consectetur malesuada. Etiam nec finibus tellus.
-                Suspendisse ipsum enim, accumsan at magna congue, gravida porta
-                magna. Nullam ipsum ipsum, aliquet at fermentum vitae, tempus id
-                nunc. Aliquam molestie nunc quis eros commodo,tincidunt, velit
-                sem hendrerit velit, id interdum nisl lacus id ex.
-              </p>
+              <div>
+                <p>
+                  Con sabor a casita, comida casera venezolana en Málaga. Si
+                  buscas ese rico sabor de la comida casera como las empanadas
+                  venezolanas, arepas venezolanas, el famoso pabellón criollo,
+                  cachapas y otros platos con ese toque de hecho en casa, estás
+                  en el lugar indicado. Puedes ver nuestro menú por apartados
+                  dando click en cada sección para verlos en detalle.
+                </p>
+                <p>Restaurante venezolano en Málaga</p>
+              </div>
             </div>
           </a>
         </Link>
@@ -106,13 +106,11 @@ export default function Restaurants() {
                 <h2>Hamburguesería Venezuela</h2>
               </div>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum nisi lectus, aliquet a malesuada vitae, semper vitae
-                nibh. Proin convallis ornare ipsum, eget lobortis velit tempus
-                nec. Proin pretium porta purus sit amet luctus. Pellentesque
-                aliquet consectetur malesuada. Etiam nec finibus tellus.
-                Suspendisse ipsum enim, accumsan at magna congue, gravida porta
-                magna. Nullam ipsum ipsum, aliquet at fer
+                Hamburguesería VZLA, comida americana con sabor a Venezuela en
+                Málaga. Si buscas ese rico sabor de las hamburguesas
+                venezolanas, perros calientes, pepitos y camperos, estás en el
+                lugar indicado. Puedes ver nuestro menú por apartados dando
+                click en cada sección para verlos en detalle.
               </p>
             </div>
           </a>
