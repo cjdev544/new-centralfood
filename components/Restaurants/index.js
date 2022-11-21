@@ -49,15 +49,17 @@ export default function Restaurants() {
                 />
                 <h2>GuayWok</h2>
               </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum nisi lectus, aliquet a malesuada vitae, semper vitae
-                nibh. Proin convallis ornare ipsumae, tempus id nunc. Aliquam
-                molestie nunc quis eros commodo, finibus cursus dui ultrices. In
-                risus sapien, viverra ac sem id, facilisis tincidunt orci.
-                Mauris pulvinar, arcu quis varius tincidunt, velit sem hendrerit
-                velit, id interdum nisl lacus id ex.
-              </p>
+              <div>
+                <p>
+                  GuyWok un restaurante de comida china en Málaga. Ofrecemos un
+                  menú variado de comida cantonesa, como el típico arroz chino,
+                  lumpia, chop suey, pollo agridulce, upon noodles y noodles con
+                  o sin picante como también platos combinados, puedes ver
+                  nuestro menú por apartados dando click en cada sección para
+                  verlos en detalle.
+                </p>
+                <p>GuayWok tu comida china en Málaga.</p>
+              </div>
             </div>
           </a>
         </Link>

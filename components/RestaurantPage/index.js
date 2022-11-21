@@ -67,7 +67,7 @@ export default function RestaurantPage({
         products={products}
         restaurants={restaurants}
       />
-      <div>
+      <div className={style.restaurantInfo}>
         <h2>{restaurant?.subtitle}</h2>
         {restaurant?.secondContent?.map((content, idx) => (
           <p key={idx}>{content}</p>

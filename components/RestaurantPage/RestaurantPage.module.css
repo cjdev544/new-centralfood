@@ -65,6 +65,18 @@
   opacity: 0.7;
 }
 
+.restaurantInfo {
+  margin: 0 auto;
+  margin-top: 3rem;
+  max-width: var(--intern-container);
+  width: 98%;
+}
+
+.restaurantInfo h2 {
+  color: var(--color-background-grey-dark);
+  font-style: italic;
+}
+
 /* Media queries */
 @media (max-width: 640px) {
   .info {
