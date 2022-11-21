@@ -10,6 +10,11 @@
   margin: 0;
 }
 
+.subtitle {
+  font-size: 1rem;
+  margin: 0;
+}
+
 .close {
   display: block;
   color: #fff;

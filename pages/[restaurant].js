@@ -2,10 +2,8 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { getProducts, getRestaurants } from '../services/data'
-import Plates from '../components/Plates'
 import Seo from '../components/Seo'
 import RestaurantPage from '../components/RestaurantPage'
-// import { createFetchValidate } from '../helpers/createFetchValidate'
 
 export default function Restaurant({ products, restaurants }) {
   const [title, setTitle] = useState('')
@@ -54,9 +52,6 @@ export default function Restaurant({ products, restaurants }) {
           restaurant={restaurant}
           category={category}
           setCategory={setCategory}
-        />
-        <Plates
-          category={category}
           productsCategory={productsCategory}
           products={products}
           restaurants={restaurants}
@@ -78,15 +73,13 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps(context) {
-  // const { params } = context
+export async function getStaticProps() {
   const allProducts = await getProducts()
   const restaurants = await getRestaurants()
-  // const path = params?.restaurant
 
   const products = allProducts?.filter((product) => product.disponible)
 
   return {
-    props: { products, restaurants }, // will be passed to the page component as props
+    props: { products, restaurants },
   }
 }

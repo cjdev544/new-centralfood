@@ -1,9 +1,17 @@
 import Image from 'next/image'
 import { Link, animateScroll as scroll } from 'react-scroll'
 
+import Plates from '../Plates'
 import style from './RestaurantPage.module.css'
 
-export default function RestaurantPage({ restaurant, category, setCategory }) {
+export default function RestaurantPage({
+  restaurant,
+  category,
+  setCategory,
+  productsCategory,
+  products,
+  restaurants,
+}) {
   return (
     <>
       <div className={style.restaurant}>
@@ -17,11 +25,13 @@ export default function RestaurantPage({ restaurant, category, setCategory }) {
               className={style.restaurant}
             />
             <h1>{restaurant?.name}</h1>
-            <h2>{restaurant?.type}</h2>
+            <h2 className={style.subtitle}>{restaurant?.type}</h2>
           </div>
-          {restaurant?.firstContent?.map((content, idx) => (
-            <p key={idx}>{content}</p>
-          ))}
+          <div>
+            {restaurant?.firstContent?.map((content, idx) => (
+              <p key={idx}>{content}</p>
+            ))}
+          </div>
         </div>
         {!restaurant?.isOpen && (
           <span className={style.close}>
@@ -49,12 +59,20 @@ export default function RestaurantPage({ restaurant, category, setCategory }) {
             </Link>
           ))}
         </div>
+      </div>
+      <div id='box' />
+      <Plates
+        category={category}
+        productsCategory={productsCategory}
+        products={products}
+        restaurants={restaurants}
+      />
+      <div>
         <h2>{restaurant?.subtitle}</h2>
         {restaurant?.secondContent?.map((content, idx) => (
           <p key={idx}>{content}</p>
         ))}
       </div>
-      <div id='box' />
     </>
   )
 }
