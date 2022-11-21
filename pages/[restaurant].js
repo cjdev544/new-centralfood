@@ -66,15 +66,17 @@ export default function Restaurant({ products, restaurants }) {
   )
 }
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { restaurant: 'guaywok' } },
-//       { params: { restaurant: 'sabor-casita' } },
-//     ],
-//     fallback: 'blocking',
-//   }
-// }
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { restaurant: 'sushiguay' } },
+      { params: { restaurant: 'guaywok' } },
+      { params: { restaurant: 'sabor-casita' } },
+      { params: { restaurant: 'hamburgueseria-venezuela' } },
+    ],
+    fallback: 'blocking',
+  }
+}
 
 export async function getStaticProps(context) {
   // const { params } = context
