@@ -7,7 +7,7 @@ import GuayWok from '../../public/logo-guaywok.svg'
 import SushiGuay from '../../public/logo-sushi.svg'
 import HamVzl from '../../public/logo-hamburgueseria.svg'
 import Sabor from '../../public/logo-sabor.svg'
-import Poke from '../../public/logo-pokes.svg'
+import Pokes from '../../public/logo-pokes.svg'
 import style from './Hero.module.css'
 
 export default function Hero() {
@@ -100,7 +100,7 @@ export default function Hero() {
             <Link href='/pokes-guay' prefetch={false}>
               <a>
                 <Image
-                  src={Poke}
+                  src={Pokes}
                   alt='logo Pokes Guay'
                   width={100}
                   height={100}
