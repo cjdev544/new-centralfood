@@ -7,6 +7,7 @@ import GuayWok from '../../public/logo-guaywok.svg'
 import SushiGuay from '../../public/logo-sushi.svg'
 import HamVzl from '../../public/logo-hamburgueseria.svg'
 import Sabor from '../../public/logo-sabor.svg'
+import Poke from '../../public/logo-pokes.svg'
 import style from './Hero.module.css'
 
 export default function Hero() {
@@ -44,7 +45,7 @@ export default function Hero() {
             />
           </div>
           <p className={style.styles}>
-            Cuatro restaurantes, Cuatro estilos.
+            Cinco restaurantes, Cinco estilos.
             <span>Dale click en el logo y ve todos sus platos</span>
           </p>
           <div className={style.restaurants}>
@@ -53,8 +54,8 @@ export default function Hero() {
                 <Image
                   src={SushiGuay}
                   alt='logo SushiGuay'
-                  width={120}
-                  height={120}
+                  width={100}
+                  height={100}
                   className={style.restaurant}
                   priority={true}
                 />
@@ -65,8 +66,8 @@ export default function Hero() {
                 <Image
                   src={GuayWok}
                   alt='logo GuayWok'
-                  width={120}
-                  height={120}
+                  width={100}
+                  height={100}
                   className={style.restaurant}
                   priority={true}
                 />
@@ -77,8 +78,8 @@ export default function Hero() {
                 <Image
                   src={Sabor}
                   alt='logo Con sabor a casita'
-                  width={120}
-                  height={120}
+                  width={100}
+                  height={100}
                   className={style.restaurant}
                   priority={true}
                 />
@@ -89,8 +90,20 @@ export default function Hero() {
                 <Image
                   src={HamVzl}
                   alt='logo hamburguesería Venezuela'
-                  width={120}
-                  height={120}
+                  width={100}
+                  height={100}
+                  className={style.restaurant}
+                  priority={true}
+                />
+              </a>
+            </Link>
+            <Link href='/pokes-guay' prefetch={false}>
+              <a>
+                <Image
+                  src={Poke}
+                  alt='logo Pokes Guay'
+                  width={100}
+                  height={100}
                   className={style.restaurant}
                   priority={true}
                 />

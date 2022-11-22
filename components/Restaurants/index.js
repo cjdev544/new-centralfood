@@ -5,6 +5,7 @@ import SushiGuay from '../../public/logo-sushi.svg'
 import GuyWok from '../../public/logo-guaywok.svg'
 import SaborCasita from '../../public/logo-sabor.svg'
 import Hamburguesería from '../../public/logo-hamburgueseria.svg'
+import Poke from '../../public/logo-pokes.svg'
 import style from './Restaurants.module.css'
 
 export default function Restaurants() {
@@ -111,6 +112,30 @@ export default function Restaurants() {
                 venezolanas, perros calientes, pepitos y camperos, estás en el
                 lugar indicado. Puedes ver nuestro menú por apartados dando
                 click en cada sección para verlos en detalle.
+              </p>
+            </div>
+          </a>
+        </Link>
+
+        {/* Pokes Guay */}
+        <Link href='/pokes-guay' prefetch={false}>
+          <a>
+            <div className={style.restaurant}>
+              <div className={style.title}>
+                <Image
+                  src={Poke}
+                  alt='Logo Pokes Guay'
+                  width={100}
+                  height={100}
+                />
+                <h2>Pokes Guay</h2>
+              </div>
+              <p>
+                Pokes Guay, comida hawaiana con sabor a Venezuela en Málaga. En
+                este restaurante te ofrecemos Pokes Bowls fríos y calientes, con
+                la posibilidad de que tú mismo lo puedas armar a tu gusto.
+                Puedes ver nuestro menú por apartados dando click en cada
+                sección para verlos en detalle.
               </p>
             </div>
           </a>

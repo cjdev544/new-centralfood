@@ -16,7 +16,7 @@ export default function Plates({
   const [product, setProduct] = useState({})
 
   return (
-    <section className={style.homePlates}>
+    <div className={style.homePlates}>
       <div className={style.opacity}>
         <div className={style.background}>
           <Transition category={category}>
@@ -42,6 +42,6 @@ export default function Plates({
           restaurants={restaurants}
         />
       )}
-    </section>
+    </div>
   )
 }

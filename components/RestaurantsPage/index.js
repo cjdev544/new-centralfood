@@ -5,6 +5,7 @@ import GuayWok from '../../public/logo-guaywok.svg'
 import SushiGuay from '../../public/logo-sushi.svg'
 import HamVzl from '../../public/logo-hamburgueseria.svg'
 import Sabor from '../../public/logo-sabor.svg'
+import Poke from '../../public/poke-logo.svg'
 import style from './RestaurantsPage.module.css'
 
 export default function RestaurantsPage() {
@@ -53,7 +54,7 @@ export default function RestaurantsPage() {
                 className={style.restaurant}
               />
               <h2>Con Sabor a Casita</h2>
-              <span>Comida Latinoamericana</span>
+              <span>Comida Casera</span>
             </div>
           </a>
         </Link>
@@ -69,6 +70,21 @@ export default function RestaurantsPage() {
               />
               <h2>Hamburguesería VZLA</h2>
               <span>Hamburguesas, Perros, Pepitos y Camperos</span>
+            </div>
+          </a>
+        </Link>
+        <Link href='/pokes-guay' prefetch={false}>
+          <a>
+            <div className={style.restaurant}>
+              <Image
+                src={Poke}
+                alt='logo Pokes Guay'
+                width={130}
+                height={130}
+                className={style.restaurant}
+              />
+              <h2>Pokes Guay</h2>
+              <span>Comida Hawaiana</span>
             </div>
           </a>
         </Link>
