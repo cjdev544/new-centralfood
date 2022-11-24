@@ -5,7 +5,7 @@ import GuayWok from '../../public/logo-guaywok.svg'
 import SushiGuay from '../../public/logo-sushi.svg'
 import HamVzl from '../../public/logo-hamburgueseria.svg'
 import Sabor from '../../public/logo-sabor.svg'
-import Poke from '../../public/poke-logo.svg'
+import Poke from '../../public/logo-poke.svg'
 import style from './RestaurantsPage.module.css'
 
 export default function RestaurantsPage() {
