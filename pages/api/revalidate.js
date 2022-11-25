@@ -3,14 +3,13 @@ const jwt = require('jsonwebtoken')
 export default async function handler(req, res) {
   const { authorization } = req.headers
   const token = authorization.split(' ')[1]
-  console.log(token)
+
   let validate
 
   validate = jwt.verify(
     token,
     process.env.REVALIDATE_SECRET_TOKEN,
     (err, token) => {
-      console.log({ err })
       if (err) {
         return res.status(401).json({
           msg: 'Invalid token',

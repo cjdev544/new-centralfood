@@ -21,12 +21,11 @@ export default function Home({ products, restaurants, dataHome }) {
   return (
     <div>
       <Head>
-        <title>Centralfoodmalaga</title>
+        <title>CentralFoodMalaga</title>
         <meta
           name='description'
           content='Restaurante venezolano, comida internacional con sabor a Venezuela. Cinco restaurantes, cinco sabores. SushiGuay: restaurante de comida japonesa, GuayWok: restaurante de comida china, Con sabor a casita: restaurante de comida venezolana, Hamburguesería Venezuela: restaurante de comida americana'
-        />
-        <link rel='icon' href='/favicon.ico' />
+        />        
       </Head>
 
       <main>

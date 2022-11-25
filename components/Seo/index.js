@@ -5,15 +5,14 @@ export default function Seo(props) {
 
   return (
     <Head>
-      <title>{`${title} | Central Food`}</title>
+      <title>{`${title} | CentralFoodMalaga`}</title>
       <meta name='description' content={description} />
-      <link rel='icon' href='/favicon.ico' />
     </Head>
   )
 }
 
 Seo.defaultProps = {
-  title: 'CentralFood Málaga',
+  title: 'CentralFoodMálaga',
   description:
     'Encuantra variedad de comidas de diferentes nacionalidades en Málaga con sabor a Venezuela, todo en un mismo lugar. Porque en la variedad esta el gusto',
 }
