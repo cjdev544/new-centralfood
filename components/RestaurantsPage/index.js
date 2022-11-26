@@ -19,8 +19,8 @@ export default function RestaurantsPage() {
               <Image
                 src={SushiGuay}
                 alt='logo SushiGuay'
-                width={130}
-                height={130}
+                width={100}
+                height={100}
                 className={style.restaurant}
               />
               <h2>SushiGuay</h2>
@@ -34,8 +34,8 @@ export default function RestaurantsPage() {
               <Image
                 src={GuayWok}
                 alt='logo GuayWok'
-                width={130}
-                height={130}
+                width={100}
+                height={100}
                 className={style.restaurant}
               />
               <h2>GuayWok</h2>
@@ -49,8 +49,8 @@ export default function RestaurantsPage() {
               <Image
                 src={Sabor}
                 alt='logo Con sabor a casita'
-                width={130}
-                height={130}
+                width={100}
+                height={100}
                 className={style.restaurant}
               />
               <h2>Con Sabor a Casita</h2>
@@ -64,8 +64,8 @@ export default function RestaurantsPage() {
               <Image
                 src={HamVzl}
                 alt='logo hamburguesería Venezuela'
-                width={130}
-                height={130}
+                width={100}
+                height={100}
                 className={style.restaurant}
               />
               <h2>Hamburguesería VZLA</h2>
@@ -79,8 +79,8 @@ export default function RestaurantsPage() {
               <Image
                 src={Poke}
                 alt='logo Pokes Guay'
-                width={130}
-                height={130}
+                width={100}
+                height={100}
                 className={style.restaurant}
               />
               <h2>Pokes Guay</h2>

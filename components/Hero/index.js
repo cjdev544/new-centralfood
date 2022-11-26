@@ -25,7 +25,7 @@ export default function Hero() {
           <h1>
             CentralFood <span>Málaga</span>
           </h1>
-          <span>En la variedad esta el gusto</span>
+          <span>En la variedad está el gusto</span>
         </div>
         <p className={style.phone}>
           También puedes hacer tus pedidos al número: 649-71-88-31
