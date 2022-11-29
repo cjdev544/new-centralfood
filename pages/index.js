@@ -16,8 +16,8 @@ const HomeSeparator = dynamic(() => import('../components/HomeSeparator'), {
 const Restaurants = dynamic(() => import('../components/Restaurants'), {
   suspense: true,
 })
-
 export default function Home({ products, restaurants, dataHome }) {
+  console.log(dataHome)
   return (
     <div>
       <Head>
@@ -25,7 +25,7 @@ export default function Home({ products, restaurants, dataHome }) {
         <meta
           name='description'
           content='Restaurante venezolano, comida internacional con sabor a Venezuela. Cinco restaurantes, cinco sabores. SushiGuay: restaurante de comida japonesa, GuayWok: restaurante de comida china, Con sabor a casita: restaurante de comida venezolana, Hamburguesería Venezuela: restaurante de comida americana'
-        />        
+        />
       </Head>
 
       <main>
