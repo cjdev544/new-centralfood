@@ -68,6 +68,13 @@ a {
   width: 98%;
 }
 
+.legal {
+  margin: 0 auto;
+  margin-top: 3rem;
+  max-width: var(--intern-container);
+  width: 98%;
+}
+
 .button {
   background-color: var(--color-primary);
   border-color: transparent;

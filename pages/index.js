@@ -17,7 +17,6 @@ const Restaurants = dynamic(() => import('../components/Restaurants'), {
   suspense: true,
 })
 export default function Home({ products, restaurants, dataHome }) {
-  console.log(dataHome)
   return (
     <div>
       <Head>

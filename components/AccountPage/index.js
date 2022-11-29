@@ -7,8 +7,8 @@ import AddressForm from '../AddressForm'
 import { deleteAddress, getAddressesUser } from '../../services/data'
 import ChangeNameForm from './ChangeNameForm'
 import ChangeEmailForm from './ChangeEmailForm'
-import style from './AccountPage.module.css'
 import UpdateAddressModal from '../modals/UpdateAddressModal'
+import style from './AccountPage.module.css'
 
 export default function AccountPage() {
   const [isLoading, setIsLoading] = useState(false)

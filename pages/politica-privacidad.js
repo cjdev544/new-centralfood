@@ -1,6 +1,6 @@
 export default function Politic() {
   return (
-    <div className='politic'>
+    <div className='legal'>
       <h2>Política de privacidad</h2>
       <p>
         La presente Política de Privacidad establece los términos en que
