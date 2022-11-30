@@ -25,6 +25,7 @@
   animation-fill-mode: forwards;
   animation-name: slidein;
   bottom: 0;
+  bottom: -1rem;
   margin-left: 0%;
   position: absolute;
 }
@@ -35,7 +36,7 @@
   }
 
   to {
-    margin-left: 13rem;
+    margin-left: 11rem;
   }
 }
 

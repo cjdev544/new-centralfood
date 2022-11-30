@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Moto from '../../public/moto.svg'
-import CentralFood from '../../public/centralfood10.svg'
+import Moto from '../../public/trineo.svg'
+// import Moto from '../../public/moto.svg'
+// import CentralFood from '../../public/centralfood10.svg'
+import CentralFood from '../../public/logo-navidad.svg'
 import GuayWok from '../../public/logo-guaywok.svg'
 import SushiGuay from '../../public/logo-sushi.svg'
 import HamVzl from '../../public/logo-hamburgueseria.svg'
@@ -18,7 +20,8 @@ export default function Hero() {
         <div className={style.moto}>
           <h2>Comida a domicilio en Málaga</h2>
           <div className={style.motoIcon}>
-            <Image src={Moto} alt='delivery image' width={35} height={35} />
+            {/* <Image src={Moto} alt='delivery image' width={35} height={35} /> */}
+            <Image src={Moto} alt='delivery image' width={110} height={110} />
           </div>
         </div>
         <div className={style.title}>

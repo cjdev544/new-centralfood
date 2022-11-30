@@ -11,7 +11,8 @@ const FormModal = dynamic(() => import('../modals/FormModal'), {
 import useAuth from '../../hooks/useAuth'
 import useFormModal from '../../hooks/useFormModal'
 import Auth from '../Auth'
-import Logo from '../../public/centralfood.svg'
+// import Logo from '../../public/centralfood.svg'
+import Logo from '../../public/gorro.png'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import NavBar from '../NavBar'
 import style from './Header.module.css'
@@ -48,8 +49,10 @@ export default function Header() {
               <Image
                 src={Logo}
                 alt='Central Food logo'
-                width={143}
-                height={97}
+                //width={143}
+                //height={97}
+                width={120}
+                height={90}
                 priority={true}
               />
             </div>
