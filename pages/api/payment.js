@@ -89,8 +89,9 @@ export default async (req, res) => {
       })
     }
 
+    notDiscount = Number(totalPayment)
+
     if (firstBuyDiscount) {
-      notDiscount = round(Number(totalPayment), 2)
       totalPayment =
         Number(totalPayment) -
         (Number(totalPayment) * Number(firstBuyDiscount)) / 100
@@ -110,7 +111,6 @@ export default async (req, res) => {
         .doc(promotion.id)
         .set({ ...doc.data(), use: doc.data().use + 1 })
 
-      notDiscount = round(Number(totalPayment), 2)
       totalPayment =
         Number(totalPayment) -
         (Number(totalPayment) * Number(descuento.cost)) / 100
