@@ -20,8 +20,8 @@ export default function Hero() {
         <div className={style.moto}>
           <h2>Comida a domicilio en Málaga</h2>
           <div className={style.motoIcon}>
-            {/* <Image src={Moto} alt='delivery image' width={35} height={35} /> */}
-            <Image src={Moto} alt='delivery image' width={110} height={110} />
+            <Image src={Moto} alt='delivery image' width={35} height={35} />
+            {/* <Image src={Moto} alt='delivery image' width={110} height={110} /> */}
           </div>
         </div>
         <div className={style.title}>
