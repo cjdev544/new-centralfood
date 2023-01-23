@@ -30,7 +30,7 @@ class MyDocument extends Document {
           <script
             async
             defer
-            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_PLACES_API_KEY}&libraries=places`}
+            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_PLACES_API_KEY}&libraries=places&callback=initMap`}
           ></script>
         </Head>
         <body>

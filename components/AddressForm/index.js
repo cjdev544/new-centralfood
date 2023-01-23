@@ -53,7 +53,7 @@ export default function AddressForm({
 
             if (setAddresses) {
               setAddresses((last) => [
-                { ...formData, user: authUser.uid },
+                { ...formData, user: authUser.uid, id: authUser.uid },
                 ...last,
               ])
             }

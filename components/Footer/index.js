@@ -78,7 +78,15 @@ const Footer = () => {
           </div>
         </div>
         <p className={style.copy}>
-          Elaborado por <span>CjDev544</span>
+          <a
+            href='https://cjdev544.com'
+            target='_blank'
+            rel='noreferrer noopener'
+          >
+            Elaborado por <span>CjDev544</span>
+          </a>
+          <br />
+          &copy; {new Date().getFullYear()} Centralfood
         </p>
       </div>
     </footer>
