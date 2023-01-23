@@ -5,6 +5,7 @@ import SushiGuay from '../../public/logo-sushi.svg'
 import GuyWok from '../../public/logo-guaywok.svg'
 import SaborCasita from '../../public/logo-sabor.svg'
 import Hamburguesería from '../../public/logo-hamburgueseria.svg'
+import Burrito from '../../public/logo-burrito.png'
 import Poke from '../../public/logo-pokes.svg'
 import style from './Restaurants.module.css'
 
@@ -113,6 +114,7 @@ export default function Restaurants() {
                 lugar indicado. Puedes ver nuestro menú por apartados dando
                 click en cada sección para verlos en detalle.
               </p>
+              <p>Hamburgusas en Málaga con sabor a Venezuela</p>
             </div>
           </a>
         </Link>
@@ -137,6 +139,32 @@ export default function Restaurants() {
                 Puedes ver nuestro menú por apartados dando click en cada
                 sección para verlos en detalle.
               </p>
+              <p>Poeke hawaianos en Málaga con sabor a Venezuela</p>
+            </div>
+          </a>
+        </Link>
+
+        {/* Don Burrito */}
+        <Link href='/don-burrito' prefetch={false}>
+          <a>
+            <div className={style.restaurant}>
+              <div className={style.title}>
+                <Image
+                  src={Burrito}
+                  alt='Logo Don Burrito'
+                  width={100}
+                  height={100}
+                />
+                <h2>Don Burrito</h2>
+              </div>
+              <p>
+                Don Burrito es un restaurante Mejicano en Málaga. Ofrecemos
+                platos típicos de México, como variedad de burritos mejicanos, y
+                bolls con el típico sabor de la cocina mexicana, puedes ver
+                nuestro menú por apartados dando click en cada sección para
+                verlos en detalle.
+              </p>
+              <p>Comida mejicana en Málaga con sabor a Venezuela</p>
             </div>
           </a>
         </Link>
