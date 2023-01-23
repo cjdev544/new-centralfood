@@ -69,6 +69,7 @@ export async function getStaticPaths() {
       { params: { restaurant: 'sabor-casita' } },
       { params: { restaurant: 'hamburgueseria-venezuela' } },
       { params: { restaurant: 'pokes-guay' } },
+      { params: { restaurant: 'don-burrito' } },
     ],
     fallback: 'blocking',
   }

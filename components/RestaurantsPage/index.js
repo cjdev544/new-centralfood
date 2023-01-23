@@ -6,6 +6,7 @@ import SushiGuay from '../../public/logo-sushi.svg'
 import HamVzl from '../../public/logo-hamburgueseria.svg'
 import Sabor from '../../public/logo-sabor.svg'
 import Poke from '../../public/logo-pokes.svg'
+import Burrito from '../../public/logo-burrito.png'
 import style from './RestaurantsPage.module.css'
 
 export default function RestaurantsPage() {
@@ -85,6 +86,21 @@ export default function RestaurantsPage() {
               />
               <h2>Pokes Guay</h2>
               <span>Comida Hawaiana</span>
+            </div>
+          </a>
+        </Link>
+        <Link href='/don-burrito' prefetch={false}>
+          <a>
+            <div className={style.restaurant}>
+              <Image
+                src={Burrito}
+                alt='logo Don Burrito'
+                width={100}
+                height={100}
+                className={style.restaurant}
+              />
+              <h2>Don Burrito</h2>
+              <span>Comida Mejicana</span>
             </div>
           </a>
         </Link>

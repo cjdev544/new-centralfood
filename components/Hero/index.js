@@ -10,6 +10,7 @@ import SushiGuay from '../../public/logo-sushi.svg'
 import HamVzl from '../../public/logo-hamburgueseria.svg'
 import Sabor from '../../public/logo-sabor.svg'
 import Pokes from '../../public/logo-pokes.svg'
+import Burrito from '../../public/logo-burrito.png'
 import style from './Hero.module.css'
 
 export default function Hero() {
@@ -48,7 +49,7 @@ export default function Hero() {
             />
           </div>
           <p className={style.styles}>
-            Cinco restaurantes, Cinco estilos.
+            Seis restaurantes, Seis estilos.
             <span>Dale click en el logo y ve todos sus platos</span>
           </p>
           <div className={style.restaurants}>
@@ -107,6 +108,18 @@ export default function Hero() {
                   alt='logo Pokes Guay'
                   width={100}
                   height={100}
+                  className={style.restaurant}
+                  priority={true}
+                />
+              </a>
+            </Link>
+            <Link href='/don-burrito' prefetch={false}>
+              <a>
+                <Image
+                  src={Burrito}
+                  alt='logo Don Burrito'
+                  width={80}
+                  height={80}
                   className={style.restaurant}
                   priority={true}
                 />
