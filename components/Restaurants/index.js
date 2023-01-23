@@ -158,13 +158,13 @@ export default function Restaurants() {
                 <h2>Don Burrito</h2>
               </div>
               <p>
-                Don Burrito es un restaurante Mejicano en Málaga. Ofrecemos
-                platos típicos de México, como variedad de burritos mejicanos, y
+                Don Burrito es un restaurante Mexicano en Málaga. Ofrecemos
+                platos típicos de México, como variedad de burritos mexicanos, y
                 bolls con el típico sabor de la cocina mexicana, puedes ver
                 nuestro menú por apartados dando click en cada sección para
                 verlos en detalle.
               </p>
-              <p>Comida mejicana en Málaga con sabor a Venezuela</p>
+              <p>Comida mexicana en Málaga con sabor a Venezuela</p>
             </div>
           </a>
         </Link>
