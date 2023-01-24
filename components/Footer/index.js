@@ -86,7 +86,7 @@ const Footer = () => {
             Elaborado por <span>CjDev544</span>
           </a>
           <br />
-          &copy; {new Date().getFullYear()} Centralfood
+          &copy; {new Date().getFullYear()} CentralFoodMalaga
         </p>
       </div>
     </footer>

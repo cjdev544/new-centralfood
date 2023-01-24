@@ -100,7 +100,7 @@ export default function RestaurantsPage() {
                 className={style.restaurant}
               />
               <h2>Don Burrito</h2>
-              <span>Comida Mejicana</span>
+              <span>Comida Mexicana</span>
             </div>
           </a>
         </Link>
