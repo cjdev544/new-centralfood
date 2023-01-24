@@ -104,22 +104,31 @@ export default function PlacesAutocompleteGoogle({
     })
 
   return (
-    <div ref={registerRef} className={style.placesBox}>
-      <label htmlFor='address'>Calle/Avenida/Zona</label>
-      <input
-        id='address'
-        type='text'
-        className={style.places}
-        autoComplete='off'
-        name='zona'
-        value={value}
-        onChange={handleInput}
-        disabled={!ready}
-        placeholder={zone || 'Marca del autocompletado'}
-      />
-      {/* ********** */}
-      {/* We can use the "status" to decide whether we should display the dropdown or not */}
-      {status === 'OK' && <ul className={style.list}>{renderSuggestions()}</ul>}
-    </div>
+    <>
+      <span className={style.small}>
+        Preciona cuando salga la sugerencia, <br /> para que la dirección se
+        registre correctamente
+      </span>
+      <br />
+      <div ref={registerRef} className={style.placesBox}>
+        <label htmlFor='address'>Calle/Avenida/Zona</label>
+        <input
+          id='address'
+          type='text'
+          className={style.places}
+          autoComplete='off'
+          name='zona'
+          value={value}
+          onChange={handleInput}
+          disabled={!ready}
+          placeholder={zone || 'Marca del autocompletado'}
+        />
+        {/* ********** */}
+        {/* We can use the "status" to decide whether we should display the dropdown or not */}
+        {status === 'OK' && (
+          <ul className={style.list}>{renderSuggestions()}</ul>
+        )}
+      </div>
+    </>
   )
 }

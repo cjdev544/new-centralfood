@@ -178,6 +178,11 @@
 
 .noShipping {
   color: red;
+  font-weight: bold;
+}
+
+.question {
+  font-weight: bold;
 }
 
 /* Media queries */

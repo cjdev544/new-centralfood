@@ -134,7 +134,7 @@ export default function CarPage() {
         ))}
 
         <div className={style.ley}>
-          <Image src={Ley} alt='arepa' width={400} height={260} />
+          <Image src={Ley} alt='arepa' width={220} height={143} />
           <p>
             Alergias alimentarias o necesidades dietéticas especiales: Antes de
             realizar su pedido, contacte directamente con en restaurante
@@ -147,7 +147,7 @@ export default function CarPage() {
         <h4>Opciones del pedido</h4>
         <div className={style.cutlery}>
           <div className={style.check}>
-            <p>¿Deseas cubiertos?</p>
+            <p className={style.question}>¿Deseas cubiertos?</p>
             <div className={style.onlyCheck}>
               <span>Si</span>
               <div onClick={() => setCutlery(!cutlery)}>
@@ -172,7 +172,7 @@ export default function CarPage() {
 
         <div className={style.cutlery}>
           <div className={style.check}>
-            <p>
+            <p className={style.question}>
               ¿Tienes alergias, deseas eliminar algún ingrediente ó algún
               comentario para el envío?
             </p>
@@ -198,7 +198,7 @@ export default function CarPage() {
 
         <div className={style.twoOptions}>
           <div className={style.twoOptionsBox}>
-            <p>¿Momento para la entrega?</p>
+            <p className={style.question}>¿Momento para la entrega?</p>
             <div
               className={style.twoItems}
               onClick={() => setIsDeliveryNow(true)}
@@ -230,7 +230,7 @@ export default function CarPage() {
 
         <div className={style.twoOptions}>
           <div className={style.twoOptionsBox}>
-            <p>¿Cómo quieres realizar tu pedido?</p>
+            <p className={style.question}>¿Cómo quieres realizar tu pedido?</p>
             <div
               className={style.twoItems}
               onClick={() => {
