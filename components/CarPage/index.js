@@ -48,7 +48,8 @@ export default function CarPage() {
   const [notes, setNotes] = useState('')
   const [isDeliveryNow, setIsDeliveryNow] = useState(true)
   const [startDate, setStartDate] = useState(new Date())
-  const [shipping, setShipping] = useState(false)
+  const [shipping, setShipping] = useState(null)
+  const [shippingButton, setShippingButton] = useState(null)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState(0)
   const [openModal, setOpenModal] = useState(false)
@@ -86,9 +87,11 @@ export default function CarPage() {
 
   const handleShowModal = () => {
     if (totalCostProducts < 12) {
+      setShippingButton(null)
       toast.warning('La compra mínima para entrega a domicilio es de 12€')
     } else {
       setShipping(true)
+      setShippingButton(true)
       if (authUser?.uid) {
         setOpenModal(true)
       } else {
@@ -105,6 +108,11 @@ export default function CarPage() {
 
     if (!authUser?.uid) {
       setOpenModalAuth(true)
+      return
+    }
+
+    if (shippingButton === null) {
+      toast.warning('Selecciona Recogida en el local ó Entrega a domicilio')
       return
     }
 
@@ -231,20 +239,30 @@ export default function CarPage() {
         <div className={style.twoOptions}>
           <div className={style.twoOptionsBox}>
             <p className={style.question}>¿Cómo quieres realizar tu pedido?</p>
-            <div
-              className={style.twoItems}
-              onClick={() => {
-                setShipping(false)
-                setAddressSelected(null)
-                setDeliveryCost(0)
-              }}
-            >
-              <span>Recogida en el local</span>
-              {!shipping ? <FaCheck className={style.circleItem} /> : ''}
-            </div>
-            <div className={style.twoItems} onClick={handleShowModal}>
-              <span>Entrega a domicilio</span>
-              {shipping ? <FaCheck className={style.circleItem} /> : ''}
+            <div className={style.buttons}>
+              <button
+                className={
+                  shippingButton === false
+                    ? style.buttonSelected
+                    : style.buttonNoSelected
+                }
+                onClick={() => {
+                  setShipping(false)
+                  setAddressSelected(null)
+                  setDeliveryCost(0)
+                  setShippingButton(false)
+                }}
+              >
+                Recogida en el local
+              </button>
+              <button
+                className={
+                  shippingButton ? style.buttonSelected : style.buttonNoSelected
+                }
+                onClick={handleShowModal}
+              >
+                Entrega a domicilio
+              </button>
             </div>
             {totalCostProducts < 12 && (
               <span className={style.noShipping}>
@@ -324,6 +342,7 @@ export default function CarPage() {
         <AddressModal
           userId={authUser.uid}
           setShipping={setShipping}
+          setShippingButton={setShippingButton}
           setAddressSelected={setAddressSelected}
           setOpenModal={setOpenModal}
         />

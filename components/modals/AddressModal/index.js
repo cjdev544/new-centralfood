@@ -8,6 +8,7 @@ import style from './AddressModal.module.css'
 export default function AddressModal({
   userId,
   setShipping,
+  setShippingButton,
   setAddressSelected,
   setOpenModal,
 }) {
@@ -22,6 +23,7 @@ export default function AddressModal({
   const isClicked = (e) => {
     if (!boxRef.current.contains(e.target)) {
       setShipping(false)
+      setShippingButton(null)
       setOpenModal(false)
       setAddressSelected(null)
     }
@@ -39,6 +41,7 @@ export default function AddressModal({
           className={style.close}
           onClick={() => {
             setShipping(false)
+            setShippingButton(null)
             setOpenModal(false)
             setAddressSelected(null)
           }}
