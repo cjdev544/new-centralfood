@@ -1,8 +1,6 @@
 import Head from 'next/head'
 
-export default function Seo(props) {
-  const { title, description } = props
-
+export default function Seo({ title, description }) {
   return (
     <Head>
       <title>{`${title} | CentralFoodMalaga`}</title>

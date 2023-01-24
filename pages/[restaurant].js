@@ -2,12 +2,9 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { getProducts, getRestaurants } from '../services/data'
-import Seo from '../components/Seo'
 import RestaurantPage from '../components/RestaurantPage'
 
 export default function Restaurant({ products, restaurants }) {
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
   const [category, setCategory] = useState(null)
   const [productsCategory, setProductCategory] = useState([])
 
@@ -19,14 +16,6 @@ export default function Restaurant({ products, restaurants }) {
   const productsRestaurant = products.filter(
     (product) => product.restaurante === path
   )
-
-  useEffect(() => {
-    setTitle(restaurant?.name || 'Central Food')
-    setDescription(
-      restaurant?.description ||
-        'Central Food, porque en la variedad esta el gusto. Comida venezolana en Málaga. Hamburguesas venezolana, comida china venezolana, sushi venezolano, comida casera venezolana'
-    )
-  }, [path, restaurant])
 
   useEffect(() => {
     if (!category) {
@@ -45,19 +34,14 @@ export default function Restaurant({ products, restaurants }) {
   }, [category])
 
   return (
-    <>
-      <Seo title={title} description={description} />
-      <main style={{ overflow: 'hidden' }}>
-        <RestaurantPage
-          restaurant={restaurant}
-          category={category}
-          setCategory={setCategory}
-          productsCategory={productsCategory}
-          products={products}
-          restaurants={restaurants}
-        />
-      </main>
-    </>
+    <RestaurantPage
+      restaurant={restaurant}
+      category={category}
+      setCategory={setCategory}
+      productsCategory={productsCategory}
+      products={products}
+      restaurants={restaurants}
+    />
   )
 }
 

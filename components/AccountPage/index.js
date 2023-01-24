@@ -39,7 +39,7 @@ export default function AccountPage() {
         setIsLoading(false)
       })
   }
-  console.log(addresses)
+
   return (
     <div className={style.account}>
       <div className={style.accountBox}>
