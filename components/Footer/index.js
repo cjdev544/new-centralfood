@@ -71,8 +71,7 @@ const Footer = () => {
                 <FaMap className={style.map} />
               </a>
               <br />
-              Av Carlos Haya, con calle Francisco Rueda Perez 1, local 7 29007
-              Málaga, España
+              Calle Martínez Maldonado, 75, 29007 Málaga, España
               <span>Tlf: 649-71-88-31</span>
             </div>
           </div>
