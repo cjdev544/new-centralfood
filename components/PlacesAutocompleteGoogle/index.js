@@ -105,10 +105,11 @@ export default function PlacesAutocompleteGoogle({
 
   return (
     <>
-      <span className={style.small}>
+      <p className={style.small}>
+        <span>¡IMPORTANTE! </span>
         Preciona cuando salga la sugerencia, <br /> para que la dirección se
         registre correctamente
-      </span>
+      </p>
       <br />
       <div ref={registerRef} className={style.placesBox}>
         <label htmlFor='address'>Calle/Avenida/Zona</label>

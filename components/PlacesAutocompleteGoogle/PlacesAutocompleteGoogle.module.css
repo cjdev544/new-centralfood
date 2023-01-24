@@ -45,10 +45,16 @@
   padding: 5px;
 }
 
-.small {
-  color: var(--color-primary);
+.small {  
   font-size: 0.8rem;
+  font-weight: bold;
   line-height: 15px;
+  margin: 0;
+}
+
+.small span {
+  color: red;
+  font-size: 1rem;
 }
 
 /* Media queries */
