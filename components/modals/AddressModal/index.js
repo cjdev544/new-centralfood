@@ -48,20 +48,31 @@ export default function AddressModal({
         />
         <div className={style.left}>
           <h3>Direcciones</h3>
-          {addresses.length === 0 && <p>No se han agregado direcciones</p>}
+          {addresses.length === 0 && (
+            <p className={style.selectionText}>
+              No se han agregado direcciones
+            </p>
+          )}
+          {addresses.length > 0 && (
+            <p className={style.selectionText}>
+              Selecciona una dirección o crea una nueva
+            </p>
+          )}
           {addresses.map((address) => (
-            <div
-              key={address.id}
-              className={style.item}
-              onClick={() => handleClick(address)}
-            >
-              <h4>{address.title}</h4>
-              <div className={style.info}>
-                <span>Código postal: {address.postalCode}</span>
-                <span>{address.zone.address}</span>
-                <span>{address.details}</span>
+            <>
+              <div
+                key={address.id}
+                className={style.item}
+                onClick={() => handleClick(address)}
+              >
+                <h4>{address.title}</h4>
+                <div className={style.info}>
+                  <span>Código postal: {address.postalCode}</span>
+                  <span>{address.zone.address}</span>
+                  <span>{address.details}</span>
+                </div>
               </div>
-            </div>
+            </>
           ))}
         </div>
         <div className={style.right}>

@@ -176,6 +176,10 @@
   font-weight: bold;
 }
 
+.addressTitle span {
+  font-size: 1.5rem;
+}
+
 .noShipping {
   color: red;
   font-weight: bold;

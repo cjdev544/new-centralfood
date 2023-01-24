@@ -271,7 +271,7 @@ export default function CarPage() {
             )}
             {addressSelected?.title && (
               <span className={style.addressTitle}>
-                Dirección de envío: {addressSelected.title}
+                Dirección de envío: <span>{addressSelected.title}</span>
               </span>
             )}
           </div>
