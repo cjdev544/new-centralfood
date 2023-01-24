@@ -103,7 +103,6 @@ export default function PayWithCard({
 
   return (
     <form className='form-payment' id='payment-form' onSubmit={handleSubmit}>
-      <span>C.P = Codigo Postal</span>
       <CardElement
         id='card-element'
         options={cardStyle}
