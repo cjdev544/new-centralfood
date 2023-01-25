@@ -36,8 +36,8 @@ export default function About() {
           Puedes disfrutar de nuestro menú en un local acogedor, atendido por
           nosotros, donde nuestra prioridad será tu comodidad, bienestar y
           disfrute, ó si prefieres degustar una rica comida en la comodidad de
-          tu hogar, ofrecemos entregas a domicilio a tu casa. Revisa el menu de
-          todos nuestros restaurantes, elije lo que quieras y pasala Guay.
+          tu hogar, ofrecemos entregas a domicilio. Revisa el menu de todos
+          nuestros restaurantes, elije lo que quieras y pasala Guay.
         </p>
       </div>
     </section>

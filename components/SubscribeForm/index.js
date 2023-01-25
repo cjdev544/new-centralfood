@@ -52,7 +52,7 @@ export default function SubscribeForm() {
         <div className={style.header}>
           <p>Suscribete a CentralFood Málaga</p>
           <span>
-            Recive cupones de descuento en tu correo y mantente informado de
+            Recibe cupones de descuento en tu correo y mantente informado de
             nuestras novedades.
           </span>
         </div>
