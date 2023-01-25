@@ -23,7 +23,7 @@ export default function Order({ order, setOpenModal, setOrderSelected }) {
       {order?.cancel && <div className={style.cancel}>Pedido cancelado</div>}
 
       <div className={style.header}>
-        <span>Pedido: {order.id}</span>
+        <span>Orden N°: {order.facture}</span>
         <div className={style.flex}>
           <span>{format(order.createdAt, 'dd/MM/yyyy - h:m a')}</span>
           <span

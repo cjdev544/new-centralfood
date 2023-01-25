@@ -21,10 +21,13 @@ export default function MoreOrderInfoModal({ order, setOpenModal }) {
           onClick={() => setOpenModal(false)}
         />
         <p className={style.first}>
-          <span className={style.bold}>Pedido N°: </span> {order.id}
+          <span className={style.bold}>Orden N°: </span> {order.id}
         </p>
         <p>
-          <span className={style.bold}>Nombre: </span> {order.name}
+          <span className={style.bold}>Cliente: </span> {order.username}
+        </p>
+        <p>
+          <span className={style.bold}>Quien recive: </span> {order.name}
         </p>
         <p>
           <span className={style.bold}>Teléfono: </span> {order.phone}

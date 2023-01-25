@@ -1,6 +1,8 @@
 const admin = require('firebase-admin')
 const stripe = require('stripe')(`${process.env.STRIPE_PRIVATE_KEY}`)
 const { round } = require('mathjs')
+import { customAlphabet } from 'nanoid/async'
+const nanoid = customAlphabet('1234567890', 8)
 
 if (!admin.apps.length) {
   admin.initializeApp({
@@ -34,6 +36,14 @@ export default async (req, res) => {
     let descuento = {}
     let notDiscount = null
     let data = {}
+    let facture
+
+    createIDs()
+
+    async function createIDs() {
+      const nano = await nanoid()
+      facture = nano
+    }
 
     // Is first buy for client?
     const getFirstBuyDiscount = async () => {
@@ -130,6 +140,7 @@ export default async (req, res) => {
       totalCompra: round(Number(totalPayment) / 100, 2),
       idPago: paymentIntent.id,
       id: paymentIntent.id,
+      facture,
       direccionEnvio: addressShipping || 'Recogida en el local',
       pedido: productsSend,
       totalProductos: round(totalPayment / 100 - priceShipping, 2),

@@ -1,6 +1,7 @@
 const admin = require('firebase-admin')
 const { round } = require('mathjs')
-const { nanoid } = require('nanoid')
+import { customAlphabet } from 'nanoid/async'
+const nanoid = customAlphabet('1234567890', 8)
 
 if (!admin.apps.length) {
   admin.initializeApp({
@@ -35,6 +36,16 @@ export default async (req, res) => {
     let descuento = {}
     let notDiscount = null
     let data = {}
+    let id
+    let facture
+
+    createIDs()
+
+    async function createIDs() {
+      const nano = await nanoid()
+      id = nano
+      facture = nano
+    }
 
     // Is first buy for client?
     const getFirstBuyDiscount = async () => {
@@ -146,7 +157,8 @@ export default async (req, res) => {
       createdAt: Date.now(),
       totalCompra: round(Number(totalPayment) / 100, 2),
       idPago: null,
-      id: nanoid(),
+      id,
+      facture,
       direccionEnvio: addressShipping || 'Recogida en el local',
       pedido: productsSend,
       totalProductos: round(totalPayment / 100 - priceShipping, 2),

@@ -28,19 +28,19 @@ export default function OrderAlert({ order }) {
   useEffect(() => {
     const alertType = {
       orderSend: {
-        msg: `El pedido N°${order?.id}`,
+        msg: `La Orden N°${order?.facture}`,
         msg2: 'YA VA EN CAMINO. Gracias por preferirnos y que aproveche',
         emoji: '🏍️',
         color: '#69af00',
       },
       cancel: {
-        msg: `El pedido N°${order?.id} NO PUEDE SER DESPACHADO`,
+        msg: `La Orden N°${order?.facture} NO PUEDE SER DESPACHADA`,
         msg2: order.cancel,
         emoji: '😔',
         color: '#ff0000',
       },
       deliveryIn: {
-        msg: `El pedido N°${order?.id}`,
+        msg: `La Orden N°${order?.facture}`,
         msg2: 'SE ESTÁ PREPARANDO',
         emoji: '👩‍🍳',
         color: '#69af00',
@@ -48,7 +48,7 @@ export default function OrderAlert({ order }) {
     }
 
     const alertDefault = {
-      msg: `Hola ${name}, En breve será notificado con la confirmación del pedido N°${order?.id} y el tiempo estimado para su entrega`,
+      msg: `Hola ${name}, En breve será notificado con la confirmación de la Orden N°${order?.facture} y el tiempo estimado para su entrega`,
       color: '#ff5400',
     }
 
