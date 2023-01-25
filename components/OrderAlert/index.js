@@ -29,7 +29,7 @@ export default function OrderAlert({ order }) {
     const alertType = {
       orderSend: {
         msg: `La Orden N°${order?.facture}`,
-        msg2: 'YA VA EN CAMINO. Gracias por preferirnos y que aproveche ',
+        msg2: 'YA VA EN CAMINO. Gracias por preferirnos y que aproveche',
         emoji: '🏍️',
         color: '#69af00',
       },
