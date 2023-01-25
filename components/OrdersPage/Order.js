@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { FaEye } from 'react-icons/fa'
 import { format } from 'date-fns'
 
@@ -40,16 +39,16 @@ export default function Order({ order, setOpenModal, setOrderSelected }) {
       {order.pedido?.map((product) => (
         <div className={style.box} key={product.id}>
           <div className={style.info}>
-            <Link href={`/plato/${product?.path}`}>
-              <a>
-                <Image
-                  src={product?.url ? product.url : NoImage}
-                  alt={product.producto}
-                  width={100}
-                  height={100}
-                />
-              </a>
-            </Link>
+            {/* <Link href={`/plato/${product?.path}`}> */}
+            <a>
+              <Image
+                src={product?.url ? product.url : NoImage}
+                alt={product.producto}
+                width={100}
+                height={100}
+              />
+            </a>
+            {/* </Link> */}
             <div className={style.data}>
               <h4>{product.producto}</h4>
               <span>Precio unitario: {product.precioUnitario}€</span>
