@@ -110,9 +110,9 @@ export default function Restaurants() {
               <p>
                 Hamburguesería VZLA, comida americana con sabor a Venezuela en
                 Málaga. Si buscas ese rico sabor de las hamburguesas
-                venezolanas, perros calientes, pepitos y camperos, estás en el
-                lugar indicado. Puedes ver nuestro menú por apartados dando
-                click en cada sección para verlos en detalle.
+                venezolanas, perros calientes y camperos, estás en el lugar
+                indicado. Puedes ver nuestro menú por apartados dando click en
+                cada sección para verlos en detalle.
               </p>
               <p>Hamburgusas en Málaga con sabor a Venezuela</p>
             </div>

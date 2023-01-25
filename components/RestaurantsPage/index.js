@@ -70,7 +70,7 @@ export default function RestaurantsPage() {
                 className={style.restaurant}
               />
               <h2>Hamburguesería VZLA</h2>
-              <span>Hamburguesas, Perros, Pepitos y Camperos</span>
+              <span>Hamburguesas, Perros y Camperos</span>
             </div>
           </a>
         </Link>
