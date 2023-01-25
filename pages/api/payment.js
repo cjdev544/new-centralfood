@@ -40,7 +40,6 @@ export default async (req, res) => {
     let facture
 
     createIDs()
-
     async function createIDs() {
       const nano = await nanoid()
       id = nano

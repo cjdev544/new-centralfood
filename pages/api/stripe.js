@@ -24,6 +24,7 @@ export default async (req, res) => {
       idUser,
       username,
       addressShipping,
+      promotion,
       values,
       priceShipping,
     } = req.body
@@ -32,14 +33,13 @@ export default async (req, res) => {
     let totalPayment = 0
     let firstBuyDiscount
     let searchProduct
+    let notDiscount = null
     let array = []
     let descuento = {}
-    let notDiscount = null
     let data = {}
     let facture
 
     createIDs()
-
     async function createIDs() {
       const nano = await nanoid()
       facture = nano
@@ -64,7 +64,8 @@ export default async (req, res) => {
       array.push(doc.data())
     })
     if (!array?.length) {
-      getFirstBuyDiscount()
+      if (promotion?.name === 'Descuento por primera compra')
+        getFirstBuyDiscount()
     }
 
     // Search and calculate subtotal for products
@@ -97,11 +98,31 @@ export default async (req, res) => {
       })
     }
 
+    notDiscount = Number(totalPayment)
+
     if (firstBuyDiscount) {
-      notDiscount = round(Number(totalPayment), 2)
       totalPayment =
         Number(totalPayment) -
         (Number(totalPayment) * Number(firstBuyDiscount)) / 100
+    }
+
+    if (promotion?.id) {
+      const docRef = db.collection('discount').doc(promotion.id)
+      const doc = await docRef.get()
+      descuento = {
+        nombre: doc.data().name,
+        cost: doc.data().discount,
+        type: doc.data().type,
+        use: doc.data().use,
+      }
+      await db
+        .collection('discount')
+        .doc(promotion.id)
+        .set({ ...doc.data(), use: doc.data().use + 1 })
+
+      totalPayment =
+        Number(totalPayment) -
+        (Number(totalPayment) * Number(descuento.cost)) / 100
     }
 
     if (values?.shipping) {
@@ -132,9 +153,9 @@ export default async (req, res) => {
     data = {
       name: values.name,
       phone: values.phone,
+      sinDescuento: notDiscount,
       usuario: idUser,
       username,
-      sinDescuento: notDiscount,
       descuento,
       createdAt: Date.now(),
       totalCompra: round(Number(totalPayment) / 100, 2),
