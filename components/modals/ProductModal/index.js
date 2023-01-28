@@ -6,9 +6,11 @@ import { FaRegWindowClose, FaPlus, FaMinus, FaCheck } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
 import useLocalStorage from '../../../hooks/useLocalStorage'
+import IsPlateWhitJalapeños from './components/IsPlateWhitJalapeños'
 import { getProductsComplements } from '../../../helpers/getProductsComplements'
 import Complement from '../../Complement'
 import style from './ProductModal.module.css'
+import IsPlatePepper from './components/IsPlatePepper'
 
 export default function ProductModal({
   restaurants,
@@ -26,6 +28,9 @@ export default function ProductModal({
   const [isPepper, setIsPepper] = useState(false)
   const [selectPepper, setSelectPepper] = useState(false)
   const [pepperPlate, setPepperPlate] = useState(null)
+  const [isJalapeño, setIsJalapeño] = useState(false)
+  const [selectJalapeño, setSelectJalapeño] = useState(false)
+  const [jalapeñoPlate, setJalapeñoPlate] = useState(null)
   const [total, setTotal] = useState(0)
   const boxRef = useRef()
 
@@ -76,6 +81,17 @@ export default function ProductModal({
   }, [product])
 
   useEffect(() => {
+    if (product) {
+      const plateIsJalapeño = product.path.includes('burrito')
+      if (plateIsJalapeño) {
+        setIsJalapeño(true)
+      } else {
+        setIsJalapeño(false)
+      }
+    }
+  }, [product])
+
+  useEffect(() => {
     if (isPepper) {
       let msg
       if (selectPepper) {
@@ -86,6 +102,18 @@ export default function ProductModal({
       setPepperPlate({ ...product, nombre: `${product.nombre} ${msg}` })
     }
   }, [product, isPepper, selectPepper])
+
+  useEffect(() => {
+    if (isJalapeño) {
+      let msg
+      if (selectJalapeño) {
+        msg = '(Con Jalapeño)'
+      } else {
+        msg = '(Sin Jalapeño)'
+      }
+      setJalapeñoPlate({ ...product, nombre: `${product.nombre} ${msg}` })
+    }
+  }, [product, isJalapeño, selectJalapeño])
 
   const { extras, drinks, beer, desserts } = getProductsComplements(
     products,
@@ -109,6 +137,11 @@ export default function ProductModal({
     }
     if (isPepper) {
       addProductCart({ ...pepperPlate, number: counterProduct })
+      complements.forEach((complement) => {
+        addProductCart({ ...complement, number: 1 })
+      })
+    } else if (isJalapeño) {
+      addProductCart({ ...jalapeñoPlate, number: counterProduct })
       complements.forEach((complement) => {
         addProductCart({ ...complement, number: 1 })
       })
@@ -183,40 +216,16 @@ export default function ProductModal({
           <h2>{product.nombre}</h2>
           <p>{product.descripcion}</p>
           {isPepper && (
-            <div className={style.pepper}>
-              <div
-                style={
-                  !selectPepper
-                    ? { fontWeight: 'bold' }
-                    : {
-                        backgroundColor: 'transparent',
-                        border: '2px solid #000',
-                        color: '#000',
-                      }
-                }
-                className={style.select}
-                onClick={() => setSelectPepper(false)}
-              >
-                <span>Sin picante</span>
-                {!selectPepper && <FaCheck />}
-              </div>
-              <div
-                style={
-                  selectPepper
-                    ? { fontWeight: 'bold' }
-                    : {
-                        backgroundColor: 'transparent',
-                        border: '2px solid #000',
-                        color: '#000',
-                      }
-                }
-                className={style.select}
-                onClick={() => setSelectPepper(true)}
-              >
-                <span>Con picante</span>
-                {selectPepper && <FaCheck />}
-              </div>
-            </div>
+            <IsPlatePepper
+              selectPepper={selectPepper}
+              setSelectPepper={setSelectPepper}
+            />
+          )}
+          {isJalapeño && (
+            <IsPlateWhitJalapeños
+              selectJalapeño={selectJalapeño}
+              setSelectJalapeño={setSelectJalapeño}
+            />
           )}
           <span className={style.productPrice}>{product.precio}€</span>
           <div className={style.numberProducts}>
