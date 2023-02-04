@@ -25,7 +25,7 @@
   animation-fill-mode: forwards;
   animation-name: slidein;
   bottom: -1rem;
-  bottom: 0.5rem;
+  /* bottom: 0.5rem; */
   margin-left: 0%;
   position: absolute;
 }
@@ -36,7 +36,8 @@
   }
 
   to {
-    margin-left: 11rem;
+    /* margin-left: 11rem; */
+    margin-left: 7rem;
   }
 }
 
@@ -81,6 +82,7 @@
 
 .principalImage {
   margin-bottom: 1rem;
+  margin-top: 1rem;
   margin-top: 1rem;
 }
 

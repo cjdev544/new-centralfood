@@ -78,7 +78,7 @@ const Footer = () => {
         </div>
         <p className={style.copy}>
           <a
-            href='https://cjdev544.com'
+            href='https://cjdev544.vercel.app'
             target='_blank'
             rel='noreferrer noopener'
           >
