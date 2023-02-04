@@ -281,7 +281,7 @@ export default function CarPage() {
           <input
             className={style.inputContact}
             type='text'
-            placeholder='Nombre de quien recive'
+            placeholder='Nombre de quien recibe'
             onChange={(e) => setName(e.target.value)}
           />
           <input

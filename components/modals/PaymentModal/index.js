@@ -77,7 +77,7 @@ export default function PaymentModal({
           </div>
           <div className={style.dataClient}>
             <p>
-              <span>Recive: </span> {name}
+              <span>Recibe: </span> {name}
             </p>
             <p>
               <span>Teléfono: </span> {phone}
