@@ -27,7 +27,7 @@ export default function MoreOrderInfoModal({ order, setOpenModal }) {
           <span className={style.bold}>Cliente: </span> {order.username}
         </p>
         <p>
-          <span className={style.bold}>Quien recive: </span> {order.name}
+          <span className={style.bold}>Quien recibe: </span> {order.name}
         </p>
         <p>
           <span className={style.bold}>Teléfono: </span> {order.phone}
