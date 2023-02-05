@@ -13,6 +13,7 @@ import HamVzl from '../../public/logo-hamburgueseria.svg'
 import Sabor from '../../public/logo-sabor.svg'
 import Pokes from '../../public/logo-pokes.svg'
 import Burrito from '../../public/logo-burrito.png'
+import Bebidas from '../../public/postres-bebidas.png'
 import style from './Hero.module.css'
 
 export default function Hero() {
@@ -123,6 +124,18 @@ export default function Hero() {
                 <Image
                   src={Burrito}
                   alt='logo Don Burrito'
+                  width={80}
+                  height={80}
+                  className={style.restaurant}
+                  priority={true}
+                />
+              </a>
+            </Link>
+            <Link href='/postres-bebidas' prefetch={false}>
+              <a>
+                <Image
+                  src={Bebidas}
+                  alt='Postres y bebidas'
                   width={80}
                   height={80}
                   className={style.restaurant}

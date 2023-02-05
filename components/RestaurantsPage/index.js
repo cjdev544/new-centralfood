@@ -7,6 +7,7 @@ import HamVzl from '../../public/logo-hamburgueseria.svg'
 import Sabor from '../../public/logo-sabor.svg'
 import Poke from '../../public/logo-pokes.svg'
 import Burrito from '../../public/logo-burrito.png'
+import Bebidas from '../../public/postres-bebidas.png'
 import style from './RestaurantsPage.module.css'
 
 export default function RestaurantsPage() {
@@ -104,14 +105,21 @@ export default function RestaurantsPage() {
             </div>
           </a>
         </Link>
+        <Link href='/postres-bebidas' prefetch={false}>
+          <a>
+            <div className={style.restaurant}>
+              <Image
+                src={Bebidas}
+                alt='Postres y bebidas'
+                width={100}
+                height={100}
+                className={style.restaurant}
+              />
+              <h2>Postres y Bebidas</h2>{' '}
+            </div>
+          </a>
+        </Link>
       </div>
-      <Link href='/postres-bebidas' prefetch={false}>
-        <a className={style.drinks}>
-          <div className={style.button}>
-            <h2>Postres y Bebidas</h2>
-          </div>
-        </a>
-      </Link>
     </div>
   )
 }
