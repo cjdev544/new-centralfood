@@ -166,3 +166,10 @@
     order: 1;
   }
 }
+
+@media (max-width: 640px) {
+  .restaurants {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
