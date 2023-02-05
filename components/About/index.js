@@ -27,7 +27,7 @@ export default function About() {
           diferentes sabores. ¡Si! Somos un restaurante venezolano en Málaga,
           pero, traemos la comida internacional fusionada con nuestro toque
           caribeño para crear una explocion de sabores. Ofrecemos comida
-          internacional con sabor a Venezuela, cinco restaurantes, cada uno con
+          internacional con sabor a Venezuela, seis restaurantes, cada uno con
           el sabor característico de su lugar de origen incorporando nuestra
           firma auténtica para sorprender tu paladar, como dice nuestro eslogan:
           “En la variedad está el gusto”.
