@@ -1,6 +1,8 @@
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import useElementInView from '../../hooks/useElementInView'
 // import Moto from '../../public/trineo.svg'
 import Moto from '../../public/moto-vale-cola.svg'
 // import CentralFood from '../../public/logo-navidad.svg'
@@ -17,13 +19,23 @@ import Bebidas from '../../public/postres-bebidas.png'
 import style from './Hero.module.css'
 
 export default function Hero() {
+  const [addClassMove, setAddClassMove] = useState(null)
+
+  const ref = useRef(null)
+  const { isIntersecting } = useElementInView(ref)
+
+  useEffect(() => {
+    setAddClassMove(isIntersecting)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isIntersecting])
+
   return (
     <div className={`container ${style.hero}`}>
       {/* LeftSide */}
       <div className={style.leftSide}>
         <div className={style.moto}>
-          <h2>Comida a domicilio en Málaga</h2>
-          <div className={style.motoIcon}>
+          <h2 ref={ref}>Comida a domicilio en Málaga</h2>
+          <div className={addClassMove ? style.motoIcon : ''}>
             {/* <Image src={Moto} alt='delivery image' width={35} height={35} /> */}
             {/* <Image src={Moto} alt='delivery image' width={110} height={110} /> */}
             <Image src={Moto} alt='delivery image' width={140} height={110} />
