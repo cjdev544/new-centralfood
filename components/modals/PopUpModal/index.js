@@ -26,8 +26,8 @@ export default function PopUpModal({ setOpenModal }) {
               <span className={style.icon}> ⚠</span>
             </h3>
             <p className={style.text}>
-              La entrega será más lenta de lo habitual debido a las actividades
-              y tráfico de Semena Santa
+              La entrega podría tardar un poco, debido a las actividades
+              actuales de Semana Santa.
             </p>
             <button
               className='button'
