@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { Link, animateScroll as scroll } from 'react-scroll'
 import { FaArrowCircleUp } from 'react-icons/fa'
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import useData from '../../hooks/useData'
 import useAuth from '../../hooks/useAuth'
 import useOrders from '../../hooks/useOrders'
+import PopUpModal from '../modals/PopUpModal'
 import style from './Layout.module.css'
 
 const Header = dynamic(() => import('../Header'), { suspense: true })
@@ -16,6 +17,7 @@ const Footer = dynamic(() => import('../Footer'), { suspense: true })
 
 export default function BasicLayout({ children }) {
   useAuth()
+  const [openModal, setOpenModal] = useState(true)
 
   const { isOpen } = useData()
   const { ordersAlert } = useOrders()
@@ -62,6 +64,7 @@ export default function BasicLayout({ children }) {
       >
         <FaArrowCircleUp />
       </Link>
+      {openModal && <PopUpModal setOpenModal={setOpenModal} />}
     </>
   )
 }
