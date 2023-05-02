@@ -137,7 +137,7 @@ export default function Restaurants() {
                 este restaurante te ofrecemos Pokes Bowls fríos y calientes, con
                 la posibilidad de que tú mismo lo puedas armar a tu gusto.
                 Puedes ver nuestro menú por apartados dando click en cada
-                sección para verlos en detalle.
+                sección para verlos en detalle
               </p>
               <p>Poeke hawaianos en Málaga con sabor a Venezuela</p>
             </div>
