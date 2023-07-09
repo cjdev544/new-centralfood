@@ -12,11 +12,11 @@ import { toast } from 'react-toastify'
 import { db } from '../firebase/config'
 
 const useData = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(undefined)
 
   useEffect(() => {
     if (isOpen === undefined) {
-      // isOpenOrClose(setIsOpen)
+      isOpenOrClose(setIsOpen)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
