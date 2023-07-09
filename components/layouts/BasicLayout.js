@@ -34,7 +34,7 @@ export default function BasicLayout({ children }) {
         pauseOnHover
       />
       <div id='up' />
-      {false === false && (
+      {isOpen === false && (
         <div className={style.isOpen}>
           <span>El restaurante se encuentra cerrado en estos momentos</span>
         </div>
