@@ -84,7 +84,7 @@ const useCart = () => {
   }, [addressSelected])
 
   useEffect(() => {
-    if (promotionalCode) {
+    if (promotionalCode && discounts) {
       const res = discounts.find(
         (disc) =>
           disc.name.toLowerCase().trim() ===
@@ -98,6 +98,7 @@ const useCart = () => {
       }
     }
   }, [promotionalCode, discounts])
+
   useEffect(() => {
     if (isPromotionCodeCorrect) {
       const promotionalDiscount = {
