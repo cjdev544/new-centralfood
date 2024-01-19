@@ -33,7 +33,7 @@ export default async function handler(req, res) {
               msg: 'No se pudo actualizar la página, intente mas tarde',
             })
           })
-      }, 20000)
+      }, 8000)
     }
   )
 }
