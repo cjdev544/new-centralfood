@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import TagManager from 'react-gtm-module'
+// import TagManager from 'react-gtm-module'
 import CookieConsent from 'react-cookie-consent'
 
 import AuthState from '../context/auth/authState'
@@ -10,7 +10,8 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   const handleAcceptCookie = () => {
-    TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID })
+    // TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID })
+    console.log('')
   }
 
   return (
